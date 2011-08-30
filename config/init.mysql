@@ -32,6 +32,8 @@ INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','watersky',curren
 INSERT INTO settings(name,value,updated_on) VALUES ('app_title','Alminium',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_enabled',1,current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_key','',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
 h1. Alminium
 
