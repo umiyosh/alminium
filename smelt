@@ -174,3 +174,10 @@ cp -fr bin/*  $INSTALL_DIR/bin/
 cp -fr hooks $INSTALL_DIR/
 
 source inst-script/$OS/post-install
+
+# プロジェクト作成時に自動的にリポジトリを作成するときに利用
+#CHK=`egrep "reposman" /var/spool/cron/root`
+#if [ "$CHK" = '' ]
+#then
+#  echo "* * * * * /opt/alminium/extra/svn/reposman.rb -g apache -o apache -s /var/opt/alminium/git -u /var/opt/alminium/git -r localhost --scm git" >> /var/spool/cron/root
+#fi  
