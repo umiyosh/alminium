@@ -23,4 +23,5 @@ mod_perl
 perl-Apache-DBI
 # for backlogs
 rubygem-nokogiri
-rubygem-icalendar
+libical
+
