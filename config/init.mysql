@@ -29,29 +29,29 @@ UPDATE settings SET value='--- \n:points_burn_direction: down\n:taskboard_card_o
  * Redmineの初期設定
  ********************************************************************/
 INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','watersky',current_date); 
-INSERT INTO settings(name,value,updated_on) VALUES ('app_title','とある券売機の超導入砲',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('app_title','Alminium',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
-h1. とある発券機の超導入砲
+h1. Alminium
 
-　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。RedmineとRedmineからフォークされたChiliProjectを導入するには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「とある発券機の超導入法」は、目んどくさがり屋のための、Redmine/ChiliProjectの構築ソリューションです。
+　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。チケットシステムの一つであるRedmineをインストールするためには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「Alminium」は、めんどくさがり屋のための、プロジェクト管理構築ツールです。
 
 h1. 特徴
 
 次のような特徴があります。
 
-h3. ChiliProject(Redmine)とそれに必要なMySQLやRubyライブラリを一括してセットアップ
+h3. Redmineとそれに必要なMySQLやRubyライブラリを一括してセットアップ
 
-ChiliProject(Redmine)に必要なソフトウェアを一括でセットアップすることができます。もう、「Rubyがわからないので、Redmineなんてつかえませーん。ぷんぷくりーん。」と言うこともなくなります。
+Redmineに必要なソフトウェアを一括でセットアップすることができます。もう、「Rubyがわからないので、Redmineなんてつかえませーん。ぷんぷくりーん。」と言うこともなくなります。
 
 h3. バージョン管理システム(Subversion/Git)も同時にセットアップ
 
 バージョン管理システムは、もはやソフトウェア開発にとって必須と言えるでしょう。しかしながら、mod_dav_svnやgit-http-backendの設定は、新入社員では難しいことでしょう。とある(以下略)はバージョン管理システムも一緒にセットアップしてくれます。
 
-h3. ChiliProject(Redmine)とバージョン管理システ厶(Subversion/Git)のアカウントの連携
+h3. Redmineとバージョン管理システ厶(Subversion/Git)のアカウントの連携
 
-ChiliProject(Redmine)は、データベースで独自のアカウント管理機構を持っています。LDAPなどを利用することもできますが、正直素人には面倒杉ます。とある(以下略）では、Git/SubversionでもChiliProject(Redmine)のアカウントを利用して認証することができます。
+Redmineは、データベースで独自のアカウント管理機構を持っています。LDAPなどを利用することもできますが、正直素人には面倒杉ます。とある(以下略）では、Git/SubversionでもChiRedmineのアカウントを利用して認証と、アクセス権の設定を行うことができます。
 
 
 h1. 使い方
@@ -63,9 +63,11 @@ h1. 使い方
 
 プロジェクトの作成は、管理者でログインしてプロジェクトの作成から行ってください。リポジトリの作成は、サーバのコンソール上で、
 <pre>
- # /opt/railsgun/bin/railsgun-create-repository 
+ # /opt/alminium/bin/alminium-create-repository 
 </pre>
 コマンドで作成してください。リポジトリを作成したら、プロジェクトに設定するのを忘れないようにしましょう。
+
+管理者・開発者のロールのユーザをを同名のRedmineプロジェクトに追加することにより、コミット権を与えることができます。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、リポジトリへのコミット(プッシュ)権限を付与することができます。
 ',current_date);
 UPDATE users SET language='ja' WHERE login='admin';
 
