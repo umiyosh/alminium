@@ -1,60 +1,43 @@
-# とある発券機の超導入砲
+# Alminium
 
 ## これはなに?
 
-近年、Ruby on Railsで実装されたプロジェクト管理ツールとしてRedmineが注目を浴びています。
-Redmineを導入するためには、gemの知識が必要だったり、Subversion/Gitなどのバージョン管理システムとのアカウントとの連携の設定が面倒だったり、プラグインをインストールしたりと、快適な環境を構築するのは手間が掛かります。
+Alminiumとは、ALM(Application Lifecycle Management)とRedmineの合金(..nium)という意味から名づけられました。
 
-Railsgunは、Redmine/Git/SubversionをLinux上に簡単にインストールし環境を構築するインストーラです。各ソフトウェアのインストールとプラグインを使うための便利な設定を自動的に行ってくれます。
+Redmineを利用してALMを実現するためのツールです。アルミニウムの持つ軽量性と伝導性を備えています。軽量性は、簡単に使えること、熱伝導性は他のプロジェクトへ徐々に広げていける仕組みです。
 
-なお、読みは「とある発券機(チケットシステム)の超導入砲(レールズガン)」です。
-
-<img src="railsgun/raw/master/docs/img/railsgun.png" />
+<img src="alminium/raw/master/docs/img/alminium.png" />
 
 ## 特徴
-Railsgunは次のような特徴を持っています。
- 
- * テーマがデフォルトよりきれい
-  * アイコンテーマがデフォルトよりきれいです。やる気がアップします！！
- * 必要なソフトウェアを楽々セットアップ
-  * インストーラを叩くだけで、Rails,MySQL,Subversion,Gitなど必要なソフトウェアを
-    インストール
-  * MS Project、Excelのインポート、チケット、Wiki、ロードマップの拡張など、便利な
-    プラグインも一緒にインストールしてくれます。
-  * Apacheの設定も行ってくれます。RailsアプリをApache上で公開するmod_passengerや
-    MySQLに格納されたRedmineの認証情報でSubversionやGitの認証できるようにする
-    mod_auth_mysqlの設定も行います。
- * アジャイル開発に対応
-  * RedmineでスクラムをサポートするBacklogsを標準でインストールしています。簡単にアジャイル開発を始められます。
-  * Hudson/Jenkinsをサポートするプラグインもインストール済みのため、Hudson/Jenkinsとの連携も簡単です。
-  * Code Reviewプラグインにより、コードをコミットしたら自動的にコードレビューのワークフローに載せることもできます。
- * 楽々リポジトリ管理
-  * リポジトリの作成コマンドを用意し、リポジトリの作成とWebでの公開が簡単にできます。
-  * フックの設定も自動で行ってくれるので、チケットとチェンジログの連携もバッチリです。
- * CUI環境でインストール可能
-  * BitNamiなどGUI環境でRedmineをインストールできるインストーラはありますが、
-    RailsgunはCUIでインストールすることができます。GUIを入れたくない人にお勧めです。
-  * クラウドやホスティングサービスでの利用にも最適です。
+Alminiumは、次のような特徴を持っています。
+ * 簡単なインストーラ
+  * Redmine,Subversion,Gitを含めたプロジェクトマネージメントに必要なツールを一通りインストールしてくれます。ツール間のアカウント・アクセス権の連携や、チェンジセット・チケットの連携も自動で行ってくれます。
+  * また、アジャイル開発や、CIに便利な各種プラグインもインストールしてくれます。
+ * アジャイル開発をサポート
+　* Backlogsプラグインによりアジャイル開発をサポートします。スプリント、ストーリー、タスクの管理からバーンダウンチャートによる進捗の確認、ベロシティの計測にも対応しています。
+  * Hudson/Jenkinsと連携するプラグインが導入ずみであり、CIを簡単に行うことができます。
+ * 品質管理
+  * Aluminium固有の機能ではありませんが、バグの管理とソースコードの変更履歴を対応づけることができます。変更をトレースできます。
+  * コードレビュー支援機能があります。コードがコミットされたら自動的にレビュー対象にすることができ、レビューされていないコミットを一目で確認することができます。また、指摘事項が修正されたかどうかの管理も行えるので、レビューしたけど、修正漏れがあって意味がないということもなくなります。
+  * アジャイルでない開発でも使えます:)
+ * 既存ツールとの連携
+  * MS Project,Excelのインポートなど、既存ツールとの連携を行うことができます。
+ * マルチプロジェクト対応
+  * 構築したAluminiumサーバ上で複数のプロジェクトを管理することができます。Aluminium(Redmin)のカスタマイズやプラグインによる拡張は全てのプロジェクトが恩恵を受けることができます。
 
 ## 同梱するプラグイン
 
-Railsgunは、次のRedmineプラグインを同梱しています。
+Alminiumは、次のRedmineプラグインを同梱しています。
 
  * Backlogs
  * Hudson Plugin
  * Code Review
  * Redmine Issue Extensions
-  * http://www.r-labs.org/projects/r-labs/wiki/Issue_Extensions
  * Redmine MS Projects
-  * https://github.com/suer/redmine_ms_projects
  * XLS export plugin
-  * http://www.redmine.org/boards/3/topics/11986
  * Redmine Importer
-  * http://www.skyarc.co.jp/engineerblog/entry/post_12.html
  * Redmine Wiki Extensions
-  * http://www.r-labs.org/projects/r-labs/wiki/Wiki_Extensions
  * Redmine Code Review
-  * http://www.r-labs.org/projects/r-labs/wiki/Code_Review
 
 ## 動作環境
 
@@ -63,28 +46,35 @@ Railsgunは、次のRedmineプラグインを同梱しています。
  * Ubuntu 10.10以降
 
 ## 使い方
- # git clone https://mikoto20000@github.com/mikoto20000/railsgun.git
- # cd railgsun
- # bash ./railsgun-setup
+ # git clone https://github.com/mikoto20000/alminium.git
+ # cd alminium
+ # bash ./smelt
 
-チケットシステム、バージョン管理システムをインストールします。
+以上で、チケットシステム、バージョン管理システムをインストールします。なお、smeltは、金属を溶解して製錬するという意味で、様々なソフトウェア/プラグインを混合してALMniumを作成するという意味からとっています。
 
 インストールが終了すると、http://localhost/にWebブラウザで接続するとチケットシステムにアクセスできます。管理者権限でログインすると、設定やプロジェクトの作成を行うことができます。管理者情報は下記の通りです。
+
 
 ### デフォルトの管理者情報
 
  * ユーザ名: admin
  * パスワード: admin
 
-リポジトリを作成するには、次のようにrailsgun-create-repositoryコマンドを利用します。
+リポジトリを作成するには、次のようにalminium-create-repositoryコマンドを利用します。
 
 ### Gitリポジトリの作成
 
- # /opt/railsgun/bin/railsgun-create-repository git myrepo(リポジトリ名)
+ # /opt/alminium/bin/alminium-create-repository git myrepo(リポジトリ名)
 
 ### Subversionリポジトリの作成
 
- # /opt/railsgun/bin/railsgun-create-repository svn myproject(リポジトリ名)
+ # /opt/alminium/bin/alminium-create-repository svn myproject(リポジトリ名)
 
-作成したリポジトリをRedmineのプロジェクトとして登録するのを忘れないようにしてください。
+作成したリポジトリをRedmineのプロジェクトのリポジトリとして登録します。リポジトリパスは、下記の通りです。
 
+ * Gitのリポジトリパス
+  * http://<ホスト名>/git/<リポジトリ名>
+ * Subversionのリポジトリパス
+  * http://<ホスト名>/svn/<リポジトリ名>
+
+管理者・開発者のロールのユーザをを同名のRedmineプロジェクトに追加することにより、コミット権を与えることができます。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、アクセス権を付与することができます。

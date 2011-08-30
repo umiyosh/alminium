@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /opt/railsgun
+cd /opt/alminium
 ruby script/runner "Repository.fetch_changesets" -e production

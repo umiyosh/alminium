@@ -4,7 +4,7 @@
 ############################################################
 
 export RAILS_ENV=production
-export INSTALL_DIR=/opt/railsgun
+export INSTALL_DIR=/opt/alminium
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
 RM_VER=1.2.1
@@ -163,13 +163,13 @@ popd
 source inst-script/redmine-plugins
 
 # Customize
-mysql railsgun < config/init.mysql
+mysql alminium < config/init.mysql
 
-mkdir -p /etc/opt/railsgun
-cp -fr etc/* /etc/opt/railsgun/
+mkdir -p /etc/opt/alminium
+cp -fr etc/* /etc/opt/alminium/
 
 mkdir -p $INSTALL_DIR/bin
-mkdir -p /var/opt/railsgun/git /var/opt/railsgun/svn
+mkdir -p /var/opt/alminium/git /var/opt/alminium/svn
 cp -fr bin/*  $INSTALL_DIR/bin/
 cp -fr hooks $INSTALL_DIR/
 

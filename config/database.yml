@@ -1,10 +1,10 @@
 production-sqlite:
   adapter: sqlite3
-  database: db/railsgun.sqlite3
+  database: db/alminium.sqlite3
 
 production:
   adapter: mysql
-  database: railsgun
+  database: alminium
   host: localhost
-  username: railsgun
-  password: railsgun
+  username: alminium
+  password: alminium
