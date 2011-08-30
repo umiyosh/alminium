@@ -1,4 +1,4 @@
-create database railsgun character set utf8;
-create user 'railsgun' identified by 'railsgun';
-grant all privileges on railsgun.* to railsgun@localhost IDENTIFIED by 'railsgun';
+create database alminium character set utf8;
+create user 'alminium' identified by 'alminium';
+grant all privileges on alminium.* to alminium@localhost IDENTIFIED by 'alminium';
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mysql railsgun -e "drop database railsgun" 
-rm -fr /opt/railsgun /var/opt/railsgun
+mysql alminium -e "drop database alminium" 
+rm -fr /opt/alminium /var/opt/alminium
 rm -fr /etc/apache2/sites-available/vcs
 rm -fr /etc/apache2/sites-available/redmine
 rm -fr /etc/apache2/sites-enabled/vcs
