@@ -28,10 +28,11 @@ UPDATE settings SET value='--- \n:points_burn_direction: down\n:taskboard_card_o
 /*********************************************************************
  * Redmineの初期設定
  ********************************************************************/
-INSERT INTO settings VALUES (1,'ui_theme','watersky',current_date); 
-INSERT INTO settings VALUES (2,'app_title','とある券売機の超導入砲',current_date);
-INSERT INTO settings VALUES (3,'default_language','ja',current_date);
-INSERT INTO settings VALUES (4,'welcome_text','
+INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','watersky',current_date); 
+INSERT INTO settings(name,value,updated_on) VALUES ('app_title','とある券売機の超導入砲',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
 h1. とある発券機の超導入砲
 
 　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。RedmineとRedmineからフォークされたChiliProjectを導入するには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「とある発券機の超導入法」は、目んどくさがり屋のための、Redmine/ChiliProjectの構築ソリューションです。
@@ -66,7 +67,6 @@ h1. 使い方
 </pre>
 コマンドで作成してください。リポジトリを作成したら、プロジェクトに設定するのを忘れないようにしましょう。
 ',current_date);
-INSERT INTO settings VALUES (5,'gravatar_enabled',1,current_date);
 UPDATE users SET language='ja' WHERE login='admin';
 
 

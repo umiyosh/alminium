@@ -159,12 +159,11 @@ echo "ja" |RAILS_ENV=production rake redmine:load_default_data
 
 popd
 
-# Customize
-mysql railsgun < config/init.mysql
-# sqlite3 $INSTALL_DIR/db/railsgun.sqlite < config/init.mysql
-
 # install plugins
 source inst-script/redmine-plugins
+
+# Customize
+mysql railsgun < config/init.mysql
 
 mkdir -p /etc/opt/railsgun
 cp -fr etc/* /etc/opt/railsgun/
