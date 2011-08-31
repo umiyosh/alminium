@@ -144,12 +144,6 @@ fi
 
 cp config/database.yml $INSTALL_DIR/config/
 cp -r theme/* $INSTALL_DIR/public/themes/
-mkdir -p /usr/local/share/perl5/Apache/Authn/
-
-if [ ! -f /usr/local/share/perl5/Apache/Authn/Redmine.pm ]
-then
-  cp config/Redmine.pm /usr/local/share/perl5/Apache/Authn/
-fi
 
 # setup
 pushd . 
