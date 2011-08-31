@@ -29,15 +29,16 @@ UPDATE settings SET value='--- \n:points_burn_direction: down\n:taskboard_card_o
  * Redmineの初期設定
  ********************************************************************/
 INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','watersky',current_date); 
-INSERT INTO settings(name,value,updated_on) VALUES ('app_title','Alminium',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('app_title','ALMinium',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_key','',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- time_tracking\n- news\n- wiki\n- repository\n',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
-h1. Alminium
+h1. ALMinium
 
-　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。チケットシステムの一つであるRedmineをインストールするためには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「Alminium」は、めんどくさがり屋のための、プロジェクト管理構築ツールです。
+　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。チケットシステムの一つであるRedmineをインストールするためには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「ALMinium」は、めんどくさがり屋のための、プロジェクト管理構築ツールです。
 
 h1. 特徴
 
