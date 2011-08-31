@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! -f /etc/httpd/Apache/Authn/Redmine.pm ]
+then
+  mkdir -p /etc/httpd/Apache/Authn
+  cp config/Redmine.pm /etc/httpd/Authn/
+fi
+
 if [ ! -f /etc/httpd/conf.d/redmine.conf ]
 then
   PASSENGER_VERSION=`passenger-config  --version`
