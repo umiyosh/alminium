@@ -19,6 +19,8 @@ apache2-prefork-dev
 libapr1-dev
 libaprutil1-dev
 apache2
+libdigest-sha1-perl
+libapache-dbi-perl
 gcc
 # for backlogs
 libnokogiri-ruby
