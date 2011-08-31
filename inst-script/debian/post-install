@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! -f /etc/perl/Apache/Authn/Redmine.pm ]
+then
+  mkdir -p /etc/perl/Apache/Authn
+  cp config/Redmine.pm /etc/perl/Apache/Authn/
+fi
+
 if [ ! -f /etc/apache2/sites-available/redmine ]
 then
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/debian/httpd-redmine.conf > /etc/apache2/sites-available/redmine
