@@ -168,6 +168,8 @@ mkdir -p /var/opt/alminium/git /var/opt/alminium/svn
 cp -fr bin/*  $INSTALL_DIR/bin/
 cp -fr hooks $INSTALL_DIR/
 
+chown $APACHE_USER.$APACHE_USER -R $INSTALL_DIR
+
 source inst-script/$OS/post-install
 
 # プロジェクト作成時に自動的にリポジトリを作成するときに利用
