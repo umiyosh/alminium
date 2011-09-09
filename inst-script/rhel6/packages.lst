@@ -1,6 +1,7 @@
 wget
 git
 subversion
+mercurial
 unzip
 mysql
 mysql-server
