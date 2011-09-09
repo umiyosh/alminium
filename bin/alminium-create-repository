@@ -1,4 +1,18 @@
 #!/bin/sh
+# リポジトリ作成用スクリプト
+# ルートユーザで下記のコマンドを実行することにより、リポジトリを作成します。
+#
+#  # alminium-create-erepository <リポジトリタイプ> <リポジトリ名>"
+#
+# 作成したリポジトリは、Redmineのプロジェクトが存在する場合、
+# 自動的にRedmineのプロジェクトに登録されます。
+#
+# TODO: 既に存在するプロジェクトを作成しようとした場合のエラー処理
+#  mysqlのテーブルのチェック
+#  ディレクトリのチェック
+
+ALMINIUM_VAR=/var/opt/alminium
+ALMINIUM_HOME=/opt/alminium
 
 if [ -f /etc/debian_version ]
 then
@@ -10,48 +24,79 @@ then
    APACHE_USER=apache
 fi
 
-ALMINIUM_VAR=/var/opt/alminium
-ALMINIUM_HOME=/opt/alminium
-
 if [ $# != 2 ]
 then
-    echo "これはバージョン管理のリポジトリを作成するコマンドです。"
+    echo "これはALMiniumのバージョン管理のリポジトリを作成するコマンドです。"
     echo "usage: alminium-create-erepository <リポジトリタイプ> <リポジトリ名>"
     echo ""
-    echo "リポジトリタイプはsvn,git,hgを利用できます"
+    echo "リポジトリタイプはsvn,git,hgを利用できます。"
+    echo "リポジトリ名と同盟のRedmineのプロジェクト(識別子)が存在するとき、"
+    echo "自動的にRedmineのプロジェクトに作成したリポジトリを登録します。"
+    echo "作成したプロジェクトには、Redmineのメンバーを設定することによりアクセス権を付与します。"
+    echo ""
+    echo "※Redmineのプロジェクトを作成してからリポジトリを作成することをお勧めします。"
     exit 
 fi
 
 TYPE=$1
 NAME=$2
 
+PROJECT_ID=`mysql alminium -e "SELECT id FROM projects WHERE identifier='$NAME';" | grep -v id`
 
-if [ $TYPE = 'svn' ]
+if [ -d $ALMINIUM_VAR/$TYPE/$NAME ]
 then
-    svnadmin create $ALMINIUM_VAR/svn/$NAME
-    cp $ALMINIUM_HOME/hooks/svn/post-commit $ALMINIUM_VAR/svn/$NAME/hooks/
-    chmod a+x $ALMINIUM_VAR/svn/$NAME/hooks/post-commit
-    chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/svn/$NAME
-
-fi
-if [ $TYPE = 'git' ]
-then
-    git init --bare $ALMINIUM_VAR/git/$NAME
-    git --git-dir=$ALMINIUM_VAR/git/$NAME update-server-info  
-    cp $ALMINIUM_HOME/hooks/git/post-receive $ALMINIUM_VAR/git/$NAME/hooks/
-    chmod a+x $ALMINIUM_VAR/git/$NAME/hooks/post-receive
-    chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/git/$NAME
-if [ $TYPE = 'hg' ]
-then
-     hg init $ALMINIUM_VAR/hg/$NAME
-     chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/hg/$NAME
+    echo "既に「$TYPE」リポジトリ「$NAME」は存在します。"
+    exit 1
 fi
 
-# TODO:
-#   上記のコミットフックの設定を削除し、リポジトリ作成時にプロジェクト
-#   に登録するようにし、下記のコマンドを実行
-#   (リポジトリの同期が掛かるのでプッシュに時間が掛かる)
-#
-# リポジトリとの同期
-# cd $ALMINIUM_HOME
-# sudo -u $APACHE_USER ruby script/runner "Repository.fetch_changesets" -e production
+IS_REGIST_REDMINE=`mysql alminium -e "SELECT id FROM repositories WHERE project_id='$PROJECT_ID';"`
+if [ "$IS_REGIST_REDMINE" != "" ]
+then
+    echo "既に「$NAME」と同名のリポジトリがRedmineに登録されています。"
+    echo "別の名前でリポジトリを作成してください。"
+    exit 1
+fi
+exit 1
+
+case $TYPE in 
+    'svn')
+        svnadmin create $ALMINIUM_VAR/svn/$NAME
+        cp $ALMINIUM_HOME/hooks/svn/post-commit $ALMINIUM_VAR/svn/$NAME/hooks/
+        chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/svn/$NAME    
+        if [ "$PROJECT_ID" != '' ]
+        then
+            mysql alminium -e "INSERT INTO repositories(project_id,url,root_url,type,path_encoding,log_encoding,extra_info) VALUES 
+              ('${PROJECT_ID}','file://$ALMINIUM_VAR/svn/$NAME','file://$ALMINIUM_VAR/svn/$NAME','Subversion','NULL','NULL','--- {}');"
+            cd $ALMINIUM_HOME
+            sudo -u $APACHE_USER ruby script/runner "Repository.fetch_changesets" -e production    	
+        fi 
+    ;;
+    
+    'git')
+        git init --bare $ALMINIUM_VAR/git/$NAME
+        git --git-dir=$ALMINIUM_VAR/git/$NAME update-server-info  
+        chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/git/$NAME
+        if [ "$PROJECT_ID" != '' ]
+        then
+            mysql alminium -e "INSERT INTO repositories(project_id,url,root_url,type,log_encoding,extra_info) VALUES 
+              ('${PROJECT_ID}','$ALMINIUM_VAR/git/$NAME','$ALMINIUM_VAR/git/$NAME','Git','NULL','--- {}');"    
+            cd $ALMINIUM_HOME
+            sudo -u $APACHE_USER ruby script/runner "Repository.fetch_changesets" -e production        
+        fi
+    ;;
+    
+    'hg')
+         hg init $ALMINIUM_VAR/hg/$NAME
+         chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/hg/$NAME
+         if [ "$PROJECT_ID" != '' ]
+         then
+             mysql alminium -e "INSERT INTO repositories(project_id,url,root_url,type,log_encoding,extra_info) VALUES 
+               ('${PROJECT_ID}','$ALMINIUM_VAR/hg/$NAME','$ALMINIUM_VAR/hg/$NAME','Mercurial','NULL','--- {}');"    
+             cd $ALMINIUM_HOME
+             sudo -u $APACHE_USER ruby script/runner "Repository.fetch_changesets" -e production
+         fi
+    ;;
+    *)
+         echo "サポートされないバージョン管理タイプです。hg,svn,gitから選択してください"
+    ;;
+esac        
