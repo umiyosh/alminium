@@ -41,4 +41,8 @@ then
     cp $ALMINIUM_HOME/hooks/git/post-receive $ALMINIUM_VAR/git/$NAME/hooks/
     chmod a+x $ALMINIUM_VAR/git/$NAME/hooks/post-receive
     chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/git/$NAME
+if [ $TYPE = 'hg' ]
+then
+     hg init $KANON_VAR/hg/$PROJECT_NAME
+     chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/hg/$NAME
 fi
