@@ -137,6 +137,7 @@ then
   tar zxf cache/redmine-$RM_VER.tar.gz
   
 #  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
+  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_changesetref_for_related_project.patch)
 
   cp -fr redmine-$RM_VER/* $INSTALL_DIR/
   rm -fr redmine-$RM_VER
