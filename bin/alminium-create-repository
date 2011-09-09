@@ -78,7 +78,8 @@ fi
 case $TYPE in 
     'svn')
         svnadmin create $ALMINIUM_VAR/svn/$NAME
-        cp $ALMINIUM_HOME/hooks/svn/post-commit $ALMINIUM_VAR/svn/$NAME/hooks/
+        sed s/%NAME%/$NAME/ $ALMINIUM_HOME/hooks/svn/post-commit >$ALMINIUM_VAR/svn/$NAME/hooks/post-commit
+        chmod a+x $ALMINIUM_VAR/svn/$NAME/hooks/post-commit
         chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/svn/$NAME    
         if [ "$PROJECT_ID" != '' ]
         then
@@ -92,6 +93,8 @@ case $TYPE in
     'git')
         git init --bare $ALMINIUM_VAR/git/$NAME
         git --git-dir=$ALMINIUM_VAR/git/$NAME update-server-info  
+        sed s/%NAME%/$NAME/ $ALMINIUM_HOME/hooks/git/post-receive > $ALMINIUM_VAR/git/$NAME/hooks/post-receive
+        chmod a+x $ALMINIUM_VAR/git/$NAME/hooks/post-receive
         chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/git/$NAME
         if [ "$PROJECT_ID" != '' ]
         then
