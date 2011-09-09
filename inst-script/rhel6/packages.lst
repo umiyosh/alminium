@@ -11,8 +11,10 @@ rubygem-rake
 rubygem-rack
 ruby-RMagick
 httpd-devel
+sudo
 gcc-c++
 make
+patch
 apr-devel
 openssl-devel
 curl-devel
