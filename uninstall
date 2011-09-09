@@ -1,10 +1,27 @@
 #!/bin/bash
 
-mysql alminium -e "drop database alminium" 
-rm -fr /opt/alminium /var/opt/alminium
-rm -fr /etc/apache2/sites-available/vcs
-rm -fr /etc/apache2/sites-available/redmine
-rm -fr /etc/apache2/sites-enabled/vcs
-rm -fr /etc/apache2/sites-enabled/redmine
-rm -fr /etc/httpd/conf.d/redmine.conf
-rm -fr /etc/httpd/conf.d/vcs.conf
+echo "ALMiniumをアンインストールします。"
+echo ""
+echo -n "データベース(全てのRedmineの情報)とリポジトリを削除しますか?(y/N)"
+read YN
+
+if [ "$YN" = "y" ]
+then
+    mysql alminium -e "drop database alminium" 
+    rm -fr /opt/alminium /var/opt/alminium
+fi
+
+echo ""
+echo -n "Apacheの設定を削除しますか?(y/N)"
+read YN
+
+
+if [ "$YN" = "y" ]
+then
+    rm -fr /etc/apache2/sites-available/vcs
+    rm -fr /etc/apache2/sites-available/redmine
+    rm -fr /etc/apache2/sites-enabled/vcs
+    rm -fr /etc/apache2/sites-enabled/redmine
+    rm -fr /etc/httpd/conf.d/redmine.conf
+    rm -fr /etc/httpd/conf.d/vcs.conf
+fi
