@@ -19,6 +19,7 @@ fi
 if [ -f /etc/redhat-release ]
 then
     APACHE_USER=apache
+    MYSQLD=mysqld
     CHK=`egrep "CentOS release 5|Red Hat Enterprise Linux .* 5" /etc/redhat-release`
     if [ "$CHK" != '' ]
     then
@@ -35,6 +36,7 @@ elif [ -f /etc/debian_version ]
 then
     OS='debian'
     APACHE_USER=www-data
+    MYSQLD=mysql
     echo "Debian / Ubuntu が検出されました。"
 else
     echo "サポートされていないOSです。"
@@ -110,7 +112,7 @@ then
 fi
  
 
-/etc/init.d/mysql start
+/etc/init.d/$MYSQLD start
 
 mysql < config/createdb.sql 
 
@@ -137,7 +139,7 @@ then
   tar zxf cache/redmine-$RM_VER.tar.gz
   
 #  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
-  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_changesetref_for_related_project.patch)
+  (cd redmine-$RM_VER; patch -p1 < ../patch/redmine_changesetref_for_related_project.patch)
 
   cp -fr redmine-$RM_VER/* $INSTALL_DIR/
   rm -fr redmine-$RM_VER
