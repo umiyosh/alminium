@@ -43,6 +43,15 @@ then
     chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/git/$NAME
 if [ $TYPE = 'hg' ]
 then
-     hg init $KANON_VAR/hg/$PROJECT_NAME
+     hg init $ALMINIUM_VAR/hg/$NAME
      chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/hg/$NAME
 fi
+
+# TODO:
+#   上記のコミットフックの設定を削除し、リポジトリ作成時にプロジェクト
+#   に登録するようにし、下記のコマンドを実行
+#   (リポジトリの同期が掛かるのでプッシュに時間が掛かる)
+#
+# リポジトリとの同期
+# cd $ALMINIUM_HOME
+# sudo -u $APACHE_USER ruby script/runner "Repository.fetch_changesets" -e production
