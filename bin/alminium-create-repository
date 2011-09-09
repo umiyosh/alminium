@@ -57,6 +57,24 @@ then
     exit 1
 fi
 
+if [ "$PROJECT_ID" = '' ]
+then
+    echo "$NAMEのRedmineプロジェクトはまだ作成されていません。"
+    echo "リポジトリを先に作成した場合、あとからRedmineに"
+    echo "リポジトリを登録する必要があります。"
+    echo "先にRedmineのプロジェクトを作成することお勧めします。"
+    echo ""
+    echo -n "それでもリポジトリを作成しますか?(y/N)"
+    
+    read YN
+    
+    if [ "$YN" != 'y' ]
+    then
+    	echo "リポジトリの作成を中断しました。"
+    	exit 1
+    fi
+fi
+
 case $TYPE in 
     'svn')
         svnadmin create $ALMINIUM_VAR/svn/$NAME
@@ -99,3 +117,20 @@ case $TYPE in
          echo "サポートされないバージョン管理タイプです。hg,svn,gitから選択してください"
     ;;
 esac        
+
+echo ""
+echo "「$ALMINIUM_VAR/$TYPE/$NAME」にリポジトリを作成しました。"
+echo "リポジトリのURLは"
+echo ""
+echo "    http://<ホスト名>/$TYPE/$NAME"
+echo ""
+echo "です。リポジトリへはRedmineの「$NAME」プロジェクトに追加したユーザでアクセスできます。"
+echo ""
+
+
+if [ "$PROJECT_ID" = '' ]
+then
+    echo ""
+    echo "Redmineプロジェクトが見つかりませんでした。リポジトリの利用には、"
+    echo "識別子「$NAME」でRedmineプロジェクトを作成し、リポジトリを登録する必要があります。"
+fi
