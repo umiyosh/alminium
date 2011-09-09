@@ -56,7 +56,6 @@ then
     echo "別の名前でリポジトリを作成してください。"
     exit 1
 fi
-exit 1
 
 case $TYPE in 
     'svn')
