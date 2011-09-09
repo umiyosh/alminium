@@ -18,7 +18,7 @@ then
     echo "これはバージョン管理のリポジトリを作成するコマンドです。"
     echo "usage: alminium-create-erepository <リポジトリタイプ> <リポジトリ名>"
     echo ""
-    echo "リポジトリ名はsvnもしくはgitを利用できます"
+    echo "リポジトリタイプはsvn,git,hgを利用できます"
     exit 
 fi
 
