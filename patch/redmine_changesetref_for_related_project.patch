@@ -1,5 +1,5 @@
---- app/models/changeset.rb.org	2011-09-09 17:10:50.116193107 +0900
-+++ app/models/changeset.rb	2011-09-09 17:11:33.416236941 +0900
+--- redmine/app/models/changeset.rb.org	2011-09-09 17:10:50.116193107 +0900
++++ redmine/app/models/changeset.rb	2011-09-09 17:11:33.416236941 +0900
 @@ -179,7 +179,8 @@
    # i.e. an issue that belong to the repository project, a subproject or a parent project
    def find_referenced_issue_by_id(id)
