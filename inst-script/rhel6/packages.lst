@@ -15,7 +15,6 @@ sudo
 gcc-c++
 make
 patch
-wget
 apr-devel
 openssl-devel
 curl-devel
