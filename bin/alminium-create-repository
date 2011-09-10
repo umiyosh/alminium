@@ -107,6 +107,14 @@ case $TYPE in
     
     'hg')
          hg init $ALMINIUM_VAR/hg/$NAME
+         if [ "$OS" = "debian" ]
+         then
+             HOSTNAME=`grep "^ServerName" /etc/apache2/sites-enabled/redmine |awk -F":| " '{print $2}'`
+             sed s/%NAME%/$NAME/ $ALMINIUM_HOME/hooks/hg/hgrc | sed s/%HOSTNAME%/$HOSTNAME/ >$ALMINIUM_VAR/hg/$NAME/.hg/hgrc
+         else
+             sed s/%NAME%/$NAME/ $ALMINIUM_HOME/hooks/hg/hgrc | sed s/%HOSTNAME%/localhost/ >$ALMINIUM_VAR/hg/$NAME/.hg/hgrc
+         fi
+
          chown $APACHE_USER.$APACHE_USER -R $ALMINIUM_VAR/hg/$NAME
          if [ "$PROJECT_ID" != '' ]
          then
