@@ -1,6 +1,8 @@
+wget
 unzip
 git
 subversion
+mercurial
 mysql-client
 mysql-server
 ruby
@@ -8,7 +10,10 @@ ruby-dev
 rubygems
 librmagick-ruby1.8
 rake
-g++
+sudo
+patch
+#g++
+make
 libmysql-ruby
 libapache2-mod-auth-mysql
 libapache2-mod-passenger
@@ -21,7 +26,7 @@ libaprutil1-dev
 apache2
 libdigest-sha1-perl
 libapache-dbi-perl
-gcc
+#gcc
 # for backlogs
 libnokogiri-ruby
 libical0
