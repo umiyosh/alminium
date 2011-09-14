@@ -12,11 +12,14 @@ then
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/rhel6/httpd-redmine.conf | \
       sed 's/%PASSENGER_VERSION%/'$PASSENGER_VERSION'/' > /etc/httpd/conf.d/redmine.conf
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/rhel6/httpd-vcs.conf > /etc/httpd/conf.d/vcs.conf     
-  CHK=`grep "^DocumentRoot /opt/alminium/public" /etc/httpd/conf.d/ssl.conf`
-  if [ "$CHK" = "" ]
+  if [ "$SSL" = "y" ]
   then
-      sed 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot \/opt\/alminium\/public/' /etc/httpd/conf.d/ssl.conf > /tmp/ssl.conf
-      cp /tmp/ssl.conf /etc/httpd/conf.d/ssl.conf
+      CHK=`grep "^DocumentRoot /opt/alminium/public" /etc/httpd/conf.d/ssl.conf`
+      if [ "$CHK" = "" ]
+      then
+          sed 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot \/opt\/alminium\/public/' /etc/httpd/conf.d/ssl.conf > /tmp/ssl.conf
+          cp /tmp/ssl.conf /etc/httpd/conf.d/ssl.conf
+      fi
   fi
 fi
           
