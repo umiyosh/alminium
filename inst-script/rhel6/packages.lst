@@ -19,7 +19,6 @@ apr-devel
 openssl-devel
 curl-devel
 ruby-mysql
-mod_ssl
 mod_auth_mysql
 mod_dav_svn
 mod_wsgi 
