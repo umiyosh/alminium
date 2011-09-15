@@ -1,0 +1,2 @@
+[hooks]
+incoming.redmine=wget -q -O /dev/null http://%HOSTNAME%/sys/fetch_changesets?id=%NAME%
