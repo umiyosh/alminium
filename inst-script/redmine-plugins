@@ -47,6 +47,12 @@ do
         cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
         ;;
     *)
+        if [ ! -f cache/${DEST_NAME[$i]} ]
+        then
+          svn co ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
+        fi
+        rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         ;;
     esac
 done

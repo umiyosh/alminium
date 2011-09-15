@@ -146,6 +146,7 @@ then
 fi
 
 cp config/database.yml $INSTALL_DIR/config/
+cp config/scm.yml $INSTALL_DIR/config/
 cp -r theme/* $INSTALL_DIR/public/themes/
 
 # setup
@@ -172,6 +173,7 @@ cp -fr bin/*  $INSTALL_DIR/bin/
 cp -fr hooks $INSTALL_DIR/
 
 chown $APACHE_USER.$APACHE_USER -R $INSTALL_DIR
+chown $APACHE_USER.$APACHE_USER -R /var/opt/alminium
 
 source inst-script/$OS/post-install
 
