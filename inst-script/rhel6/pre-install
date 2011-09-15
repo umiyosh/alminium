@@ -12,6 +12,12 @@ then
   rpm -Uvh http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
 fi
 yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
+
+if [ "$SSL" = "y" ]
+then
+    yum -y install mod_ssl
+fi
+
 chkconfig  --add mysqld
 chkconfig  mysqld on
 service mysqld start
