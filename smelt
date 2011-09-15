@@ -69,6 +69,26 @@ read HOSTNAME
 echo ""
 echo ""
 
+echo "*******************************************************"
+echo "  SSLのサポート"
+echo "*******************************************************"
+echo "SSLのサポートを有効にすると、httpsのみの接続を許可します。"
+echo "httpでのアクセスは、全てhttpsのポートへ転送されるようになります。"
+echo "SSLの証明書は認証機関により署名されたものではありません。通信の暗号化のみ"
+echo "に利用します。"
+echo "gitの利用では、"
+echo ""
+echo "  $ git config --global http.sslVerify false"
+echo ""
+echo "などのコマンドで、SSLの証明書を無効にする必要があります。"
+echo ""
+echo -n "SSL(https)サポートを有効にしますか?(y/N) "
+
+read SSL
+echo ""
+echo ""
+
+
 #if [ $TYPE = "" ]
 #then
 #    echo "redmine もしくは chiliprojectを選択してください。"
@@ -139,7 +159,6 @@ then
   tar zxf cache/redmine-$RM_VER.tar.gz
   
 #  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
-  (cd redmine-$RM_VER; patch -p1 < ../patch/redmine_changesetref_for_related_project.patch)
 
   cp -fr redmine-$RM_VER/* $INSTALL_DIR/
   rm -fr redmine-$RM_VER

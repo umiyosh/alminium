@@ -1,4 +1,11 @@
 #!/bin/bash
 apt-get update
 apt-get -y install `grep -v "^#" inst-script/debian/packages.lst`
+
+if [ "$SSL" = "y" ]
+then
+    apt-get -y install libapache2-mod-gnutls ssl-cert
+    a2enmod ssl rewrite
+fi
+
 service mysql start
