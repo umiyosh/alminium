@@ -62,15 +62,16 @@ ALMiniumは、次のRedmineプラグインを同梱しています。
  * ユーザ名: admin
  * パスワード: admin
 
-リポジトリを作成するには、次のようにalminium-create-repositoryコマンドを利用します。
+リポジトリを作成するには、次のようにalm-create-repositoryコマンドを利用します。
+(最新版ではプロジェクト作成画面からリポジトリを作成できるようになっています)
 
 ### Gitリポジトリの作成
 
- # /opt/alminium/bin/alminium-create-repository git myrepo(リポジトリ名)
+ # /opt/alminium/bin/alm-create-repository git myrepo(リポジトリ名)
 
 ### Subversionリポジトリの作成
 
- # /opt/alminium/bin/alminium-create-repository svn myproject(リポジトリ名)
+ # /opt/alminium/bin/alm-create-repository svn myproject(リポジトリ名)
 
 作成したリポジトリをRedmineのプロジェクトのリポジトリとして登録します。リポジトリパスは、下記の通りです。
 
