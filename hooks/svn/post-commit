@@ -1,3 +1,4 @@
 #!/bin/sh
 
-wget -q -O /dev/null http://localhost/sys/fetch_changesets?id=%NAME%
+/opt/alminium/bin/alm-sync-scm $@
+

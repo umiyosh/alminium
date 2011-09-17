@@ -1,4 +1,3 @@
 #!/bin/sh
-
 wget -q -O /dev/null http://localhost/sys/fetch_changesets?id=`echo $PWD |sed  's/\/.*\///g'`
-
+
