@@ -15,5 +15,6 @@ redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 redmine_backlogs,v0.6.11,https://github.com/relaxdiego/redmine_backlogs.git
 redmine_scm,redmine_svn,http://svn.s-andy.com/redmine-svn/
+redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz

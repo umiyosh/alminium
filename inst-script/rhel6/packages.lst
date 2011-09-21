@@ -27,4 +27,4 @@ perl-Apache-DBI
 # for backlogs
 rubygem-nokogiri
 libical
-
+python-docutils
