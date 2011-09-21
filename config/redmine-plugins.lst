@@ -14,6 +14,6 @@ redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 redmine_backlogs,v0.6.11,https://github.com/relaxdiego/redmine_backlogs.git
-redmine_scm,,http://svn.s-andy.com/redmine-svn/
+redmine_scm,redmine_svn,http://svn.s-andy.com/redmine-svn/
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
