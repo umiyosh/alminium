@@ -30,3 +30,4 @@ libapache-dbi-perl
 # for backlogs
 libnokogiri-ruby
 libical0
+python-docutils
