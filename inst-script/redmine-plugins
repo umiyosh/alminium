@@ -36,7 +36,7 @@ do
         rm -f $FILE_NAME
         ;;
     git)
-        if [ ! -f cache/$FILE_NAME ]
+        if [ ! -d cache/${DEST_NAME[$i]} ]
         then
           git clone ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
         fi
@@ -47,7 +47,7 @@ do
         cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
         ;;
     *)
-        if [ ! -f cache/${DEST_NAME[$i]} ]
+        if [ ! -d cache/${DEST_NAME[$i]} ]
         then
           svn co ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
         fi
