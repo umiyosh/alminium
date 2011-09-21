@@ -16,4 +16,4 @@ production:
      path: /var/opt/alminium/hg
      hg: /usr/bin/hg
      url: http://ホスト名/hg
-     hooks: /opt/alminium/hooks/hg/hgrc
+     hgrc: /opt/alminium/hooks/hg/hgrc
