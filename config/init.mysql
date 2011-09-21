@@ -35,46 +35,55 @@ INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_key','',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- time_tracking\n- news\n- wiki\n- repository\n',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('text_formatting','reStructuredText',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('cache_formatted_text',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
-h1. ALMinium
+ALMinium
+========
 
 　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。チケットシステムの一つであるRedmineをインストールするためには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「ALMinium」は、めんどくさがり屋のための、プロジェクト管理構築ツールです。
 
-h1. 特徴
+特徴
+----
 
 次のような特徴があります。
 
-h3. Redmineとそれに必要なMySQLやRubyライブラリを一括してセットアップ
+Redmineとそれに必要なMySQLやRubyライブラリを一括してセットアップ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Redmineに必要なソフトウェアを一括でセットアップすることができます。もう、「Rubyがわからないので、Redmineなんてつかえませーん。ぷんぷくりーん。」と言うこともなくなります。
 
-h3. バージョン管理システム(Subversion/Git)も同時にセットアップ
+バージョン管理システム(Subversion/Git)も同時にセットアップ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 バージョン管理システムは、もはやソフトウェア開発にとって必須と言えるでしょう。しかしながら、mod_dav_svnやgit-http-backendの設定は、新入社員では難しいことでしょう。とある(以下略)はバージョン管理システムも一緒にセットアップしてくれます。
 
-h3. Redmineとバージョン管理システ厶(Subversion/Git)のアカウントの連携
+Redmineとバージョン管理システ厶(Subversion/Git)のアカウントの連携
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Redmineは、データベースで独自のアカウント管理機構を持っています。LDAPなどを利用することもできますが、正直素人には面倒杉ます。とある(以下略）では、Git/SubversionでもChiRedmineのアカウントを利用して認証と、アクセス権の設定を行うことができます。
 
 
-h1. 使い方
+使い方
+------
 
 デフォルトでは管理者が定義されています。管理者ユーザとして、下記のユーザ名、パスワードでログインできます。
 
-|_. ユーザ名|admin|
-|_. パスワード|admin|
++-----------+-----+
+|ユーザ名   |admin|
++-----------+-----+
+|パスワード |admin|
++-----------+-----+
 
 プロジェクトの作成は、管理者でログインしてプロジェクトの作成から行ってください。リポジトリの作成は、サーバのコンソール上で、
-<pre>
+
+::
+
  # /opt/alminium/bin/alm-create-repository 
-</pre>
+
+
 コマンドで作成できます(Redmineのプロジェクト作成画面からも作成可能です)。予めRedmineプロジェクトを作成しておけば、同名のリポジトリを作ると自動的にプロジェクトへ登録してくれます。
 
 管理者・開発者のロールのユーザをを同名のRedmineプロジェクトに追加することにより、コミット権を与えることができます。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、リポジトリへのコミット(プッシュ)権限を付与することができます。
 ',current_date);
 UPDATE users SET language='ja' WHERE login='admin';
-
-
-
-
-
