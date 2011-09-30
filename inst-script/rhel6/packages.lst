@@ -28,3 +28,4 @@ perl-Apache-DBI
 rubygem-nokogiri
 libical
 python-docutils
+python-pygments

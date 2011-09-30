@@ -31,3 +31,4 @@ libapache-dbi-perl
 libnokogiri-ruby
 libical0
 python-docutils
+python-pygments
