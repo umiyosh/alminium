@@ -34,9 +34,10 @@ INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',curr
 INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_key','',current_date);
-INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- time_tracking\n- news\n- wiki\n- repository\n',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- news\n- wiki\n- repository\n',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('text_formatting','markdown',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('cache_formatted_text',1,current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('user_format','lastname_firstname',current_date);     
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
 ALMinium
 ========
