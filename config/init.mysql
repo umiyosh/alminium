@@ -24,6 +24,20 @@ INSERT INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  ********************************************************************/
 UPDATE settings SET value='--- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: PEARL PE-8007\n:wiki_template: ""\n:story_trackers: \n- 2\n:task_tracker: 3\n' WHERE name='plugin_redmine_backlogs';
 
+/*********************************************************************
+ * コードレビューのパーミッションの設定
+ ********************************************************************/
+UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
+- :add_code_review
+- :edit_code_review
+- :delete_code_review
+- :assign_code_review
+- :code_review_setting') where name='管理者';
+
+UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
+- :add_code_review
+- :edit_code_review
+- :assign_code_review') where name='開発者';
 
 /*********************************************************************
  * Redmineの初期設定
