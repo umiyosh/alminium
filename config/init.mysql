@@ -35,12 +35,31 @@ UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :edit_code_review
 - :delete_code_review
 - :assign_code_review
-- :code_review_setting') where name='管理者';
+- :code_review_setting') WHERE name='管理者';
 
 UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :add_code_review
 - :edit_code_review
-- :assign_code_review') where name='開発者';
+- :assign_code_review') WHERE name='開発者';
+
+/*********************************************************************
+ * バックログのパーミッションの設定
+ ********************************************************************/
+UPDATE roles SET roles.permissions=concat(roles.permissions,'- :reset_sprint
+- :view_master_backlog
+- :view_releases
+- :view_taskboards
+- :modify_releases
+- :create_sprints
+- :update_sprints
+- :create_stories
+- :update_stories
+- :create_tasks
+- :update_tasks
+- :create_impediments
+- :update_impediments
+- :subscribe_to_calendars
+- :view_scrum_statistics') WHERE name='管理者' or name='開発者';
 
 /*********************************************************************
  * Redmineの初期設定
