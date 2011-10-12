@@ -27,19 +27,34 @@ INSERT INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  ********************************************************************/
 UPDATE settings SET value='--- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: PEARL PE-8007\n:wiki_template: ""\n:story_trackers: \n- 2\n:task_tracker: 3\n' WHERE name='plugin_redmine_backlogs';
 
+/*********************************************************************
+ * コードレビューのパーミッションの設定
+ ********************************************************************/
+UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
+- :add_code_review
+- :edit_code_review
+- :delete_code_review
+- :assign_code_review
+- :code_review_setting') where name='管理者';
+
+UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
+- :add_code_review
+- :edit_code_review
+- :assign_code_review') where name='開発者';
 
 /*********************************************************************
  * Redmineの初期設定
  ********************************************************************/
-INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','watersky',current_date); 
+INSERT INTO settings(name,value,updated_on) VALUES ('ui_theme','railsgun',current_date); 
 INSERT INTO settings(name,value,updated_on) VALUES ('app_title','ALMinium',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('default_language','ja',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('gravatar_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_enabled',1,current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('sys_api_key','',current_date);
-INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- time_tracking\n- news\n- wiki\n- repository\n',current_date);
-INSERT INTO settings(name,value,updated_on) VALUES ('text_formatting','reStructuredText',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('default_projects_modules','--- \n- issue_tracking\n- news\n- wiki\n- repository\n',current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('text_formatting','markdown',current_date);
 INSERT INTO settings(name,value,updated_on) VALUES ('cache_formatted_text',1,current_date);
+INSERT INTO settings(name,value,updated_on) VALUES ('user_format','lastname_firstname',current_date);     
 INSERT INTO settings(name,value,updated_on) VALUES ('welcome_text','
 ALMinium
 ========
@@ -51,39 +66,47 @@ ALMinium
 
 次のような特徴があります。
 
-Redmineとそれに必要なMySQLやRubyライブラリを一括してセットアップ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Redmineとそれに必要なMySQLやRubyライブラリを一括してセットアップ
 
-Redmineに必要なソフトウェアを一括でセットアップすることができます。もう、「Rubyがわからないので、Redmineなんてつかえませーん。ぷんぷくりーん。」と言うこともなくなります。
+Redmineに必要なソフトウェアを一括でセットアップすることができます。もう、「Rubyがわからないので、Redmineなんてつかえませーん。ぷんぷくりーん。」と言うこともなくなります。また、日本語環境や各プラグインの基本的な設定も自動的に行ってくれるので、設定でつまずくこともありません。
 
-バージョン管理システム(Subversion/Git)も同時にセットアップ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### バージョン管理システム(Subversion/Git)も同時にセットアップ
 
 バージョン管理システムは、もはやソフトウェア開発にとって必須と言えるでしょう。しかしながら、mod_dav_svnやgit-http-backendの設定は、新入社員では難しいことでしょう。とある(以下略)はバージョン管理システムも一緒にセットアップしてくれます。
 
-Redmineとバージョン管理システ厶(Subversion/Git)のアカウントの連携
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Redmineとバージョン管理システ厶(Subversion/Git)のアカウントの連携
 
 Redmineは、データベースで独自のアカウント管理機構を持っています。LDAPなどを利用することもできますが、正直素人には面倒杉ます。とある(以下略）では、Git/SubversionでもChiRedmineのアカウントを利用して認証と、アクセス権の設定を行うことができます。
 
+### 便利なプラグインも一緒にセットアップ
+
+便利なプラグインも一緒にインストールしてくれ、より簡単に利用できるようになります。
+
+* アイコンによる綺麗なテーマ
+* 標準の使いにくいWikiをGitHub互換のMarkdown形式を利用できるようにするRedcarpetプラグイン
+* チェンジセットからのコードレビューを支援するCode Reviewプラグイン
+* アジャイル(スクラム)開発をするためのBacklogsプラグイン
+* CVSのインポートやMS Projectのファイルのインポートプラグイン
 
 使い方
 ------
 
 デフォルトでは管理者が定義されています。管理者ユーザとして、下記のユーザ名、パスワードでログインできます。
 
-+-----------+-----+
-|ユーザ名   |admin|
-+-----------+-----+
-|パスワード |admin|
-+-----------+-----+
+<table>
+<tr>
+<th>ユーザ名</th><td>admin</td>
+</tr>
+<tr>
+<th>パスワード</th><td>admin</td>
+</tr>
+</table>
 
 プロジェクトの作成は、管理者でログインしてプロジェクトの作成から行ってください。リポジトリの作成は、サーバのコンソール上で、
 
-::
-
+<pre>
  # /opt/alminium/bin/alm-create-repository 
-
+</pre>
 
 コマンドで作成できます(Redmineのプロジェクト作成画面からも作成可能です)。予めRedmineプロジェクトを作成しておけば、同名のリポジトリを作ると自動的にプロジェクトへ登録してくれます。
 
