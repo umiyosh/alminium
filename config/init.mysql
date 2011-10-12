@@ -5,6 +5,9 @@
 /*** サポートをタスクに変更 ***/
 UPDATE trackers SET name='タスク' WHERE name='サポート';
 
+/*** ステータスの解決をレビューに変更 ***/
+UPDATE  issue_statuses SET name='レビュー' WHERE name='解決';
+
 /*** レビュー依頼のトラッカーの設定 ***/
 INSERT INTO trackers (name,position,is_in_roadmap) VALUES ('レビュー依頼',4,0);
 /* copy workflow configuraation from tracker '1' */
