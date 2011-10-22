@@ -11,4 +11,4 @@ prawn,-
 icalendar,-
 activeresource,-
 # for redcarpet plugin
-redcarpet,2.0.0b5
+#redcarpet,2.0.0b5
