@@ -28,3 +28,20 @@ case $OS in
         fi
         ;;
 esac
+
+pushd .
+
+cd /tmp
+git clone https://github.com/alminium/redcarpet.git
+cd redcarpet 
+
+if [ "$OS" = "rhel6" ]
+then
+    rake install 
+else
+    gem install rake
+    gem install rake-compiler
+    /var/lib/gems/1.8/bin/rake install
+fi
+
+popd
