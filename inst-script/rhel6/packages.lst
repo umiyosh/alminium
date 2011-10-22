@@ -8,6 +8,7 @@ mysql-server
 ruby
 ruby-devel
 rubygem-rake
+rubygem-rake-compiler
 rubygem-rack
 ruby-RMagick
 httpd-devel
