@@ -85,13 +85,11 @@ ALMiniumは、次のRedmineプラグインを同梱しています。
  * Mercurialのリポジトリパス
   * http://<ホスト名>/hg/<プロジェクト名>
 
-インストール時にSSLを有効にした場合httpsしか利用できません。httpの代わりにhttpsを利用してください。gitをhttpsで利用する場合、
+インストール時にSSLを有効にした場合httpsしか利用できません。httpの代わりにhttpsを利用してください。gitをhttpsで利用する場合、不正な証明書を利用しているというエラーが発生しているので、クライアント側で下記のコマンドを実行し、証明書の検証を無効にしてください。
 
 ```
 $ git config --global http.sslVerify false
 ```
-
-を設定してください。
 
 **管理者・開発者のロールのユーザをリポジトリに対応するRedmineプロジェクトに追加することにより、コミット権を与えることができます**。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、アクセス権を付与することができます。
 
@@ -116,3 +114,8 @@ $ git push
 
 とするとリポジトリが見れるようになると思います。(SSLを有効にしている場合はhttpをhttpsとすること)
 
+### Q: SSLを有効にしてインストールしたのですが、やっぱり無効にしたいのですが。
+mod_sslのパッケージをアンインストールするとHTTPのみのアクセスになります。
+
+また、Apacheのredmineの設定(/etc/httpd/conf.d/redmine or /etc/apache/sites-availabled/redmine)のRewriteEngineをOffにするとhttpsへのリダイレクトを無効にできます。
+RewriteEngineの設定はmod_sslの有無を判定しているので、mod_sslパッケージをアンインストールした場合設定の必要はありません。
