@@ -1,6 +1,6 @@
 # ALMinium
 
-## これはなに?
+##  これはなに?
 
 ALMiniumとは、ALM(Application Lifecycle Management)とRedmineの合金(..nium)という意味から名づけられました。
 
@@ -52,6 +52,7 @@ ALMiniumは、次のRedmineプラグインを同梱しています。
 
 ## 使い方
 下記の通り実行すれば、ALMiniumのインストーラを実行できます。
+
 ```
  # yum install git 
 もしくは
@@ -61,6 +62,7 @@ ALMiniumは、次のRedmineプラグインを同梱しています。
  # cd alminium
  # bash ./smelt
 ```
+
 たったのこれだけで、チケットシステム、バージョン管理システム、Redmineの様々なプラグインのインストール、連携設定を行うことができます。なお、smeltは、金属を溶解して製錬するという意味で、様々なソフトウェア/プラグインを混合してALMiniumを作成するという意味からとっています。
 なお、Ubuntuの場合、インストール途中にMySQLのパスワードの設定を聞かれますが、空欄にしてください。
 
