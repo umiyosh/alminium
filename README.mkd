@@ -60,7 +60,7 @@ ALMiniumは、次のRedmineプラグインを同梱しています。
  # git clone https://github.com/alminium/alminium.git
  # cd alminium
  # bash ./smelt
- ```
+```
 たったのこれだけで、チケットシステム、バージョン管理システム、Redmineの様々なプラグインのインストール、連携設定を行うことができます。なお、smeltは、金属を溶解して製錬するという意味で、様々なソフトウェア/プラグインを混合してALMiniumを作成するという意味からとっています。
 なお、Ubuntuの場合、インストール途中にMySQLのパスワードの設定を聞かれますが、空欄にしてください。
 
