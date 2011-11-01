@@ -13,7 +13,7 @@ redmine_importer,master,https://github.com/farend/redmine_importer.git
 redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.4.zip
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,v0.6.14,https://github.com/relaxdiego/redmine_backlogs.git
+redmine_backlogs,v0.6.16,https://github.com/relaxdiego/redmine_backlogs.git
 redmine_scm,redmine_svn,http://svn.s-andy.com/redmine-svn/
 redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
