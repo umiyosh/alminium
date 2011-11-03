@@ -1,0 +1,3 @@
+[submodule "theme/railsgun"]
+	path = theme/railsgun
+	url = https://github.com/alminium/redmine_railsgun_theme
