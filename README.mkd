@@ -46,7 +46,7 @@ Redcarpet Wiki Formatter|GitHubのMarkdown Wikiフォーマットを利用
 MSProjects   |MS Projectのファイルをインポート
 XLS export   |Excelでチケットを出力
 
-その他のプラグインついては、<a href="config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
+その他のプラグインついては、<a href="tree/master/config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
 
 ## 動作環境
 
