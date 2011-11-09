@@ -13,7 +13,7 @@ Redmineを利用してALMを実現するためのツールです。アルミニ�
 ALMiniumは、次のような特徴を持っています。
 
  * 簡単なインストーラ
-  * Redmine,Subversion,Gitを含めたプロジェクトマネージメントに必要なツールを一通りインストールしてくれます。ツール間のアカウント・アクセス権の連携や、チェンジセット・チケットの連携も自動で行ってくれます。
+  * Redmine,Subversion,Git,Mercurialなどプロジェクトマネージメントに必要なツールを一通りインストールしてくれます。ツール間のアカウント・アクセス権の連携や、チェンジセット・チケットの連携も自動で行ってくれます。
   * また、アジャイル開発や、CIに便利な各種プラグインもインストールしてくれます。
  * アジャイル開発をサポート
 　* Backlogsプラグインによりアジャイル開発をサポートします。スプリント、ストーリー、タスクの管理からバーンダウンチャートによる進捗の確認、ベロシティの計測にも対応しています。
@@ -37,16 +37,16 @@ ALMiniumは、次のような特徴を持っています。
 
 ALMiniumは、次のRedmineプラグインを同梱しています。
 
- * Backlogs
- * Hudson Plugin
- * Code Review
- * Redmine Issue Extensions
- * Redmine MS Projects
- * XLS export plugin
- * Redmine Importer
- * Redmine Wiki Extensions
- * Redmine Code Review
- * Redmine Redcarpet 
+プラグイン   |説明
+-------------|------
+Backlogs     |スクラム開発のサポート
+Hudson Plugin|Jenkins/Hudsonとの連携
+Code Review  |コードレビュー支援
+Redcarpet Wiki Formatter|GitHubのMarkdown Wikiフォーマットを利用
+MSProjects   |MS Projectのファイルをインポート
+XLS export   |Excelでチケットを出力
+
+その他のプラグインついては、<a href="config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
 
 ## 動作環境
 
