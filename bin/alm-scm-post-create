@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case "$2" in
+  git)
+    echo "
+#!/bin/sh
+/opt/alminium/bin/alm-sync-scm
+" > $1/hooks/post-receive
+    chmod u+x $1/hooks/post-receive
+  ;;
+
+  svn)
+    echo "
+#!/bin/sh
+/opt/alminium/bin/alm-sync-scm $@
+" > $1/hooks/post-commit
+    chmod u+x $1/hooks/post-commit
+  ;;
+
+  mercurial)
+  echo "[hooks]
+incoming.redmine=/opt/alminium/bin/alm-sync-scm
+" > $1/.hg/hgrc
+  ;;
+  *)
+  ;;
+esac

@@ -14,7 +14,8 @@ redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 redmine_backlogs,89c62c73616,https://github.com/relaxdiego/redmine_backlogs.git
-redmine_scm,r42,http://svn.s-andy.com/redmine-svn/
+redmine_scm,,http://svn.s-andy.com/scm-creator/
+#redmine_scm,r42,http://svn.s-andy.com/redmine-svn/
 redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
