@@ -50,7 +50,7 @@ do
         if [ ! -d cache/${DEST_NAME[$i]} ]
         then
           svn co ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
-          if [ "${DIR_NAME[$i]}" != "" ]
+          if [ "${DIR_NAME[$i]}" != "HEAD" ]
           then
             cd cache/${DEST_NAME[$i]}
             svn update -r ${DIR_NAME[$i]}
