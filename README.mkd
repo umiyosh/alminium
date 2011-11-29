@@ -108,7 +108,7 @@ ALMiniumはRedmineのアカウントとバージョン管理システムのア�
 リポジトリが空場合、リポジトリブラウザでリポジトリを参照できません。リポジトリブラウザでに何かコミットしてみてください。例えば、Gitの場合、
 
 ```
-$ git clone http://ユーザ名:ホスト名/git/リポジトリ名
+$ git clone http://ユーザ名@ホスト名/git/リポジトリ名
 $ cd リポジトリ名
 $ touch dummy.txt
 $ git add dummy.txt
