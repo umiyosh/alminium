@@ -19,15 +19,6 @@
 
 <div id="header">
 
-<h1>ALMinium～アプリケーションライフサイクルマネージメントの無料で使える統合ソリューション～</h1>
-
-<table border="0" cellpadding="0" cellspacing="0" width="800">
-  <tr>
-    <td><div id="table-left"><h2><a href="#">ALMinium (ALM+Redmine+Agile)</a></h2></div></td>
-    <td><div id="table-right"><b><!--00-0000-0000--></b><br /><!--<img src="img/icon.gif" alt="icon" border="0" /> <a href="link.html">リンク</a>-->　<img src="img/icon.gif" alt="icon" border="0" /> <a href="https://github.com/alminium/alminium/issues">お問い合わせ</a></div></td>
-  </tr>
-</table>
-
 </div>
 
 <div id="header-menu">
@@ -125,6 +116,22 @@ MS Project,Excelのインポートなど、既存ツールとの連携を行うことができます。
 自分でRedmineを構築すると、バージョンの不整合やプラグインの競合などで正しく動作しなくハマル場合があります。ALMiniumは検証済みなので、安心して使えます。
 <strong>ALMiniumの開発者はRedmine Backlogs, Redmine SCM Creatorなどにコントリビュータ</strong>として活動し、また、幾つかのプラグインはバグ修正を行ったバージョンをGitHubで管理して利用しています。
 </p>
+
+<h2>インストール</h2>
+<p>
+CentOS 6.x、Sientific Linux 6.x、Ubuntu11.04以降を用意してください。あとは、ルートユーザで下記のコマンドを実行するだけです。
+<pre>
+# yum install git 
+もしくは
+# apt-get install git
+
+# git clone https://github.com/alminium/alminium.git
+# cd alminium
+# bash ./smelt
+</pre>
+これだけで、必要なソフトウェア、ライブラリをダウンロード/インストール、セットアップをしてくれます。簡単です。
+</p>
+
 <h2>メンバー募集のお知らせ</h2>
 <p>
 ALMiniumは、GitHubのALMiniumプロジェクト(organization)にて開発を行なっています。徐々に導入するプラグインや開発規模が大きくなると共に、アイデアが枯渇し始めたので、開発に協力いただける方を募集しています。ご協力頂ける方は、<a href="https://twitter.com/#!/mikoto20000">@mikoto20000</a>までご連絡ください。みなさんで、ALMiniumを盛り上げていきましょう！！
