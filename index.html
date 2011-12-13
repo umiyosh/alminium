@@ -1,82 +1,201 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
-  <meta charset='utf-8'>
-
-  <title>alminium/alminium @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #4b2245;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #b4ddba; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #b4ddba; }
-    h3 { text-align: center; color: #b4ddba; }
-    a { color: #b4ddba; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=Shift_JIS" />
+<meta name="keywords" content="キーワード" />
+<meta name="description" content="紹介文" />
+<title>ALMinium</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-  <a href="https://github.com/alminium/alminium"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+<!-- メイン -->
 
-    <div class="download">
-      <a href="https://github.com/alminium/alminium/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/alminium/alminium/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+<div id="main">
 
-    <h1><a href="https://github.com/alminium/alminium"></a>
-      <span class="small">by <a href="https://github.com/alminium">alminium</a></span></h1>
 
-    <div class="description">
-      
-    </div>
+<!-- ヘッダー -->
 
-    
+<div id="header">
 
-    
+<h1>ALMinium～アプリケーションライフサイクルマネージメントの無料で使える統合ソリューション～</h1>
 
-    
+<table border="0" cellpadding="0" cellspacing="0" width="800">
+  <tr>
+    <td><div id="table-left"><h2><a href="#">ALMinium (ALM+Redmine+Agile)</a></h2></div></td>
+    <td><div id="table-right"><b><!--00-0000-0000--></b><br /><!--<img src="img/icon.gif" alt="icon" border="0" /> <a href="link.html">リンク</a>-->　<img src="img/icon.gif" alt="icon" border="0" /> <a href="https://github.com/alminium/alminium/issues">お問い合わせ</a></div></td>
+  </tr>
+</table>
 
-    
+</div>
 
-    
+<div id="header-menu">
+   <ul>
+    <li><a href="https://github.com/alminium/alminium/">HOME</a></li>
+    <li><a href="http://togetter.com/li/219517">お客様の声</a></li>
+    <li><a href="https://github.com/alminium/alminium/">ダウンロード</a></li>
+    <li><a href="https://github.com/alminium/alminium/">よくある質問</a></li>
+    <li><a href="https://github.com/alminium/alminium/issues">お問い合わせ</a></li>
+   </ul>
+</div>
 
-    
+<center>
+<img src="img/head_img_slim_alm.jpg" alt="" class="photo01" border="0" />
+</center>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/alminium/alminium/zipball/master">zip</a> or
-      <a href="https://github.com/alminium/alminium/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/alminium/alminium</pre>
-    </p>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/alminium/alminium">alminium/alminium</a>
-    </div>
+<!-- ヘッダー終わり -->
+
+
+<!-- コンテンツ -->
+
+<!-- メインコンテンツ -->
+
+<div id="container">
+  <div id="contents">
+
+<h2>軽量チケット開発ツールALMinium</h2>
+<p>
+<font color="red">※この文書は、Redmine Advent Calendar 2011の12/13分として執筆しました。</font>
+</p>
+<p>
+みなさんは、Redmineを既にお使いでしょうか? それともRedmineをこれから導入するつもりでしょうか?
+</p>
+<p>
+Redmineの導入は簡単そうに見えて、<strong>そう簡単ではありません</strong>。Apache,MySQL(or 他のデータベース),Rails,Redmineの実行に必要なgemのインストール...。しかもインストールするソフトウェアのバージョンによっては<strong>動いたり動かなかったり</strong>します。
+</p>
+<p>
+BitNami Redmine Stackが提供されているので、これらを使えば<strong>Redmineのセットアップだけは</strong>簡単に完了できます。<strong>Redmineのセットアップだけは(>_<)</strong>
+</p>
+<p>
+プロジェクトで快適に利用するには、バージョン管理ツールと連携させたり(コミットログに#23とかチケットIDを記述してリンクさせたいですよね?)とか、ユーザ管理を統合したりとか(RedmineのユーザID/パスワードでRedmineにログインしたいですよね?)とか、<strong>様々な設定が必要</strong>となってきます。
+</p>
+<p>
+また、デフォルトのWiki記法がちょっと使いにくいので、Wikiエンジンを入れ替えるプラグインを入れたり、スクリーンショットをチケットに簡単に添付するプラグインを入れたり、最近流行のアジャイル開発をやるならRedmine Backlogsプラグインを入れたり(これが、またインストールにハマるのですが！！)、コードレビューで利用するにはCodeReviewプラグインを入れたりと、<strong>快適に利用するためには様々なプラグインが必要</strong>になって来るでしょう。
+</p>
+<h2>ALMiniumとは?</h2>
+<p>
+ALMiniumとは、ALM(アプリケーションライフサイクルマネージメント)+Redmineの造語です(金属のアルミニウムとは綴りが一字違います)。
+要件(バックログ)管理から、開発、システムの運用、アプリケーションの保守まで、システム/アプリケーションのライフサイクルを管理するために利用できるツール・チケットシステムです。
+</p>
+<p>
+金属の名前を採用した開発ツールとして、Selenium、Titaniumがありますが、それに続く<strong>3番目の金属系開発ツール</strong>という位置づけもあるようです。
+</p>
+<p>
+ALMiniumには、次のような特徴があります。
+
+<h2>簡単なインストーラ</h2>
+<p>
+Redmine,Subversion,Git,Mercurialなど<strong>プロジェクトマネージメントに必要なツールを一通りインストール</strong>してくれます。ツール間のアカウント・アクセス権の連携や、チェンジセット・チケットの連携も自動で行ってくれます。</li>
+</p>
+ 
+<h2>アジャイル開発をサポート</h2>
+<a href="http://twitpic.com/77guno">Backlogsプラグインによりアジャイル開発をサポート</a>します。スプリント、ストーリー、タスクの管理からバーンダウンチャートによる進捗の確認、ベロシティの計測にも対応しています。
+</p>
+<p>
+Hudson/Jenkinsと連携するプラグインが導入ずみであり、CIを簡単に行うことができます。
+ 
+<h2>品質管理</h2>
+ALMminium固有の機能ではありませんが、バグの管理とソースコードの変更履歴を対応づけることができ、変更をトレースできます。
+</p>
+<p>
+尊敬する<a href="https://twitter.com/#!/haru_iida">@haru_iidaさん</a>が作成されたCoreReviewプラグインによる<a href="http://www.r-labs.org/projects/r-labs/wiki/Code_Review">コードレビュー支援機能</a>があります。コードがコミットされたら自動的にレビュー対象にすることができ、レビューされていないコミットを一目で確認することができます。また、指摘事項が修正されたかどうかの管理も行えるので、レビューしたけど、修正漏れがあって意味がないということもなくなります。
+アジャイルでない開発でも使えます:)
+</p> 
+<h2>使いやすさの追求</h2>
+<p>
+ブラウザのクラッシュ時に嬉しい書きかけのチケットの自動復元機能や<a href="http://twitpic.com/7al06d">クリップボードからのスクリーンショットの添付</a>など無償とはいえ、使いやすさに妥協を許しません。
+<a href="http://twitpic.com/6s2ptz">RedcarpetによるGitHub互換のMarkdown表記をWiki/チケットに</a>標準で利用することができます。
+</p>
+<p>
+Redmine標準のTextileに格段に分り易いです。Wikiエンジンを切り換えることによりreStructuredText(Sphinxで利用しているフォーマット)も利用可能です。
+Git,Mercurial,Subversionのリポジトリ作成がプロジェクト作成画面から行えます。
+</p>
+<p>
+リポジトリサーバの小難しい設定も不要で、勝手にやってくれます。
+MS Project,Excelのインポートなど、既存ツールとの連携を行うことができます。
+</p> 
+<h2>マルチプロジェクト対応</h2>
+<p>
+構築したALMiniumサーバ上で複数のプロジェクトを管理することができます。ALMinium(Redmine)のカスタマイズやプラグインによる拡張は全てのプロジェクトが恩恵を受けることができます。
+</p> 
+<h2>(たぶん)高い品質</h2>
+<p>
+自分でRedmineを構築すると、バージョンの不整合やプラグインの競合などで正しく動作しなくハマル場合があります。ALMiniumは検証済みなので、安心して使えます。
+<strong>ALMiniumの開発者はRedmine Backlogs, Redmine SCM Creatorなどにコントリビュータ</strong>として活動し、また、幾つかのプラグインはバグ修正を行ったバージョンをGitHubで管理して利用しています。
+</p>
+<h2>メンバー募集のお知らせ</h2>
+<p>
+ALMiniumは、GitHubのALMiniumプロジェクト(organization)にて開発を行なっています。徐々に導入するプラグインや開発規模が大きくなると共に、アイデアが枯渇し始めたので、開発に協力いただける方を募集しています。ご協力頂ける方は、<a href="https://twitter.com/#!/mikoto20000">@mikoto20000</a>までご連絡ください。みなさんで、ALMiniumを盛り上げていきましょう！！
+</p>
+<h2>最新情報＆更新情報</h2>
+<p>
+2011.12.13 <a href="#">Redmine Advent Calendar 2011/12/13の記事を公開しました</a><br />
+</p>
+<!--
+<p>
+2009.4.12 <a href="#">ホームページをリニューアルしました。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.4.10 <a href="#">新入社員募集ページを更新しました。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.3.26 <a href="#">新商品についてのプレスリリースをご覧ください。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.3.10 <a href="#">新商品を３シリーズ追加しました！</a><br />
+<img src="img/line.gif" alt="" border="0" />
+</p>
+-->
+
 
   </div>
+
+<!-- メインコンテンツ終わり -->
+
+<!-- メニュー -->
+
+  <div id="menu">
+
+<div class="menulist">
+   <h2>コンテンツ・メニュー</h2>
+     <a href="https://github.com/alminium/alminium/">HOME</a>
+     <a href="http://togetter.com/li/219517">お客様の声</a>
+     <a href="https://github.com/alminium/alminium/">ダウンロード</a>
+     <a href="https://github.com/alminium/alminium/">よくある質問</a>
+     <a href="https://github.com/alminium/alminium/issues">お問い合わせ</a>
+</div>
+
+<!--
+<div class="menu_free">
+   <h2>フリースペース</h2>
+<p>例えば、バナー画像や、アクセス情報などに利用できるスペースです。</p>
+</div>
+-->
+
+<div class="menulist">
+   <h2>お役立ちリンク</h2>
+<a href="http://www.r-labs.org/">r-labs</a>
+<a href="http://www.redmine.org/">Redmine Project</a>
+</div>
+
+  </div>
+
+<!-- メニュー終わり -->
+
+</div>
+
+<!-- コンテンツ終わり -->
+
+<!-- フッター -->
+
+<div id="footer">
+Copyright (C) 2011 ALMinium Project All Rights Reserved.　design by <a href="http://tempnate.com/">tempnate</a>
+</div>
+
+<!-- フッター終わり -->
+
+</div>
+
+<!-- メイン終わり -->
 
 </body>
 </html>
