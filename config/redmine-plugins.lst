@@ -21,6 +21,6 @@ redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
 redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
-redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
+redmine_lightbox,7cd1d66d,https://github.com/zipme/redmine_lightbox.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
