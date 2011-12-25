@@ -3,6 +3,7 @@
 case "$2" in
 
   git)
+    git --git-dir=$1 update-server-info
     echo "
 #!/bin/sh
 /opt/alminium/bin/alm-sync-scm
