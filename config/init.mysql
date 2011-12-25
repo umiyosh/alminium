@@ -35,12 +35,14 @@ UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :edit_code_review
 - :delete_code_review
 - :assign_code_review
-- :code_review_setting') WHERE name='管理者';
+- :code_review_setting
+') WHERE name='管理者';
 
 UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :add_code_review
 - :edit_code_review
-- :assign_code_review') WHERE name='開発者';
+- :assign_code_review
+') WHERE name='開発者';
 
 /*********************************************************************
  * バックログのパーミッションの設定
