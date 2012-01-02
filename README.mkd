@@ -53,6 +53,7 @@ XLS export   |Excelでチケットを出力
  * RHEL6互換環境(OEL,SL,CentOSなど含む)
  * Debian GNU/Linux 6.0
  * Ubuntu 10.10以降
+ * Amazon AMI Linux 2011.09
 
 ## 使い方
 下記の通り実行すれば、ALMiniumのインストーラを実行できます。
