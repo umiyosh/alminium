@@ -6,6 +6,7 @@ fastcsv,-
 spreadsheet,-
 # for backlogs plugin
 open-uri-cached,-
+holidays,1.0.3
 holidays,-
 prawn,-
 icalendar,-
