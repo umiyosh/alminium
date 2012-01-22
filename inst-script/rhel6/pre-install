@@ -7,8 +7,15 @@ echo "nと答えると手動でセキュリティの設定が必要となりま�
 echo 
 echo -n "アプリケーションを動作させるためにセキュリティの設定を行いますか?[Y/n]"
 read USE_DISABLE_SECURITY
-if [ ! -f /etc/yum.repos.d/epel.repo ]
-then 
+if [ -f /etc/yum.repos.d/epel.repo ]
+then
+  CHK=`grep "enabled=1" /etc/yum.repos.d/epel.repo`
+  if [ "$CHK" = "" ]
+  then
+    sed '1,/enabled=0/s/enabled=0/enabled=1/' /etc/yum.repos.d/epel.repo >/tmp/epel.repo
+    mv -f /tmp/epel.repo /etc/yum.repos.d/epel.repo
+  fi
+else
   rpm -Uvh http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
 fi
 yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
