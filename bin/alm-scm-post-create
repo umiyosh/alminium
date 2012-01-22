@@ -12,8 +12,7 @@ case "$2" in
   ;;
 
   svn)
-    echo "
-#!/bin/sh
+    echo "#!/bin/sh
 /opt/alminium/bin/alm-sync-scm $1
 " > $1/hooks/post-commit
     chmod u+x $1/hooks/post-commit
