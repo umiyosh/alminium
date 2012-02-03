@@ -7,8 +7,8 @@ export RAILS_ENV=production
 export INSTALL_DIR=/opt/alminium
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
-RM_VER=1.2.3
-RM_ARC=http://rubyforge.org/frs/download.php/75593/redmine-1.2.3.tar.gz
+RM_VER=1.3.0
+RM_ARC=http://rubyforge.org/frs/download.php/75597/redmine-1.3.0.tar.gz
 
 if [ ! -d cache ]
 then
