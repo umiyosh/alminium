@@ -10,17 +10,19 @@ redmine_wiki_extensions,redmine_wiki_extensions,https://bitbucket.org/haru_iida/
 redmine_issue_extensions,redmine_issue_extensions,http://redmineissueext.googlecode.com/files/redmine_issue_extensions-0.0.7.1.zip
 redmine_xls_export,redmine_xls_export,http://www.redmine.org/attachments/5392/redmine_xls_export_v013.zip
 redmine_importer,master,https://github.com/farend/redmine_importer.git
-redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.4.zip
+redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.6.zip
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,v0.7.0,https://github.com/relaxdiego/redmine_backlogs.git
+redmine_backlogs,v0.8.3,https://github.com/relaxdiego/redmine_backlogs.git 
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
-redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
+redmine_redcarpet_formatter,master,https://github.com/chiastolite/redmine_redcarpet_formatter.git
+#redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
-redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
-redmine_lightbox,7cd1d66d,https://github.com/zipme/redmine_lightbox.git
+redmine_attach_screenshot,master,https://github.com/akiko-pusu/redmine_attach_screenshot.git
+#redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
+redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
