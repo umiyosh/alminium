@@ -25,3 +25,13 @@ then
     rm -fr /etc/httpd/conf.d/redmine.conf
     rm -fr /etc/httpd/conf.d/vcs.conf
 fi
+
+echo ""
+echo -n "キャッシュされたファイルを削除しますか?(y/N)"
+read YN
+
+
+if [ "$YN" = "y" ]
+then
+    rm -fr cache *.installed
+fi
