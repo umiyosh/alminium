@@ -1,11 +1,11 @@
 # for redmine
 rack,1.1.1
 # import excel plugin
-fastcsv,-
+#fastcsv,-
 spreadsheet,-
 # for backlogs plugin
 open-uri-cached,-
-holidays,-
+holidays,1.0.3
 prawn,-
 icalendar,-
 activeresource,-
