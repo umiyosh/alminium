@@ -16,9 +16,9 @@ redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 redmine_backlogs,v0.8.3,https://github.com/relaxdiego/redmine_backlogs.git 
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
-redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
-redmine_redcarpet_formatter,master,https://github.com/chiastolite/redmine_redcarpet_formatter.git
-#redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
+#Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
+#redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
+redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
 redmine_attach_screenshot,master,https://github.com/akiko-pusu/redmine_attach_screenshot.git
