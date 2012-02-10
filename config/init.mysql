@@ -25,7 +25,7 @@ REPLACE INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  * トラッカーの「機能」をストーリーに割り当て(backlogsのバグ)
  * TODO: backlogsのバグが直ったら削除
  ********************************************************************/
-UPDATE settings SET name='plugin_redmine_backlogs', value=' --- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: PEARL PE-8007\n:wiki_template: ""\n:story_trackers: \n- 2\n:task_tracker: 3\n:story_points: "1,2,3,5,8"\n' WHERE name = 'plugin_redmine_backlogs';
+REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \npoints_burn_direction: down\ntaskboard_card_order: story_follows_tasks\nstory_trackers: \n- "2"\nburndown_print_height: ""\nshow_burndown_in_sidebar: enabled\nstory_points: "1,2,3,5,8"\nautorefresh_wait: "1000"\ntask_tracker: "3"\nwiki_template: ""\nburndown_print_width: ""\n',current_date); 
 
 /*********************************************************************
  * コードレビューのパーミッションの設定
@@ -80,6 +80,7 @@ REPLACE INTO settings(name,value,updated_on) VALUES ('commit_logtime_enabled',1,
 REPLACE INTO settings(name,value,updated_on) VALUES ('commit_logtime_activity_id',0,current_date);
 REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_spent_time_column','--- !map:HashWithIndifferentAccess\nshow_bottom_summary_line_spent_hours: "1"\nshow_bottom_summary_line_estimated_hours: "1"\nshow_bottom_summary_line_on_issuelists: "1"\nenable_spent_hours_column: "1"\nshow_bottom_summary_line_backlogs_remaining_hours: "1"',current_date);
 REPLACE INTO settings(name,value,updated_on) VALUES ('issue_done_ratio','issue_status',current_date);     
+REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_xls_export','--- !map:HashWithIndifferentAccess \nissues_limit: "0"\ndate_format: YYYYMMDD\nexport_name: export_name\n',current_date);
 UPDATE enumerations SET is_default = 1 WHERE name = '開発作業';
 REPLACE INTO settings(name,value,updated_on) VALUES ('welcome_text','
 ALMinium

@@ -19,7 +19,7 @@ do
         then
           wget -P cache ${URL_NAME[$i]}
         fi
-        yes | unzip cache/$FILE_NAME
+        yes | unzip -q cache/$FILE_NAME
         rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         rm -f $FILE_NAME
@@ -40,11 +40,14 @@ do
         then
           git clone ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
         fi
-        cd cache/${DEST_NAME[$i]}
-        git checkout ${DIR_NAME[$i]}
-        cd ../..
-        rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}        
-        cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
+        if [ -d cache/${DEST_NAME[$i]} ]
+        then        
+          cd cache/${DEST_NAME[$i]}
+          git checkout ${DIR_NAME[$i]}
+          cd ../..
+          rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}        
+          cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
+        fi
         ;;
     *)
         if [ ! -d cache/${DEST_NAME[$i]} ]
@@ -76,5 +79,5 @@ rake db:migrate
 rake db:migrate:upgrade_plugin_migrations
 rake tmp:cache:clear
 rake tmp:sessions:clear
-rake redmine:backlogs:install task_tracker=4 story_trackers=2 labels=false
+rake redmine:backlogs:install task_tracker=3 story_trackers=2 labels=false
 popd
