@@ -25,10 +25,10 @@ REPLACE INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  * トラッカーの「機能」をストーリーに割り当て(backlogsのバグ)
  * TODO: backlogsのバグが直ったら削除
  ********************************************************************/
-REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \npoints_burn_direction: down\ntaskboard_card_order: story_follows_tasks\nstory_trackers: \n- "2"\nburndown_print_height: ""\nshow_burndown_in_sidebar: enabled\nstory_points: "1,2,3,5,8"\nautorefresh_wait: "1000"\ntask_tracker: "3"\nwiki_template: ""\nburndown_print_width: ""\n',current_date); 
+REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \npoints_burn_direction: down\ntaskboard_card_order: story_follows_tasks\nstory_trackers: \n- "2"\nburndown_print_height: ""\nshow_burndown_in_sidebar: enabled\nstory_points: "1,2,3,5,8"\nautorefresh_wait: "1000"\ntask_tracker: "3"\nwiki_template: ""\nburndown_print_width: ""\n',current_date);
 
 /*********************************************************************
- * コードレビューのパーミッションの設定
+ * コードレビューとコミットとチケットの関連のパーミッションの設定
  ********************************************************************/
 UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :add_code_review
@@ -36,12 +36,14 @@ UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :delete_code_review
 - :assign_code_review
 - :code_review_setting
+- :edit_commit_relation
 ') WHERE name='管理者';
 
 UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
 - :add_code_review
 - :edit_code_review
 - :assign_code_review
+- :edit_commit_relation
 ') WHERE name='開発者';
 
 /*********************************************************************
@@ -60,6 +62,7 @@ UPDATE roles SET roles.permissions=concat(roles.permissions,'- :reset_sprint
 - :update_tasks
 - :create_impediments
 - :update_impediments
+- :update_remaining_hours
 - :subscribe_to_calendars
 - :view_scrum_statistics') WHERE name='管理者' or name='開発者';
 
