@@ -1,5 +1,9 @@
 # for redmine
+i18n,0.4.2
+rails,2.3.14
 rack,1.1.1
+rdoc,-
+mysql,-
 # import excel plugin
 #fastcsv,-
 spreadsheet,-
