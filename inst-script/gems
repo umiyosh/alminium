@@ -31,21 +31,20 @@ esac
 
 pushd .
 
-cd cache
-if [ ! -f redcarpet ]
-then
-  git clone https://github.com/alminium/redcarpet.git
-  cd redcarpet 
-
-  if [ "$OS" = "rhel6" ]
-  then
-      rake install 
-  else
-      gem install rake -=0.8.7 --no-rdoc --no-ri
-      gem install rake-compiler --no-rdoc --no-ri
-      /var/lib/gems/1.8/bin/rake install
-  fi
-  gem install rake -v=0.9.2 --no-rdoc --no-ri
-fi
-
-popd
+#cd cache
+#if [ ! -f redcarpet ]
+#then
+#  git clone https://github.com/alminium/redcarpet.git
+#  cd redcarpet 
+#
+#  if [ "$OS" = "rhel6" ]
+#  then
+#      rake install 
+#  else
+#      gem install rake -=0.8.7 --no-rdoc --no-ri
+#      gem install rake-compiler --no-rdoc --no-ri
+#      /var/lib/gems/1.8/bin/rake install
+#  fi
+#fi
+#
+#popd
