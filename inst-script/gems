@@ -9,12 +9,24 @@ for (( i = 0; i < ${#NAME[@]}; ++i ))
 do
   NAME=${NAME[$i]}
   VER=${VER[$i]} 
-  if [ "$VER" = "-" ]
-  then
-    gem install $NAME --no-rdoc --no-ri
-  else 
-    gem install $NAME -v=$VER --no-rdoc --no-ri
-  fi
+  case $OS in
+  rhel6)
+    if [ "$VER" = "-" ]
+    then
+      gem install $NAME --no-rdoc --no-ri
+    else 
+      gem install $NAME -v=$VER --no-rdoc --no-ri
+    fi
+    ;;
+  mac)
+    if [ "$VER" = "-" ]
+    then
+      sudo gem install $NAME --no-rdoc --no-ri
+    else 
+      sudo gem install $NAME -v=$VER --no-rdoc --no-ri
+    fi
+    ;;
+  esac
 done
 
 
@@ -27,9 +39,16 @@ case $OS in
             passenger-install-apache2-module --auto
         fi
         ;;
+    mac)
+	if [ ! -f /Library/Ruby/Gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        then
+            sudo gem install passenger --no-rdoc --no-ri
+            sudo passenger-install-apache2-module --auto
+        fi
+        ;;
 esac
 
-pushd .
+#pushd .
 
 #cd cache
 #if [ ! -f redcarpet ]
