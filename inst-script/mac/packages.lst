@@ -1,0 +1,15 @@
+wget
+git-core +bash_completion +svn +python27
+subversion
+mercurial
+unzip
+mysql5
+mysql5-devel
+mysql5-server
+ImageMagick +q8 +wmf
+tiff -macosx
+ruby
+mod_wsgi +python27
+mod_perl
+# for backlogs
+libical
