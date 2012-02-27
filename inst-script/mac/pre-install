@@ -2,11 +2,12 @@
 echo "*******************************************************"
 echo "  セキュリティの設定"
 echo "*******************************************************"
-echo "アプリケーションを動作させるために、ファイアフォールの設定とSELinuxの無効化を行います。"
-echo "nと答えると手動でセキュリティの設定が必要となります。分らない場合はYと答えてください。"
+echo "アプリケーションを動作させるために、Apacheの設定を行います。"
+echo "ファイアフォールの設定はシステム環境設定から行ってください。"
+echo "共有で、Web共有がHTTPSとSSLに、リモートログインがSSHに対応しています。"
 echo 
 echo -n "アプリケーションを動作させるためにセキュリティの設定を行いますか?[Y/n]"
-read USE_DISABLE_SECURITY
+
 sudo port install `grep -v "^#" inst-script/rhel6/packages.lst`
 
 if [ "$SSL" = "y" ]
@@ -33,5 +34,6 @@ awk -F = '
     }
   }while ( getline > 0 )
 }' etc/php.ini > /etc/php.ini
+
 sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist
 sudo /opt/local/share/mysql5/mysql/mysql.server start
