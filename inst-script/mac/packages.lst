@@ -6,8 +6,7 @@ unzip
 mysql5
 mysql5-devel
 mysql5-server
-ImageMagick +q8 +wmf
-tiff -macosx
+tiff -macosx imagemagick +q8 +gs +wmf
 ruby
 mod_wsgi +python27
 mod_perl

@@ -7,25 +7,31 @@ echo "nと答えると手動でセキュリティの設定が必要となりま�
 echo 
 echo -n "アプリケーションを動作させるためにセキュリティの設定を行いますか?[Y/n]"
 read USE_DISABLE_SECURITY
-if [ -f /etc/yum.repos.d/epel.repo ]
-then
-  CHK=`grep "enabled=1" /etc/yum.repos.d/epel.repo`
-  if [ "$CHK" = "" ]
-  then
-    sed '1,/enabled=0/s/enabled=0/enabled=1/' /etc/yum.repos.d/epel.repo >/tmp/epel.repo
-    mv -f /tmp/epel.repo /etc/yum.repos.d/epel.repo
-  fi
-else
-  rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
-fi
-yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
+sudo port install `grep -v "^#" inst-script/rhel6/packages.lst`
 
 if [ "$SSL" = "y" ]
 then
-    yum -y install mod_ssl
+   sudo port install openssl
 fi
 
-chkconfig --add mysqld
-chkconfig mysqld on
-service mysqld start
-
+sudo -u mysql mysql_install_db5
+if [ ! -f /etc/php.ini ]
+then
+  sudo mv /etc/php.ini etc/php.ini
+else
+  sudo cp /etc/php.ini.default etc/php.ini
+fi
+awk -F = '
+{ do{
+    if ( $1 ~ /mysql.default_socket/ )
+    {
+	print "mysql.default_socket = /opt/local/var/run/mysql5/mysqld.sock"
+    } else if ( $1 ~ /mysqli.default_socket/ )
+	print "mysqli.default_socket = /opt/local/var/run/mysql5/mysqld.sock"
+    } else {
+        print $0
+    }
+  }while ( getline > 0 )
+}' etc/php.ini > /etc/php.ini
+sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist
+sudo /opt/local/share/mysql5/mysql/mysql.server start
