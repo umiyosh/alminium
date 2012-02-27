@@ -61,16 +61,16 @@ else
 	RMCMD='rm -Rf'
 	echo "${CHK}が検出されました。"
     else
-    echo "サポートされていないOSです。"
-    echo "現在サポートされいているOSは、"
-    echo ""
-#   echo "  * Ubuntu 10.10 Server"
-#   echo "  * Debian GNU/Linux 6.0"
-    echo "  * RHEL/Oracle EL/CentOS/SL 6.0/6.1"
-    echo "  * Amazon Linux AMI"
-    echo "  * Mac OS X 10.7"
-    echo "です。"
-    exit
+      echo "サポートされていないOSです。"
+      echo "現在サポートされいているOSは、"
+      echo ""
+  #   echo "  * Ubuntu 10.10 Server"
+  #   echo "  * Debian GNU/Linux 6.0"
+      echo "  * RHEL/Oracle EL/CentOS/SL 6.0/6.1"
+      echo "  * Amazon Linux AMI"
+      echo "  * Mac OS X 10.7"
+      echo "です。"
+      exit
     fi
 fi
 
