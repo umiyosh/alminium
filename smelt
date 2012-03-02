@@ -52,7 +52,7 @@ then
     MYSQLD=mysql
     echo "Debian / Ubuntu が検出されました。"
 else
-    CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }`
+    CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }'`
     if [ $CHK != '' ]
     then
 	OS='mac'
@@ -160,11 +160,10 @@ then
   source inst-script/gems
   touch gems.installed
 fi
- 
 
-#/etc/init.d/$MYSQLD start
+/etc/init.d/$MYSQLD start
 
-$MYSQLD < config/createdb.sql
+mysql < config/createdb.sql
 
 # install chiliproject
 mkdir -p $INSTALL_DIR
