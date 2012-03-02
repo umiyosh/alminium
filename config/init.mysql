@@ -25,7 +25,7 @@ REPLACE INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  * トラッカーの「機能」をストーリーに割り当て(backlogsのバグ)
  * TODO: backlogsのバグが直ったら削除
  ********************************************************************/
-REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \npoints_burn_direction: down\ntaskboard_card_order: story_follows_tasks\nstory_trackers: \n- "2"\nburndown_print_height: ""\nshow_burndown_in_sidebar: enabled\nstory_points: "1,2,3,5,8"\nautorefresh_wait: "1000"\ntask_tracker: "3"\nwiki_template: ""\nburndown_print_width: ""\n',current_date);
+UPDATE settings SET value='--- !map:HashWithIndifferentAccess \nstory_trackers: \n- "2"\n:task_tracker: "3"\n:taskboard_card_order: story_follows_tasks\n:story_points: "1,2,3,5,8"\n:points_burn_direction: down\n:show_burndown_in_sidebar: enabled\n:wiki_template: ""\n' WHERE name='plugin_redmine_backlogs';
 
 /*********************************************************************
  * コードレビューとコミットとチケットの関連のパーミッションの設定
