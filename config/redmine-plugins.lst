@@ -13,13 +13,12 @@ redmine_importer,master,https://github.com/farend/redmine_importer.git
 redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.6.zip
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,v0.8.3,https://github.com/relaxdiego/redmine_backlogs.git 
+redmine_backlogs,v0.8.4,https://github.com/relaxdiego/redmine_backlogs.git 
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
 #redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
-#Redmine1.3.1では、rake0.9.2が必要になるが、redcarpetではrake0.9より下でないと正常稼働しないため
-#redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
+redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
 redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
