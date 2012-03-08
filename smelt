@@ -8,8 +8,8 @@ export INSTALL_DIR=/opt/alminium
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
 RM_VER=1.3.1
-#RM_ARC=http://rubyforge.org/frs/download.php/75814/redmine-1.3.1.tar.gz
-RM_ARC=http://redmine.rubyforge.org/svn/tags
+RM_ARC=http://rubyforge.org/frs/download.php/75814/redmine-1.3.1.tar.gz
+#RM_ARC=http://redmine.rubyforge.org/svn/tags
 CPCMD='cp -fr'
 RMCMD='rm -fr'
 
@@ -180,19 +180,25 @@ then
 fi
 if [ $TYPE = "redmine" ]
 then
-
-  if [ ! -f cache/redmine_$RM_VER ]
+  cd cache
+  if [ ! -f redmine-$RM_VER.tar.gz ]
   then
-    cd cache
-    svn checkout $RM_ARC/$RM_VER redmine_$RM_VER
-    cd ..
+    wget $RM_ARC
   fi
-  #tar zxf cache/redmine-$RM_VER.tar.gz
+
+  if [ ! -f redmine-$RM_VER ]
+  then
+
+#    svn checkout $RM_ARC/$RM_VER redmine_$RM_VER
+    tar zxf redmine-$RM_VER.tar.gz
+  fi
+  cd ..
+
 
   #(cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
 
-  $CPCMD cache/redmine_$RM_VER/* $INSTALL_DIR/
-  $RMCMD cache/redmine_$RM_VER
+  $CPCMD cache/redmine-$RM_VER/* $INSTALL_DIR/
+  $RMCMD cache/redmine-$RM_VER
 fi
 
 cp config/database.yml $INSTALL_DIR/config/
