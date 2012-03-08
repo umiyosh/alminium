@@ -60,8 +60,8 @@ then
   then
       rake install 
   else
-      gem install rake -=0.8.7 --no-rdoc --no-ri
-     gem install rake-compiler --no-rdoc --no-ri
+      gem install rake -v=0.8.7 --no-rdoc --no-ri
+      gem install rake-compiler --no-rdoc --no-ri
       /var/lib/gems/1.8/bin/rake install
   fi
 fi
