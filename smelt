@@ -51,6 +51,11 @@ then
     APACHE_USER=www-data
     MYSQLD=mysql
     echo "Debian / Ubuntu が検出されました。"
+    echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
+    echo ""
+    echo "途中MySQLのパスワードを聞かれたら空のままエンターキーを押してください。"
+    echo "MySQLのパスワードを設定するとインストールに失敗します。"    
+    echo "パスワードを設定したい場合は、ALMiniumのインストール完了後行ってください"
 else
     CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }'`
     if [ $CHK != '' ]
