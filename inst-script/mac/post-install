@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ ! -f /etc/httpd/Apache/Authn/Redmine.pm ]
+then
+  mkdir -p /etc/httpd/Apache/Authn
+  cp config/Redmine.pm /etc/httpd/Apache/Authn/
+fi
+
+if [ ! -f /opt/local/apache2/conf/redmine.conf ]
+then
+  mkdir -p /etc/httpd/conf.d
+  PASSENGER_VERSION=`passenger-config  --version`
+  sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/rhel6/httpd-redmine.conf | \
+      sed 's/%PASSENGER_VERSION%/'$PASSENGER_VERSION'/' |
+	  if [ "$SSL" = "y" ]
+	  then 
+	      sed 's/#Rewrite/Rewrite/'
+	  else
+	      cat
+	  fi > /opt/local/apache2/conf/redmine.conf
+  sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/rhel6/httpd-vcs.conf >  /opt/local/apache2/conf/vcs.conf     
+  if [ "$SSL" = "y" ]
+  then
+      CHK=`grep "^DocumentRoot /opt/alminium/public" /opt/local/apache2/conf/ssl.conf`
+      if [ "$CHK" = "" ]
+      then
+          sed 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot \/opt\/alminium\/public/' /opt/local/apache2/conf/ssl.conf > /tmp/ssl.conf
+          cp /tmp/ssl.conf /opt/local/apache2/conf/ssl.conf
+      fi
+  fi
+fi
+          
+sudo launchctl load -w /Library/LaunchDaemons/org.macports.apache2.plist
+sudo /opt/local/apache2/bin/apachectl restart

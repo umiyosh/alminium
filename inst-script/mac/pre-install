@@ -1,0 +1,39 @@
+#!/bin/bash
+echo "*******************************************************"
+echo "  セキュリティの設定"
+echo "*******************************************************"
+echo "アプリケーションを動作させるために、Apacheの設定を行います。"
+echo "ファイアフォールの設定はシステム環境設定から行ってください。"
+echo "共有で、Web共有がHTTPSとSSLに、リモートログインがSSHに対応しています。"
+echo 
+echo -n "アプリケーションを動作させるためにセキュリティの設定を行いますか?[Y/n]"
+
+sudo port install `grep -v "^#" inst-script/rhel6/packages.lst`
+
+if [ "$SSL" = "y" ]
+then
+   sudo port install openssl
+fi
+
+sudo -u mysql mysql_install_db5
+if [ ! -f /etc/php.ini ]
+then
+  sudo mv /etc/php.ini etc/php.ini
+else
+  sudo cp /etc/php.ini.default etc/php.ini
+fi
+awk -F = '
+{ do{
+    if ( $1 ~ /mysql.default_socket/ )
+    {
+	print "mysql.default_socket = /opt/local/var/run/mysql5/mysqld.sock"
+    } else if ( $1 ~ /mysqli.default_socket/ )
+	print "mysqli.default_socket = /opt/local/var/run/mysql5/mysqld.sock"
+    } else {
+        print $0
+    }
+  }while ( getline > 0 )
+}' etc/php.ini > /etc/php.ini
+
+sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist
+sudo /opt/local/share/mysql5/mysql/mysql.server start
