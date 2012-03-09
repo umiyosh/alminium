@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get -y install `grep -v "^#" inst-script/debian/packages.lst`
+apt-get -y -qq install `grep -v "^#" inst-script/debian/packages.lst`
 
 if [ "$SSL" = "y" ]
 then
