@@ -10,7 +10,7 @@ do
   NAME=${NAME[$i]}
   VER=${VER[$i]} 
   case $OS in
-  rhel6)
+  rhel6|debian)
     if [ "$VER" = "-" ]
     then
       gem install $NAME --no-rdoc --no-ri
@@ -60,9 +60,10 @@ then
   then
       rake install 
   else
-      gem install rake -v=0.8.7 --no-rdoc --no-ri
+#      gem install rake -v=0.8.7 --no-rdoc --no-ri
       gem install rake-compiler --no-rdoc --no-ri
-      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
+      rake install
+#      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
   fi
 fi
 
