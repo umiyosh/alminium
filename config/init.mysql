@@ -26,7 +26,10 @@ REPLACE INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  * TODO: backlogsのバグが直ったら削除
  ********************************************************************/
 /* UPDATE settings SET value='--- !map:HashWithIndifferentAccess \nstory_trackers: \n- "2"\n:task_tracker: "3"\n:taskboard_card_order: story_follows_tasks\n:story_points: "1,2,3,5,8"\n:points_burn_direction: down\n:show_burndown_in_sidebar: enabled\n:wiki_template: ""\n' WHERE name='plugin_redmine_backlogs'; */
-REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \nstory_trackers: \n- "2"\n:task_tracker: "3"\n:taskboard_card_order: story_follows_tasks\n:story_points: "1,2,3,5,8"\n:points_burn_direction: down\n:show_burndown_in_sidebar: enabled\n:wiki_template: ""\n',current_date);
+#REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- !map:HashWithIndifferentAccess \nstory_trackers: \n- "2"\n:task_tracker: "3"\n:taskboard_card_order: story_follows_tasks\n:story_points: "1,2,3,5,8"\n:points_burn_direction: down\n:show_burndown_in_sidebar: enabled\n:wiki_template: ""\n',current_date);
+REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','--- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: Zweckform 6091\n:wiki_template: ""\n:story_points: "1,2,3,5,8"\n:show_burndown_in_sidebar: enabled\n:story_trackers: \n- 2\n:task_tracker: 3\n',current_date);
+
+
 
 /*********************************************************************
  * コードレビューとコミットとチケットの関連のパーミッションの設定
