@@ -7,8 +7,11 @@ export RAILS_ENV=production
 export INSTALL_DIR=/opt/alminium
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
-RM_VER=1.2.3
-RM_ARC=http://rubyforge.org/frs/download.php/75593/redmine-1.2.3.tar.gz
+RM_VER=1.3.1
+RM_ARC=http://rubyforge.org/frs/download.php/75814/redmine-1.3.1.tar.gz
+#RM_ARC=http://redmine.rubyforge.org/svn/tags
+CPCMD='cp -fr'
+RMCMD='rm -fr'
 
 if [ ! -d cache ]
 then
@@ -48,17 +51,32 @@ then
     APACHE_USER=www-data
     MYSQLD=mysql
     echo "Debian / Ubuntu が検出されました。"
+    echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
+    echo ""
+    echo "途中MySQLのパスワードを聞かれたら空のままエンターキーを押してください。"
+    echo "MySQLのパスワードを設定するとインストールに失敗します。"    
+    echo "パスワードを設定したい場合は、ALMiniumのインストール完了後行ってください"
 else
-    echo "サポートされていないOSです。"
-    echo "現在サポートされいているOSは、"
-    echo ""
-#   echo "  * Ubuntu 10.10 Server"
-#   echo "  * Debian GNU/Linux 6.0"
-    echo "  * RHEL/Oracle EL/CentOS/SL 6.0/6.1"
-    echo "  * Amazon Linux AMI"
-    echo ""
-    echo "です。"
-    exit
+    CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }'`
+    if [ $CHK != '' ]
+    then
+	OS='mac'
+	MYSQLD='mysql5'
+	CPCMD='cp -Rf'
+	RMCMD='rm -Rf'
+	echo "${CHK}が検出されました。"
+    else
+      echo "サポートされていないOSです。"
+      echo "現在サポートされいているOSは、"
+      echo ""
+  #   echo "  * Ubuntu 10.10 Server"
+  #   echo "  * Debian GNU/Linux 6.0"
+      echo "  * RHEL/Oracle EL/CentOS/SL 6.0/6.1"
+      echo "  * Amazon Linux AMI"
+      echo "  * Mac OS X 10.7"
+      echo "です。"
+      exit
+    fi
 fi
 
 
@@ -122,7 +140,7 @@ case $TYPE in
         TYPE=redmine	
         ;;
     *)
-        echo "未定義のケットシステムが選択されました。"
+        echo "未定義のチケットシステムが選択されました。"
         echo "1もしくは2を入力してください。"
         exit 1
         ;;
@@ -147,11 +165,10 @@ then
   source inst-script/gems
   touch gems.installed
 fi
- 
 
 /etc/init.d/$MYSQLD start
 
-mysql < config/createdb.sql 
+mysql < config/createdb.sql
 
 # install chiliproject
 mkdir -p $INSTALL_DIR
@@ -168,22 +185,30 @@ then
 fi
 if [ $TYPE = "redmine" ]
 then
-
-  if [ ! -f cache/redmine-$RM_VER.tar.gz ]
+  cd cache
+  if [ ! -f redmine-$RM_VER.tar.gz ]
   then
-    wget -P cache $RM_ARC
+    wget $RM_ARC
   fi
-  tar zxf cache/redmine-$RM_VER.tar.gz
-  
-#  (cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
 
-  cp -fr redmine-$RM_VER/* $INSTALL_DIR/
-  rm -fr redmine-$RM_VER
+  if [ ! -f redmine-$RM_VER ]
+  then
+
+#    svn checkout $RM_ARC/$RM_VER redmine_$RM_VER
+    tar zxf redmine-$RM_VER.tar.gz
+  fi
+  cd ..
+
+
+  #(cd redmine-$RM_VER; patch -p1 -R < ../patch/redmine_disable_saltpassword.patch)
+
+  $CPCMD cache/redmine-$RM_VER/* $INSTALL_DIR/
+  $RMCMD cache/redmine-$RM_VER
 fi
 
 cp config/database.yml $INSTALL_DIR/config/
 cp config/scm.yml $INSTALL_DIR/config/
-cp -r theme/* $INSTALL_DIR/public/themes/
+$CPCMD theme/* $INSTALL_DIR/public/themes/
 
 # setup
 pushd . 
@@ -201,15 +226,17 @@ source inst-script/redmine-plugins
 mysql alminium < config/init.mysql
 
 mkdir -p /etc/opt/alminium
-cp -fr etc/* /etc/opt/alminium/
+$CPCMD etc/* /etc/opt/alminium/
 
 mkdir -p $INSTALL_DIR/bin
 mkdir -p /var/opt/alminium/git /var/opt/alminium/svn /var/opt/alminium/hg
-cp -fr bin/*  $INSTALL_DIR/bin/
-cp -fr hooks $INSTALL_DIR/
+$CPCMD bin/*  $INSTALL_DIR/bin/
+$CPCMD hooks $INSTALL_DIR/
 
-chown $APACHE_USER.$APACHE_USER -R $INSTALL_DIR
-chown $APACHE_USER.$APACHE_USER -R /var/opt/alminium
+#chown $APACHE_USER.$APACHE_USER -R $INSTALL_DIR
+#chown $APACHE_USER.$APACHE_USER -R /var/opt/alminium
+chown -R $APACHE_USER:$APACHE_USER $INSTALL_DIR
+chown -R $APACHE_USER:$APACHE_USER /var/opt/alminium
 
 source inst-script/$OS/post-install
 

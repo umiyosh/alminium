@@ -9,12 +9,24 @@ for (( i = 0; i < ${#NAME[@]}; ++i ))
 do
   NAME=${NAME[$i]}
   VER=${VER[$i]} 
-  if [ "$VER" = "-" ]
-  then
-    gem install $NAME
-  else 
-    gem install $NAME -v=$VER
-  fi
+  case $OS in
+  rhel6)
+    if [ "$VER" = "-" ]
+    then
+      gem install $NAME --no-rdoc --no-ri
+    else 
+      gem install $NAME -v=$VER --no-rdoc --no-ri
+    fi
+    ;;
+  mac)
+    if [ "$VER" = "-" ]
+    then
+      sudo gem install $NAME --no-rdoc --no-ri
+    else 
+      sudo gem install $NAME -v=$VER --no-rdoc --no-ri
+    fi
+    ;;
+  esac
 done
 
 
@@ -23,25 +35,35 @@ case $OS in
     rhel6) 
         if [ ! -f /usr/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
-            gem install passenger
+            gem install passenger --no-rdoc --no-ri
             passenger-install-apache2-module --auto
+        fi
+        ;;
+    mac)
+	if [ ! -f /Library/Ruby/Gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        then
+            sudo gem install passenger --no-rdoc --no-ri
+            sudo passenger-install-apache2-module --auto
         fi
         ;;
 esac
 
 pushd .
 
-cd /tmp
-git clone https://github.com/alminium/redcarpet.git
-cd redcarpet 
-
-if [ "$OS" = "rhel6" ]
+cd cache
+if [ ! -f redcarpet ]
 then
-    rake install 
-else
-    gem install rake
-    gem install rake-compiler
-    /var/lib/gems/1.8/bin/rake install
+  git clone https://github.com/alminium/redcarpet.git
+  cd redcarpet 
+
+ if [ "$OS" = "rhel6" ]
+  then
+      rake install 
+  else
+      gem install rake -v=0.8.7 --no-rdoc --no-ri
+      gem install rake-compiler --no-rdoc --no-ri
+      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
+  fi
 fi
 
 popd

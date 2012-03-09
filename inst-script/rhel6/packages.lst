@@ -5,12 +5,16 @@ mercurial
 unzip
 mysql
 mysql-server
+mysql-devel
+ImageMagick
+ImageMagick-devel
 ruby
 ruby-devel
 rubygem-rake
 rubygem-rake-compiler
 rubygem-rack
 ruby-RMagick
+httpd
 httpd-devel
 sudo
 gcc-c++
@@ -19,6 +23,7 @@ patch
 apr-devel
 openssl-devel
 curl-devel
+zlib-devel
 ruby-mysql
 mod_auth_mysql
 mod_dav_svn

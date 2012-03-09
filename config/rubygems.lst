@@ -1,15 +1,21 @@
 # for redmine
-i18n,0.4.2
-rack,1.1.1
+rack,1.1.2
+rake,0.9.2
+rake-compiler,0.8.0
+#rails,2.3.14
+rdoc-data,-
+rmagick,-
+rdoc,-
+mysql,-
 # import excel plugin
-fastcsv,-
+#fastcsv,-
 spreadsheet,-
 # for backlogs plugin
 open-uri-cached,-
 holidays,1.0.3
-holidays,-
 prawn,-
 icalendar,-
 activeresource,-
+system_timer,-
 # for redcarpet plugin
 #redcarpet,2.0.0b5
