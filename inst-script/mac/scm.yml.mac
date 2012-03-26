@@ -1,0 +1,17 @@
+production:
+   auto_create: true
+   deny_delete: true
+   post_create: /opt/alminium/bin/alm-scm-post-create.mac
+   svn:
+     path: /var/opt/alminium/svn
+     svnadmin: /opt/local/bin/svnadmin
+     url: http://ホスト名/svn
+   git:
+     path: /var/opt/alminium/git
+     git: /opt/local/bin/git
+     options: --bare
+     url: http://ホスト名/git
+   mercurial:
+     path: /var/opt/alminium/hg
+     hg: /opt/local/bin/hg
+     url: http://ホスト名/hg

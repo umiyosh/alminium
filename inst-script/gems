@@ -40,9 +40,11 @@ case $OS in
         fi
         ;;
     mac)
-	if [ ! -f /Library/Ruby/Gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        if [ ! -f /opt/local/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
             sudo gem install passenger --no-rdoc --no-ri
+            export APXS2=/opt/local/apache2/bin/apxs
+            export PATH=/opt/local/apache2/bin:$PATH
             sudo passenger-install-apache2-module --auto
         fi
         ;;
@@ -56,15 +58,23 @@ then
   git clone https://github.com/alminium/redcarpet.git
   cd redcarpet 
 
- if [ "$OS" = "rhel6" ]
-  then
+  case $OS in
+    rhel6) 
       rake install 
-  else
+      ;;
+    mac)
+      gem install nokogiri --no-rdoc --no-ri -- --with-xml2-include=/opt/local/include/libxml2 --with-xml2-lib=/opt/local/lib --with-xslt-dir=/opt/local
+      sudo gem install rake -=0.8.7 --no-rdoc --no-ri
+      sudo gem install rake-compiler --no-rdoc --no-ri
+      sudo /opt/local/bin/rake install    
+      ;;
+    *)
 #      gem install rake -v=0.8.7 --no-rdoc --no-ri
+#      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
       gem install rake-compiler --no-rdoc --no-ri
       rake install
-#      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
-  fi
+      ;;
+  esac
 fi
 
 popd
