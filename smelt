@@ -52,7 +52,12 @@ then
     OS='debian'
     APACHE_USER=www-data
     MYSQLD=mysql
-    MYSQL='mysql -u root -p'
+    MYSQL=`which mysql`
+    if [ "$MYSQL" = "" ]
+    then
+      MYSQL=`which mysql5`
+    fi
+    MYSQL="$MYSQL -u root -p"
     echo "Debian / Ubuntu が検出されました。"
     echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
     echo ""
@@ -60,15 +65,16 @@ then
     echo "MySQLのパスワードを設定するとインストールに失敗します。"    
     echo "パスワードを設定したい場合は、ALMiniumのインストール完了後行ってください"
 else
-    CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }'`
+    CHK=`sw_vers | awk '$1 = "ProductName"{ _OS = $2 " " $3 " " $4; getline; print _OS,$2; exit }'`
     if [ $CHK != '' ]
     then
-	OS='mac'
-	MYSQLD='mysql5'
-	MYSQL='mysql'
-	CPCMD='cp -Rf'
-	RMCMD='rm -Rf'
-	echo "${CHK}が検出されました。"
+      OS='mac'
+      APACHE_USER=www	
+      MYSQLD=/opt/local/share/mysql5/mysql/mysql.server
+      MYSQLD=mysql
+      CPCMD='cp -Rf'
+      RMCMD='rm -Rf'
+      echo "${CHK}が検出されました。"
     else
       echo "サポートされていないOSです。"
       echo "現在サポートされいているOSは、"
@@ -170,7 +176,7 @@ then
   touch gems.installed
 fi
 
-/etc/init.d/$MYSQLD start
+$MYSQLD start
 
 $MYSQL < config/createdb.sql
 
@@ -227,7 +233,7 @@ popd
 source inst-script/redmine-plugins
 
 # Customize
-mysql alminium < config/init.mysql
+$MYSQLCMD alminium < config/init.mysql
 
 mkdir -p /etc/opt/alminium
 $CPCMD etc/* /etc/opt/alminium/
