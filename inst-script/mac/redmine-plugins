@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# インストールするディレクトリ名
+DEST_NAME=(`grep -v "^#" config/redmine-plugins.lst | awk -F, '{print $1}'`)
+
+# 展開したアーカイブのディレクトリ名 or タグ名
+DIR_NAME=(`grep -v "^#" config/redmine-plugins.lst | awk -F, '{print $2}'`)
+
+# URL
+URL_NAME=(`grep -v "^#" config/redmine-plugins.lst | awk -F, '{print $3}'`)
+
+for (( i = 0; i < ${#DIR_NAME[@]}; ++i ))
+do
+  FILE_NAME=`echo ${URL_NAME[$i]} | sed -e "s/.*\/\(.*$\)/\1/"`
+  EXT=`echo ${URL_NAME[$i]} | sed -e "s/.*\.\(.*$\)/\1/"`
+    case $EXT in
+    zip)
+        if [ ! -f cache/$FILE_NAME ]
+        then
+          wget --no-check-certificate -P cache ${URL_NAME[$i]} > /dev/null
+        fi
+        yes | unzip -q cache/$FILE_NAME
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        sudo mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        sudo rm -f $FILE_NAME
+        ;;
+
+    tgz|gz)
+        if [ ! -f cache/$FILE_NAME ]
+        then
+          wget --no-check-certificate -P cache ${URL_NAME[$i]}
+        fi
+        tar zxf cache/$FILE_NAME
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        sudo mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        sudo rm -f $FILE_NAME
+        ;;
+    git)
+        if [ ! -d cache/${DEST_NAME[$i]} ]
+        then
+          git clone ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
+        fi
+        if [ -d cache/${DEST_NAME[$i]} ]
+        then
+          cd cache/${DEST_NAME[$i]}
+          git checkout ${DIR_NAME[$i]}
+          cd ../..
+          $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+          sudo cp -aR cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
+        fi
+        ;;
+    *)
+        if [ ! -d cache/${DEST_NAME[$i]} ]
+        then
+          svn co ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
+          if [ "${DIR_NAME[$i]}" != "HEAD" ]
+          then
+            cd cache/${DEST_NAME[$i]}
+            svn update -r ${DIR_NAME[$i]}
+            cd ../..
+          fi
+        fi
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        sudo cp -aR cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        ;;
+    esac
+done
+
+
+## setup plugin
+pushd .
+
+cd $INSTALL_DIR
+
+sudo rake db:migrate_plugins RAILS_ENV=production
+sudo rake generate_session_store
+sudo rake config/initializers/session_store.rb
+sudo rake db:migrate RAILS_ENV=production
+sudo rake db:migrate:upgrade_plugin_migrations RAILS_ENV=production
+sudo rake tmp:cache:clear
+sudo rake tmp:sessions:clear
+sudo rake redmine:backlogs:install task_tracker=3 story_trackers=2 labels=false RAILS_ENV=production
+sudo rake redmine:backlogs:generate_chart_data RAILS_ENV=production
+popd

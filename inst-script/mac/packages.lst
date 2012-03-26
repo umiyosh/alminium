@@ -1,6 +1,6 @@
 wget
 git-core +bash_completion +svn +python27
-subversion
+subversion +mod_dav_svn +tools
 mercurial
 unzip
 mysql5
@@ -8,7 +8,15 @@ mysql5-devel
 mysql5-server
 tiff -macosx imagemagick +q8 +gs +wmf
 ruby
+rb_rubygems
+python27
 mod_wsgi +python27
-mod_perl
+perl5.12 +threads +shared
+p5.12-dbd-mysql
+p5.12-dbi
+p5.12-digest-sha1
+mod_perl2
 # for backlogs
 libical
+libxml2
+libxslt
