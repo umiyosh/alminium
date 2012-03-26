@@ -57,19 +57,20 @@ then
     echo "MySQLのパスワードを設定するとインストールに失敗します。"    
     echo "パスワードを設定したい場合は、ALMiniumのインストール完了後行ってください"
 else
-    CHK=`sw_vers | awk '$1 = "ProductName"{ OS = $1; getline; print $OS,$2 }'`
+    CHK=`sw_vers | awk '$1 = "ProductName"{ _OS = $2 " " $3 " " $4; getline; print _OS,$2; exit }'`
     if [ $CHK != '' ]
     then
-	OS='mac'
-	MYSQLD='mysql5'
-	CPCMD='cp -Rf'
-	RMCMD='rm -Rf'
-	echo "${CHK}が検出されました。"
+      OS='mac'
+      APACHE_USER=www	
+      MYSQLD=/opt/local/share/mysql5/mysql/mysql.server
+      CPCMD='cp -Rf'
+      RMCMD='rm -Rf'
+      echo "${CHK}が検出されました。"
     else
       echo "サポートされていないOSです。"
       echo "現在サポートされいているOSは、"
       echo ""
-  #   echo "  * Ubuntu 10.10 Server"
+      echo "  * Ubuntu 12.04 Server"
   #   echo "  * Debian GNU/Linux 6.0"
       echo "  * RHEL/Oracle EL/CentOS/SL 6.0/6.1"
       echo "  * Amazon Linux AMI"
@@ -166,9 +167,15 @@ then
   touch gems.installed
 fi
 
-/etc/init.d/$MYSQLD start
+$MYSQLD start
 
-mysql < config/createdb.sql
+MYSQLCMD=`which mysql`
+if [ "$MYSQLCMD" = "" ]
+then
+  MYSQLCMD=`which mysql5`
+fi
+
+$MYSQLCMD < config/createdb.sql
 
 # install chiliproject
 mkdir -p $INSTALL_DIR
@@ -223,7 +230,7 @@ popd
 source inst-script/redmine-plugins
 
 # Customize
-mysql alminium < config/init.mysql
+$MYSQLCMD alminium < config/init.mysql
 
 mkdir -p /etc/opt/alminium
 $CPCMD etc/* /etc/opt/alminium/
