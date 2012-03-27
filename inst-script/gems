@@ -56,14 +56,20 @@ then
   git clone https://github.com/alminium/redcarpet.git
   cd redcarpet 
 
- if [ "$OS" = "rhel6" ]
+  if [ "$OS" = "rhel6" ]
   then
-      rake install 
+    rake install 
   else
-#      gem install rake -v=0.8.7 --no-rdoc --no-ri
+    DEB_VER=`cat /etc/debian_version`
+    if [[ "$DEB_VER" =~  ^6\. ]]
+    then
+      gem install rake -v=0.9.2.2 --no-rdoc --no-ri
+      gem install rake-compiler --no-rdoc --no-ri
+      /var/lib/gems/1.8/gems/rake-0.9.2.2/bin/rake install
+    else
       gem install rake-compiler --no-rdoc --no-ri
       rake install
-#      /var/lib/gems/1.8/gems/rake-0.8.7/bin/rake install
+    fi
   fi
 fi
 
