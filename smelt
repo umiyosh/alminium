@@ -33,7 +33,7 @@ then
         exit 1
     else
         OS='rhel6'
-        echo "RHEL 6.x / CentOS 6.x / OEL 6.xが検出されました。"        
+        echo "RHEL 6.x / CentOS 6.x / OEL 6.xが検出されました。"
     fi
 elif [ -f /etc/system-release ]
 then
@@ -54,14 +54,14 @@ then
     echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
     echo ""
     echo "途中MySQLのパスワードを聞かれたら空のままエンターキーを押してください。"
-    echo "MySQLのパスワードを設定するとインストールに失敗します。"    
+    echo "MySQLのパスワードを設定するとインストールに失敗します。"
     echo "パスワードを設定したい場合は、ALMiniumのインストール完了後行ってください"
 else
     CHK=`sw_vers | awk '$1 = "ProductName"{ _OS = $2 " " $3 " " $4; getline; print _OS,$2; exit }'`
-    if [ $CHK != '' ]
+    if [ "$CHK" != '' ]
     then
       OS='mac'
-      APACHE_USER=www	
+      APACHE_USER=www
       MYSQLD=/opt/local/share/mysql5/mysql/mysql.server
       CPCMD='cp -Rf'
       RMCMD='rm -Rf'
@@ -122,10 +122,10 @@ echo ""
 #if [ $TYPE = "" ]
 #then
 #    echo "redmine もしくは chiliprojectを選択してください。"
-#    echo 
+#    echo
 #    echo " 1. chiliproject"
 #    echo " 2. redmine"
-#    echo 
+#    echo
 #    echo -n "番号を入力してください: "
 #
 #    read TYPE
@@ -138,7 +138,7 @@ case $TYPE in
         ;;
 
     2|redmine)
-        TYPE=redmine	
+        TYPE=redmine
         ;;
     *)
         echo "未定義のチケットシステムが選択されました。"
@@ -218,7 +218,7 @@ cp config/scm.yml $INSTALL_DIR/config/
 $CPCMD theme/* $INSTALL_DIR/public/themes/
 
 # setup
-pushd . 
+pushd .
 cd $INSTALL_DIR
 rake generate_session_store
 rake db:migrate
@@ -252,4 +252,4 @@ source inst-script/$OS/post-install
 #if [ "$CHK" = '' ]
 #then
 #  echo "* * * * * /opt/alminium/extra/svn/reposman.rb -g apache -o apache -s /var/opt/alminium/git -u /var/opt/alminium/git -r localhost --scm git" >> /var/spool/cron/root
-#fi  
+#fi
