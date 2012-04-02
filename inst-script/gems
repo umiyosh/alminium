@@ -8,31 +8,19 @@ VER=(`grep -v "^#" config/rubygems.lst | awk -F, '{print $2}'`)
 for (( i = 0; i < ${#NAME[@]}; ++i ))
 do
   NAME=${NAME[$i]}
-  VER=${VER[$i]} 
-  case $OS in
-  rhel6|debian)
-    if [ "$VER" = "-" ]
-    then
-      gem install $NAME --no-rdoc --no-ri
-    else 
-      gem install $NAME -v=$VER --no-rdoc --no-ri
-    fi
-    ;;
-  mac)
-    if [ "$VER" = "-" ]
-    then
-      sudo gem install $NAME --no-rdoc --no-ri
-    else 
-      sudo gem install $NAME -v=$VER --no-rdoc --no-ri
-    fi
-    ;;
-  esac
+  VER=${VER[$i]}
+  if [ "$VER" = "-" ]
+  then
+    gem install $NAME --no-rdoc --no-ri
+  else
+    gem install $NAME -v=$VER --no-rdoc --no-ri
+  fi
 done
 
 
 ## install mod_passenger
 case $OS in
-    rhel6) 
+    rhel6)
         if [ ! -f /usr/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
             gem install passenger --no-rdoc --no-ri
@@ -42,10 +30,10 @@ case $OS in
     mac)
         if [ ! -f /opt/local/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
-            sudo gem install passenger --no-rdoc --no-ri
+            gem install passenger --no-rdoc --no-ri
             export APXS2=/opt/local/apache2/bin/apxs
             export PATH=/opt/local/apache2/bin:$PATH
-            sudo passenger-install-apache2-module --auto
+            passenger-install-apache2-module --auto
         fi
         ;;
 esac
@@ -56,17 +44,19 @@ cd cache
 if [ ! -f redcarpet ]
 then
   git clone https://github.com/alminium/redcarpet.git
-  cd redcarpet 
+  cd redcarpet
 
   case $OS in
-    rhel6) 
-      rake install 
+    rhel6)
+      rake install
       ;;
     mac)
-      gem install nokogiri --no-rdoc --no-ri -- --with-xml2-include=/opt/local/include/libxml2 --with-xml2-lib=/opt/local/lib --with-xslt-dir=/opt/local
-      sudo gem install rake -=0.8.7 --no-rdoc --no-ri
-      sudo gem install rake-compiler --no-rdoc --no-ri
-      sudo /opt/local/bin/rake install    
+      gem install nokogiri --no-rdoc --no-ri \
+          -- --with-xml2-include=/opt/local/include/libxml2 \
+          --with-xml2-lib=/opt/local/lib --with-xslt-dir=/opt/local
+      gem install rake -v=0.8.7 --no-rdoc --no-ri
+      gem install rake-compiler --no-rdoc --no-ri
+      /opt/local/bin/rake install
       ;;
     debian)
     DEB_VER=`cat /etc/debian_version`
