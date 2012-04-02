@@ -4,13 +4,13 @@ cp inst-script/mac/scm.yml.mac $INSTALL_DIR/config/scm.yml
 
 if [ ! -f /opt/local/apache2/Authn/Redmine.pm ]
 then
-  sudo mkdir -p /opt/local/apache2/Authn
-  sudo cp config/Redmine.pm /opt/local/apache2/Authn/
+  mkdir -p /opt/local/apache2/Authn
+  cp config/Redmine.pm /opt/local/apache2/Authn/
 fi
 
 if [ ! -f /opt/local/apache2/conf/redmine.conf ]
 then
-  sudo mkdir -p /opt/local/apache2/conf
+  mkdir -p /opt/local/apache2/conf
   PASSENGER_VERSION=`passenger-config  --version`
 
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/mac/httpd-redmine.conf | \
@@ -35,5 +35,12 @@ then
   fi
 fi
 
-sudo launchctl load -w /Library/LaunchDaemons/org.macports.apache2.plist
-sudo /opt/local/apache2/bin/apachectl restart
+pushd .
+
+cd /opt/local/apache2/libexec
+/opt/local/apache2/bin/apxs -a -e -n "perl" mod_perl.so
+
+popd
+
+launchctl load -w /Library/LaunchDaemons/org.macports.apache2.plist
+/opt/local/apache2/bin/apachectl restart
