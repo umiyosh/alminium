@@ -4,11 +4,10 @@ subversion +mod_dav_svn +tools
 mercurial
 unzip
 mysql5
-mysql5-devel
 mysql5-server
 tiff -macosx imagemagick +q8 +gs +wmf
 ruby
-rb_rubygems
+rb-rubygems
 python27
 mod_wsgi +python27
 perl5.12 +threads +shared
