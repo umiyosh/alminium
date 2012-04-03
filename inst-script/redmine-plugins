@@ -13,14 +13,14 @@ for (( i = 0; i < ${#DIR_NAME[@]}; ++i ))
 do
   FILE_NAME=`echo ${URL_NAME[$i]} | sed -e "s/.*\/\(.*$\)/\1/"`
   EXT=`echo ${URL_NAME[$i]} | sed -e "s/.*\.\(.*$\)/\1/"`
-    case $EXT in 
+    case $EXT in
     zip)
         if [ ! -f cache/$FILE_NAME ]
         then
           wget -P cache ${URL_NAME[$i]}
         fi
         yes | unzip -q cache/$FILE_NAME
-        rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         rm -f $FILE_NAME
         ;;
@@ -31,7 +31,7 @@ do
           wget -P cache ${URL_NAME[$i]}
         fi
         tar zxf cache/$FILE_NAME
-        rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         rm -f $FILE_NAME
         ;;
@@ -41,11 +41,11 @@ do
           git clone ${URL_NAME[$i]} cache/${DEST_NAME[$i]}
         fi
         if [ -d cache/${DEST_NAME[$i]} ]
-        then        
+        then
           cd cache/${DEST_NAME[$i]}
           git checkout ${DIR_NAME[$i]}
           cd ../..
-          rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}        
+          $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
           cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
         fi
         ;;
@@ -60,7 +60,7 @@ do
             cd ../..
           fi
         fi
-        rm -fr $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
         ;;
     esac
