@@ -23,6 +23,7 @@ if [ -f /etc/redhat-release ]
 then
     APACHE_USER=apache
     MYSQLD=mysqld
+    MYSQL='mysql'
     CHK=`egrep "CentOS release 5|Red Hat Enterprise Linux .* 5" /etc/redhat-release`
     if [ "$CHK" != '' ]
     then
@@ -39,6 +40,7 @@ elif [ -f /etc/system-release ]
 then
     APACHE_USER=apache
     MYSQLD=mysqld
+    MYSQL='mysql'
     CHK=`egrep "Amazon Linux AMI" /etc/system-release`
     if [ "$CHK" != '' ]
     then
@@ -50,6 +52,7 @@ then
     OS='debian'
     APACHE_USER=www-data
     MYSQLD=mysql
+    MYSQL='mysql -u root -p'
     echo "Debian / Ubuntu が検出されました。"
     echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
     echo ""
@@ -62,6 +65,7 @@ else
     then
 	OS='mac'
 	MYSQLD='mysql5'
+	MYSQL='mysql'
 	CPCMD='cp -Rf'
 	RMCMD='rm -Rf'
 	echo "${CHK}が検出されました。"
@@ -168,7 +172,7 @@ fi
 
 /etc/init.d/$MYSQLD start
 
-mysql < config/createdb.sql
+$MYSQL < config/createdb.sql
 
 # install chiliproject
 mkdir -p $INSTALL_DIR
