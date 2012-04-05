@@ -22,7 +22,7 @@ fi
 if [ -f /etc/redhat-release ]
 then
     APACHE_USER=apache
-    MYSQLD=mysqld
+    MYSQLD='/etc/init.d/mysqld'
     MYSQL='mysql'
     CHK=`egrep "CentOS release 5|Red Hat Enterprise Linux .* 5" /etc/redhat-release`
     if [ "$CHK" != '' ]
@@ -39,7 +39,7 @@ then
 elif [ -f /etc/system-release ]
 then
     APACHE_USER=apache
-    MYSQLD=mysqld
+    MYSQLD='/etc/init.d/mysqld'
     MYSQL='mysql'
     CHK=`egrep "Amazon Linux AMI" /etc/system-release`
     if [ "$CHK" != '' ]
@@ -51,13 +51,14 @@ elif [ -f /etc/debian_version ]
 then
     OS='debian'
     APACHE_USER=www-data
-    MYSQLD=mysql
+    MYSQLD='/etc/init.d/mysql'
     MYSQL=`which mysql`
     if [ "$MYSQL" = "" ]
     then
       MYSQL=`which mysql5`
     fi
-    MYSQL="$MYSQL -u root -p"
+#    TODO: -u -pを指定するとcreatedb.sqlの読み込みに失敗する
+#    MYSQL="$MYSQL -u root -p"  
     echo "Debian / Ubuntu が検出されました。"
     echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
     echo ""
@@ -233,7 +234,7 @@ popd
 source inst-script/redmine-plugins
 
 # Customize
-$MYSQLCMD alminium < config/init.mysql
+$MYSQL alminium < config/init.mysql
 
 mkdir -p /etc/opt/alminium
 $CPCMD etc/* /etc/opt/alminium/
