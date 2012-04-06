@@ -27,5 +27,7 @@ redmine_commit_relation_editor,redmine_commit_relation_editor,https://bitbucket.
 redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
 open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
 redmine_charts,master,https://github.com/cforce/redmine_charts.git
+redmine_local_avatar,master,https://github.com/alminium/redmine_local_avatars.git
+redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
