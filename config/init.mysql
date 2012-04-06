@@ -89,7 +89,10 @@ REPLACE INTO settings(name,value,updated_on) VALUES ('user_format','lastname_fir
 REPLACE INTO settings(name,value,updated_on) VALUES ('commit_logtime_enabled',1,current_date);     
 REPLACE INTO settings(name,value,updated_on) VALUES ('commit_logtime_activity_id',0,current_date);
 REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_spent_time_column','--- !map:HashWithIndifferentAccess\nshow_bottom_summary_line_spent_hours: "1"\nshow_bottom_summary_line_estimated_hours: "1"\nshow_bottom_summary_line_on_issuelists: "1"\nenable_spent_hours_column: "1"\nshow_bottom_summary_line_backlogs_remaining_hours: "1"',current_date);
-REPLACE INTO settings(name,value,updated_on) VALUES ('issue_done_ratio','issue_status',current_date);     
+REPLACE INTO settings(name,value,updated_on) VALUES ('issue_done_ratio','issue_status',current_date);
+REPLACE INTO settings(name,value,updated_on) VALUES ('commit_fix_done_ratio','100',current_date);
+REPLACE INTO settings(name,value,updated_on) VALUES ('commit_fix_status_id','5',current_date);
+REPLACE INTO settings(name,value,updated_on) VALUES ('commit_fix_keywords','fixes,closes',current_date);
 REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_xls_export','--- !map:HashWithIndifferentAccess \nissues_limit: "0"\ndate_format: YYYYMMDD\nexport_name: export_name\n',current_date);
 UPDATE enumerations SET is_default = 1 WHERE name = '開発作業';
 REPLACE INTO settings(name,value,updated_on) VALUES ('welcome_text','
