@@ -45,6 +45,7 @@ Code Review  |コードレビュー支援
 Redcarpet Wiki Formatter|GitHubのMarkdown Wikiフォーマットを利用
 MSProjects   |MS Projectのファイルをインポート
 XLS export   |Excelでチケットを出力
+Git Branch Hook| Gitのブランチでの作業をチケットに連動させます
 
 その他のプラグインついては、<a href="alminium/tree/master/config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
 
@@ -52,7 +53,7 @@ XLS export   |Excelでチケットを出力
 
  * RHEL6互換環境(OEL,SL,CentOSなど含む)
  * Debian GNU/Linux 6.0
- * Ubuntu 10.10以降
+ * Ubuntu 12.04以降
  * Amazon AMI Linux 2011.09
 
 ## 使い方
@@ -73,6 +74,14 @@ XLS export   |Excelでチケットを出力
 
 インストールが終了すると、http://localhost/ (SSLを有効にした場合https://localhost/ )にWebブラウザで接続するとチケットシステムにアクセスできます。管理者権限でログインすると、設定やプロジェクトの作成を行うことができます。管理者情報は下記の通りです。
 
+### プロキシがある場合
+
+プロキシ環境下で利用する場合は、次のようにしてプロキシを設定してから上記の設定を行なってください。
+
+```
+$ http_proxy=http://okamototk:password/proxyhost.com:8080/
+$ https_proxy=http://okamototk:password/proxyhost.com:8080/
+```
 
 ### デフォルトの管理者情報
 
@@ -84,16 +93,19 @@ XLS export   |Excelでチケットを出力
 リポジトリの作成は、プロジェクトの作成画面から可能です。リポジトリパスは、下記の通りです。
 
  * Gitのリポジトリパス
-  * http://<ホスト名>/git/<プロジェクト名>
+  * https://<ホスト名>/git/<プロジェクト名>
+  * (ex. $ git clone https://hostname/git/yourproject)
  * Subversionのリポジトリパス
-  * http://<ホスト名>/svn/<プロジェクト名>
+  * https://<ホスト名>/svn/<プロジェクト名>
+  * (ex. $ svn checkout https://hostname/svn/yourproject)
  * Mercurialのリポジトリパス
-  * http://<ホスト名>/hg/<プロジェクト名>
+  * https://<ホスト名>/hg/<プロジェクト名>
+  * (ex. $ hg clone https://hostname/hg/yourproject)
 
-インストール時にSSLを有効にした場合httpsしか利用できません。httpの代わりにhttpsを利用してください。gitをhttpsで利用する場合、不正な証明書を利用しているというエラーが発生しているので、クライアント側で下記のコマンドを実行し、証明書の検証を無効にしてください。
+インストール時にSSLを無効にした場合は、httpを利用してください。gitをhttpsで利用する場合、不正な証明書を利用しているというエラーが発生しているので、クライアント側で下記のコマンドを実行し、証明書の検証を無効にしてください。
 
 ```
-$ git config --global http.sslVerify false
+$ git config --global http.sslverify false
 ```
 
 **管理者・開発者のロールのユーザをリポジトリに対応するRedmineプロジェクトに追加することにより、コミット権を与えることができます**。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、アクセス権を付与することができます。
