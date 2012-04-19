@@ -8,7 +8,7 @@ rmagick,-
 rdoc,-
 mysql,-
 # import excel plugin
-#fastcsv,-
+fastercsv,-
 spreadsheet,-
 # for backlogs plugin
 open-uri-cached,-
