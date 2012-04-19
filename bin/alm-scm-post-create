@@ -9,6 +9,9 @@ case "$2" in
 /opt/alminium/bin/alm-sync-scm
 " > $1/hooks/post-receive
     chmod u+x $1/hooks/post-receive
+    mv $1/hooks/update.sample $1/hooks/update
+    echo $1 | sed 's/.*\///' > $1/description
+    git --git-dir=$1 config --bool hooks.allowunannotated true
   ;;
 
   svn)
