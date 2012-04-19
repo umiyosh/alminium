@@ -52,11 +52,6 @@ then
     OS='debian'
     APACHE_USER=www-data
     MYSQLD='/etc/init.d/mysql'
-    MYSQL=`which mysql`
-    if [ "$MYSQL" = "" ]
-    then
-      MYSQL=`which mysql5`
-    fi
 #    TODO: -u -pを指定するとcreatedb.sqlの読み込みに失敗する
 #    MYSQL="$MYSQL -u root -p"  
     echo "Debian / Ubuntu が検出されました。"
@@ -178,6 +173,15 @@ then
 fi
 
 $MYSQLD start
+
+if [ "$MYSQL" = "" ]
+then
+  MYSQL=`which mysql`
+  if [ "$MYSQL" = "" ]
+  then
+    MYSQL=`which mysql5`
+  fi
+fi
 
 $MYSQL < config/createdb.sql
 
