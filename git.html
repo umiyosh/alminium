@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;
+charset=utf-8" />
+<meta name="keywords" content="キーワード" />
+<meta name="description" content="紹介文" />
+<title>ALMinium</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<!-- メイン -->
+
+<div id="main">
+
+
+<!-- ヘッダー -->
+
+<div id="header">
+
+</div>
+
+<div id="header-menu">
+   <ul>
+    <li><a href="https://github.com/alminium/alminium/">HOME</a></li>
+    <li><a href="http://togetter.com/li/219517">お客様の声</a></li>
+    <li><a href="https://github.com/alminium/alminium/">ダウンロード</a></li>
+    <li><a href="https://github.com/alminium/alminium/">よくある質問</a></li>
+    <li><a href="https://github.com/alminium/alminium/issues">お問い合わせ</a></li>
+   </ul>
+</div>
+
+<center>
+<img src="img/head_img_slim_alm.jpg" alt="" class="photo01" border="0" />
+</center>
+
+
+<!-- ヘッダー終わり -->
+
+
+<!-- コンテンツ -->
+
+<!-- メインコンテンツ -->
+
+<div id="container">
+  <div id="contents">
+
+<h1>ALMiniumをGitの共有リポジトリとして使う</h1>
+<p>
+  分散バージョン管理システムとして、Gitが注目を浴びています。しかしながら、コマンドを使えるようになった開発者は増えてきても、<b>Gitのリポジトリをきちんと作成して運用できる人はほとんどいない</b>ように思います(<b>もちろんできている人もいますよ！！</b>)。
+</p>
+<p>
+  ところで、皆さんはGitの共有リポジトリとして、何をお使いでしょうか? sshによる共有は手軽ですが、リポジトリ毎に読み書きの制御ができなかったり、<b>若干不便なところがあります</b>。今日はGitの共有リポジトリとしてALMiniumを使うメリットをご紹介します。
+</p>
+<p>
+  <b>開発で本格的なGitリポジトリ運用をしたいと思っている方は、是非一度お読み下さい！！</b>
+    
+</p>
+<h2>なぜALMiniumがGitリポジトリツールとして利用されるのか?</h2>
+<p>
+ALMiniumの利用プロジェクトは公開半年にして既に100プロジェクトを超えるプロジェクトで利用されています。その1/3のプロジェクトでGitが利用されています。Gitの共有リポジトリの管理としてALMiniumを利用しているプロジェクトも多いです。なぜALMiniumがGitリポジトリ管理ツールとして利用されるのでしょうか? その秘密を探って行きましょう(※あくまで開発者の主観です)。
+</p>
+<h3>其ノ壱:手軽さ</h3>
+<p>
+  ALMiniumの最大の特徴は<b>その手軽さです</b>b。ALMiniumを使えば簡単にGitのリポジトリサーバがセットアップできます。<b>プロジェクト作成画面からリポジトリにGitを選択するだけ</b>です。
+</p>
+<img src="docimg/git/createrepo.png">
+
+<h3>其ノ弐:簡単なユーザ管理</h3>
+<p>
+  Redmineのユーザを作成し、<b>プロジェクトに割り当てるだけでリポジトリのアクセス制御を行え</b>ます。</p>
+<img src="http://www.atmarkit.co.jp/fjava/rensai4/scrum03/09.gif">
+<p>
+  <b>管理者・開発者</b>はリポジトリの読み書き権を、<b>閲覧者</b>はリポジトリの読み込み権のみ持っています。また、テスターなど独自に追加したロールにもリポジトリの
+アクセス権を設定することもできます。
+</p>
+<h3>其ノ参:ウェブ対応</h3>
+<p>
+  ALMiniumはHTTP/HTTPSを利用してGitリポジトリを公開します。オフィス環境によっては、SSHプロトコルが使えないところも沢山あると思います。そんな環境でも<b>HTTP/HTTPSさえ通れば快適にGitを利用できます</b>。プロキシ越えも問題ありません。
+</p>
+ <h3>其ノ四:セキュア</h3>
+ <p>
+   <b>手軽にHTTPSで通信を暗号化</b>bできます。また、デフォルトでリモートブランチとタグの削除を無効化しています。共有リポジトリ上に一度作成された<b>ブランチやタグを勝手に削除されない</b>ようになっています。
+ </p>
+ <h3>其ノ五: 様々オプション</h3>
+ <p>
+   ALMiniumは<b>Gitに関連する様々な機能をオプションで提供</b>します。WebからGitリポジトリを閲覧することができるリポジトリビュワー、<a href="http://www.r-labs.org/projects/r-labs/wiki/Code_Review">コードレビューシステム</a>、<a href="https://github.com/mikoto20000/redmine_git_branch_hook">Gitのコミットとブランチの高度な統合</a>をサポートします。
+ </p>
+ <h2>オープン性</h2>
+ <p>
+   ALMiniumは、これらの機能を<b>無償かつオープンソース</b>で提供します。ALMiniumはRedmine/Gitによる開発を「汎用化したツール」ですが、カスタマイズ性が高いので、みなさんの<b>個々のプロジェクトに応じた「最適化」</b>を行うことができます。
+また、ALMiniumの開発はGitHub上でオープンに行われており誰でも開発に参加することができます。
+ </p>
+ <h2>チケットシステムとの高度な連携</h2>
+ <p>
+Gitでコミットする際に、
+<pre>
+  <b>コミットメッセージ(refs #2349)</b>
+</pre>
+のようにチケット番号を書くことにより、コミットとチケットを対応づけることができます。チケット番号を入力するのが面倒な人は、
+<pre>
+$ git checkout -b <b>"hotfix/#2349"</b>
+(編集・コミット)
+$ git push -u origin <b>"hotfix/#2349"</b>
+</pre>
+このようにブランチで作業しブランチをプッシュするだけでチケットとコミットを対応づけることができます。
+</p>
+<img src="docimg/git/branch_relation.png" />
+<p>
+また、
+<pre>
+$ git checkout master
+$ git merge <b>--no-ff hotfix/#2349</b>
+$ git push 
+</pre>
+と、<b>ブランチをマージし、ALMinium上のGitリポジトリへプッシュするだけでチケットをクローズ</b>します。ブランチでの作業とマージによるブランチでの作業の終了、ブランチとチケットのライフサイクルを高度に統合しています。なお、チケットの自動クローズ機能を利用する場合は、<b>--no-ffオプションによりファーストフォワードのマージを無効</b>にしてください。
+</p>
+<h2>インストール・使い方</h2>
+<p>
+インストールについては、若干冗長な記述ですが<a href="http://www.atmarkit.co.jp/fjava/rensai4/scrum03/02.html">「スクラムやるならRedmineとALMinium！」</a>をご覧ください。
+
+プロジェクト作成時に、リポジトリに「Git」を指定するだけでリポジトリが作成されます。
+作成したリポジトリは、次のようにしてアクセスすることができます。
+
+<pre>
+$ git config --global <b>http.sslverify false</b>
+(証明書の検証を無効化)
+$ git clone https://&lt;ユーザ名&gt;@&lt;alminiumのホスト名&gt;/git/<プロジェクト名>
+</pre>
+ALMiniumは自前で作成した証明書をHTTPSの通信に利用します。<b>証明書の検証を無効にしないとエラーになる</b>ので注意してください。また、<b>アクセスしたいユーザをプロジェクトに追加して</b>おいてください。
+
+例えば、myprojという名前のプロジェクトにadminユーザでアクセスするには、次のようにします。
+<pre>
+$ git clone https://admin@alminiumhost/git/myproj
+</pre>
+
+必要に応じてプロキシの設定を行なってください。
+<pre>
+$ export https_proxy=http://proxyuser:passwd@proxyhost:8080/
+</pre>
+
+</p>
+
+<br />
+<br />
+<a href="https://twitter.com/share" class="twitter-share-button"
+data-via="mikoto20000" data-lang="ja">ツイート</a>
+<script>!function(d,s,id){var
+js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<br />
+</p>
+<!--
+<p>
+2009.4.12 <a href="#">ホームページをリニューアルしました。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.4.10 <a href="#">新入社員募集ページを更新しました。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.3.26 <a href="#">新商品についてのプレスリリースをご覧ください。</a><br />
+<img src="img/line.gif" alt="" border="0" />
+2009.3.10 <a href="#">新商品を３シリーズ追加しました！</a><br />
+<img src="img/line.gif" alt="" border="0" />
+</p>
+-->
+
+
+  </div>
+
+<!-- メインコンテンツ終わり -->
+
+<!-- メニュー -->
+
+  <div id="menu">
+
+<div class="menulist">
+   <h2>コンテンツ・メニュー</h2>
+     <a href="https://github.com/alminium/alminium/">HOME</a>
+     <a href="http://togetter.com/li/219517">お客様の声</a>
+     <a href="https://github.com/alminium/alminium/">ダウンロード</a>
+     <a href="https://github.com/alminium/alminium/">よくある質問</a>
+     <a href="https://github.com/alminium/alminium/issues">お問い合わせ</a>
+</div>
+
+<!--
+<div class="menu_free">
+   <h2>フリースペース</h2>
+<p>例えば、バナー画像や、アクセス情報などに利用できるスペースです。</p>
+</div>
+-->
+
+<div class="menulist">
+   <h2>お役立ちリンク</h2>
+<a href="http://www.r-labs.org/">r-labs</a>
+<a href="http://www.redmine.org/">Redmine Project</a>
+</div>
+
+  </div>
+
+<!-- メニュー終わり -->
+
+</div>
+
+<!-- コンテンツ終わり -->
+
+<!-- フッター -->
+
+<div id="footer">
+Copyright (C) 2011 ALMinium Project All Rights Reserved.　design by <a href="http://tempnate.com/">tempnate</a>
+</div>
+
+<!-- フッター終わり -->
+
+</div>
+
+<!-- メイン終わり -->
+
+</body>
+</html>
