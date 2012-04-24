@@ -29,3 +29,4 @@ chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
 
+bash inst-script/rhel6/ruby1.9-install
