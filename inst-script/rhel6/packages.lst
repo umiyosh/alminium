@@ -53,3 +53,6 @@ libxml2-devel
 libxslt-devel
 # to build mysql gem
 mysql-devel
+# to run bundle
+#postgresql-devel
+#sqlite-devel
