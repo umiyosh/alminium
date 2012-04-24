@@ -3,7 +3,7 @@ production-sqlite:
   database: db/alminium.sqlite3
 
 production:
-  adapter: mysql
+  adapter: mysql2
   database: alminium
   host: localhost
   username: alminium
