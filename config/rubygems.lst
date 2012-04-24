@@ -1,7 +1,8 @@
 # for redmine
+bundler,- 
+rake,-
+rake-compiler-
 rack,1.1.2
-rake,0.9.2
-rake-compiler,0.8.0
 #rails,2.3.14
 rdoc-data,-
 rmagick,-
@@ -19,3 +20,5 @@ activeresource,-
 system_timer,-
 # for redcarpet plugin
 #redcarpet,2.0.0b5
+# for ruby 1.9.x
+nokogiri,-
