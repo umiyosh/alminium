@@ -72,6 +72,8 @@ pushd .
 
 cd $INSTALL_DIR
 
+bundle install --without development test postgresql sqlite
+
 rake db:migrate_plugins
 rake generate_session_store
 rake config/initializers/session_store.rb
