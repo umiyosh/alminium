@@ -5,16 +5,16 @@ subversion
 mercurial
 mysql-client
 mysql-server
-ruby
-ruby-dev
-rubygems
-librmagick-ruby1.8
-rake
+ruby1.9.3
+#ruby1.9.3-dev
+#rubygems
+#librmagick-ruby1.8
+#rake
 sudo
 patch
 #g++
 make
-libmysql-ruby
+#libmysql-ruby
 libapache2-mod-auth-mysql
 libapache2-mod-passenger
 libapache2-svn
@@ -28,6 +28,6 @@ libdigest-sha-perl
 libapache-dbi-perl
 #gcc
 # for backlogs
-libnokogiri-ruby
+#libnokogiri-ruby
 libical0
 python-docutils

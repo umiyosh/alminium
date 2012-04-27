@@ -74,13 +74,13 @@ cd $INSTALL_DIR
 
 bundle install --without development test postgresql sqlite
 
-rake db:migrate_plugins
-rake generate_session_store
-rake config/initializers/session_store.rb
-rake db:migrate
-rake db:migrate:upgrade_plugin_migrations
-rake tmp:cache:clear
-rake tmp:sessions:clear
-rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
-rake redmine:backlogs:generate_chart_data
+$RAKE db:migrate_plugins
+$RAKE generate_session_store
+$RAKE config/initializers/session_store.rb
+$RAKE db:migrate
+$RAKE db:migrate:upgrade_plugin_migrations
+$RAKE tmp:cache:clear
+$RAKE tmp:sessions:clear
+$RAKE redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
+$RAKE redmine:backlogs:generate_chart_data
 popd

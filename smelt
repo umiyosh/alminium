@@ -172,6 +172,13 @@ then
   touch gems.installed
 fi
 
+export RAKE=`which rake1.9.3`
+
+if [ "$RAKE" = "" ]
+then
+  RAKE=rake
+fi
+
 $MYSQLD start
 
 if [ "$MYSQL" = "" ]
@@ -229,9 +236,9 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 pushd .
 cd $INSTALL_DIR
 bundle install --without development test postgresql sqlite
-rake generate_session_store
-rake db:migrate
-echo "ja" |RAILS_ENV=production rake redmine:load_default_data
+$RAKE generate_session_store
+$RAKE db:migrate
+echo "ja" |RAILS_ENV=production $RAKE redmine:load_default_data
 
 popd
 
