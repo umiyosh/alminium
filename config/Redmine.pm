@@ -518,7 +518,15 @@ sub get_project_identifier {
 
     my $location = $r->location;
     my ($identifier) = $r->uri =~ m{$location/*([^/.]+)};
-    $identifier;
+    my $dbh = connect_database($r);
+    my $sth = $dbh->prepare(
+        "SELECT name FROM projects WHERE id = (SELECT project_id FROM repositories WHERE URL LIKE ?);"
+    );
+    $sth->execute('%/'.$identifier);
+    my @row = $sth->fetchrow_array;
+    $sth->finish();
+    $dbh->disconnect();
+    $row[0];
 }
 
 sub connect_database {
