@@ -17,7 +17,6 @@ holidays,1.0.3
 prawn,-
 icalendar,-
 activeresource,-
-system_timer,-
 # for redcarpet plugin
 #redcarpet,2.0.0b5
 # for ruby 1.9.x
