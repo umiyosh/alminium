@@ -520,7 +520,7 @@ sub get_project_identifier {
     my ($identifier) = $r->uri =~ m{$location/*([^/]+)};
     my $dbh = connect_database($r);
     my $sth = $dbh->prepare(
-        "SELECT name FROM projects WHERE id = (SELECT project_id FROM repositories WHERE URL LIKE ?);"
+        "SELECT name FROM projects WHERE id = (SELECT project_id FROM repositories WHERE url LIKE ? LIMIT 1);"
     );
     $identifier =~ s/_/\\_/g;
     $sth->execute('%/'.$identifier);
