@@ -80,5 +80,4 @@ rake db:migrate:upgrade_plugin_migrations
 rake tmp:cache:clear
 rake tmp:sessions:clear
 rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
-rake redmine:backlogs:generate_chart_data
 popd
