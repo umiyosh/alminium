@@ -16,7 +16,7 @@ then
     mv -f /tmp/epel.repo /etc/yum.repos.d/epel.repo
   fi
 else
-  rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
+  rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-6.noarch.rpm
 fi
 yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
 
