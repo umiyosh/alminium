@@ -74,13 +74,10 @@ cd $INSTALL_DIR
 
 bundle install --without development test postgresql sqlite
 
-pushd .
-
-cd /vendor/plugins/redmine_backlogs
-
-bundle install --without development test postgresql sqlite
-
-popd
+#pushd .
+#cd /vendor/plugins/redmine_backlogs
+#bundle install --without development test postgresql sqlite
+#popd
 
 rake db:migrate_plugins
 rake generate_session_store
