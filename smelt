@@ -53,7 +53,7 @@ then
     APACHE_USER=www-data
     MYSQLD='/etc/init.d/mysql'
 #    TODO: -u -pを指定するとcreatedb.sqlの読み込みに失敗する
-#    MYSQL="$MYSQL -u root -p"  
+#    MYSQL="$MYSQL -u root -p"
     echo "Debian / Ubuntu が検出されました。"
     echo "インストールに失敗するかも知れませんが、お許しくださいm(__)m"
     echo ""
@@ -221,6 +221,7 @@ then
   $RMCMD cache/redmine-$RM_VER
 fi
 
+cp config/Gemfile.local $INSTALL_DIR/
 cp config/database.yml $INSTALL_DIR/config/
 cp config/scm.yml $INSTALL_DIR/config/
 $CPCMD theme/* $INSTALL_DIR/public/themes/
