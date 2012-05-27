@@ -230,7 +230,7 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 pushd .
 cd $INSTALL_DIR
 bundle install --without development test postgresql sqlite
-rake generate_session_store
+rake generate_secret_token
 rake db:migrate
 echo "ja" |RAILS_ENV=production rake redmine:load_default_data
 
