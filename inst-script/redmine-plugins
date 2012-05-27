@@ -80,14 +80,13 @@ bundle install --without development test postgresql sqlite
 #popd
 
 rake redmine:plugins:migrate
-rake db:migrate_plugins
-rake generate_session_store
-rake config/initializers/session_store.rb
+rake generate_secret_token
+#rake config/initializers/session_store.rb
 rake db:migrate
-rake db:migrate:upgrade_plugin_migrations
+#rake db:migrate:upgrade_plugin_migrations
 rake tmp:cache:clear
 rake tmp:sessions:clear
 #rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
-rake redmine:backlogs:install labels=false
+#rake redmine:backlogs:install labels=false
 
 popd
