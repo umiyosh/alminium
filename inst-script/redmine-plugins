@@ -74,18 +74,11 @@ cd $INSTALL_DIR
 
 bundle install --without development test postgresql sqlite
 
-#pushd .
-#cd /vendor/plugins/redmine_backlogs
-#bundle install --without development test postgresql sqlite
-#popd
-
-rake redmine:plugins:migrate
-rake generate_secret_token
-#rake config/initializers/session_store.rb
-rake db:migrate
-#rake db:migrate:upgrade_plugin_migrations
-rake tmp:cache:clear
-rake tmp:sessions:clear
+$RAKE redmine:plugins:migrate
+$RAKE generate_secret_token
+$RAKE db:migrate
+$RAKE tmp:cache:clear
+$RAKE tmp:sessions:clear
 #rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
 #rake redmine:backlogs:install labels=false
 
