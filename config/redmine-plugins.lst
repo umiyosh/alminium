@@ -3,7 +3,7 @@
 # 下記の形式で記述:
 #
 #   プラグインディレクトリ名,アーカイブディレクトリ名 or タグ名,URL
-# 
+#
 # プラグインディレクトリ名はvendor/pluginsに置くプラグインの名前
 # アーカイブディレクトリ名はtgz/zipファイルを展開したときのディレクトリ名
 #redmine_wiki_extensions,redmine_wiki_extensions,https://bitbucket.org/haru_iida/redmine_wiki_extensions/downloads/redmine_wiki_extensions-0.3.4.zip
@@ -11,7 +11,7 @@
 ##redmine_xls_export,master,https://github.com/two-pack/redmine_xls_export.git
 redmine_importer,master,https://github.com/farend/redmine_importer.git
 redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.7.zip
-##redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
+redmine_hudson,redmine_hudson,https://bitbucket.org/nobiinu_and/redmine_hudson/downloads/redmine_hudson-1.0.8.zip
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 #redmine_backlogs,v0.9.4,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
