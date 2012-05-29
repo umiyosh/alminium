@@ -14,11 +14,12 @@
 ##redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 #redmine_backlogs,master,https://github.com/backlogs/redmine_backlogs.git
-#redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
+redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 #redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
+redmine_scm_creator,master,https://github.com/okamototk/redmine_scm_creator.git
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
 #redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
-#redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
+redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 #redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 ##redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
 redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
@@ -28,6 +29,6 @@ redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_scre
 ##open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
 ##redmine_charts,master,https://github.com/cforce/redmine_charts.git
 ##redmine_local_avatar,master,https://github.com/dseifert/redmine_local_avatars.git
-#redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
+redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz

@@ -20,8 +20,8 @@ do
           wget -P cache ${URL_NAME[$i]}
         fi
         yes | unzip -q cache/$FILE_NAME
-        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
-        mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
+        mv ${DIR_NAME[$i]} $INSTALL_DIR/plugins/${DEST_NAME[$i]}
         rm -f $FILE_NAME
         ;;
 
@@ -31,8 +31,8 @@ do
           wget -P cache ${URL_NAME[$i]}
         fi
         tar zxf cache/$FILE_NAME
-        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
-        mv ${DIR_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
+        mv ${DIR_NAME[$i]} $INSTALL_DIR/plugins/${DEST_NAME[$i]}
         rm -f $FILE_NAME
         ;;
     git)
@@ -45,8 +45,8 @@ do
           cd cache/${DEST_NAME[$i]}
           git checkout ${DIR_NAME[$i]}
           cd ../..
-          $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
-          cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/
+          $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
+          cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/
         fi
         ;;
     *)
@@ -60,8 +60,8 @@ do
             cd ../..
           fi
         fi
-        $RMCMD $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
-        cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/vendor/plugins/${DEST_NAME[$i]}
+        $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
+        cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/${DEST_NAME[$i]}
         ;;
     esac
 done
@@ -74,19 +74,12 @@ cd $INSTALL_DIR
 
 bundle install --without development test postgresql sqlite
 
-#pushd .
-#cd /vendor/plugins/redmine_backlogs
-#bundle install --without development test postgresql sqlite
-#popd
-
-rake db:migrate_plugins
-rake generate_session_store
-rake config/initializers/session_store.rb
-rake db:migrate
-rake db:migrate:upgrade_plugin_migrations
-rake tmp:cache:clear
-rake tmp:sessions:clear
+$RAKE redmine:plugins:migrate
+$RAKE generate_secret_token
+$RAKE db:migrate
+$RAKE tmp:cache:clear
+$RAKE tmp:sessions:clear
 #rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
-rake redmine:backlogs:install labels=false
+#rake redmine:backlogs:install labels=false
 
 popd
