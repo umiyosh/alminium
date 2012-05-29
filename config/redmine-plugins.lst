@@ -21,7 +21,7 @@
 #redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 #redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 ##redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
-#redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
+redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
 #redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 #redmine_commit_relation_editor,redmine_commit_relation_editor,https://bitbucket.org/haru_iida/redmine_commit_relation_editor/downloads/redmine_commit_relation_editor-0.0.4.zip
 #redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
