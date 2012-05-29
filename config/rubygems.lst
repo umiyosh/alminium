@@ -1,23 +1,4 @@
 # for redmine
-bundler,- 
+bundler,-
 rake,-
 rake-compiler,-
-rack,1.1.2
-#rails,2.3.14
-rdoc-data,-
-rmagick,-
-rdoc,-
-mysql,-
-# import excel plugin
-fastercsv,-
-spreadsheet,-
-# for backlogs plugin
-open-uri-cached,-
-holidays,1.0.3
-prawn,-
-icalendar,-
-activeresource,-
-# for redcarpet plugin
-#redcarpet,2.0.0b5
-# for ruby 1.9.x
-nokogiri,-
