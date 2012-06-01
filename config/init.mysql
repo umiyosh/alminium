@@ -29,9 +29,17 @@ REPLACE INTO workflows (tracker_id,old_status_id,new_status_id,role_id)
  *       (バージョンによってUPDATEでないと動かなかったり、REPLACE
           でないと動かなかったりする)
  ********************************************************************/
-#UPDATE settings SET name='plugin_redmine_backlogs', value=' --- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: PEARL PE-8007\n:wiki_template: ""\n:story_trackers: \n- 2\n:task_tracker: 3\n:story_points: "1,2,3,5,8"\n:auto_assign_task: enabled\n' WHERE name = 'plugin_redmine_backlogs';
-REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs',' --- \n:points_burn_direction: down\n:taskboard_card_order: story_follows_tasks\n:card_spec: PEARL PE-8007\n:wiki_template: ""\n:story_trackers: \n- 2\n:task_tracker: 3\n:story_points: "1,2,3,5,8"\n:auto_assign_task: enabled\n',current_date);
-
+REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','---
+:story_trackers:
+- 2
+:task_tracker: 4
+:card_spec:
+:taskboard_card_order: story_follows_tasks
+:story_points: \'1,2,3,5,8\'
+:show_burndown_in_sidebar: enabled
+:points_burn_direction: down
+:wiki_template: \'\'
+:auto_assign_task: enabled\n',current_date);
 
 /*********************************************************************
  * コードレビューとコミットとチケットの関連のパーミッションの設定
