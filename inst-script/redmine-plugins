@@ -79,7 +79,7 @@ $RAKE generate_secret_token
 $RAKE db:migrate
 $RAKE tmp:cache:clear
 $RAKE tmp:sessions:clear
-#rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
-#rake redmine:backlogs:install labels=false
+touch /opt/alminium/backlogs.dev
+rake redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
 
 popd
