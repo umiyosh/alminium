@@ -16,7 +16,7 @@
 redmine_backlogs,master,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 #redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
-redmine_scm_creator,master,https://github.com/okamototk/redmine_scm_creator.git
+redmine_scm_plugin,master,https://github.com/okamototk/redmine_scm_plugin.git
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
 #redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
@@ -28,7 +28,7 @@ redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet
 #redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
 ##open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
 ##redmine_charts,master,https://github.com/cforce/redmine_charts.git
-##redmine_local_avatar,master,https://github.com/dseifert/redmine_local_avatars.git
+redmine_local_avatar,redmine-2.0.x,https://github.com/alminium/redmine_local_avatars.git
 redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
