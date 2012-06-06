@@ -3,7 +3,7 @@
 # 下記の形式で記述:
 #
 #   プラグインディレクトリ名,アーカイブディレクトリ名 or タグ名,URL
-# 
+#
 # プラグインディレクトリ名はvendor/pluginsに置くプラグインの名前
 # アーカイブディレクトリ名はtgz/zipファイルを展開したときのディレクトリ名
 #redmine_wiki_extensions,redmine_wiki_extensions,https://bitbucket.org/haru_iida/redmine_wiki_extensions/downloads/redmine_wiki_extensions-0.3.4.zip
@@ -13,7 +13,7 @@ redmine_importer,master,https://github.com/farend/redmine_importer.git
 redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.7.zip
 redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,f3fef0de,https://github.com/backlogs/redmine_backlogs.git 
+redmine_backlogs,f3fef0de,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
@@ -22,7 +22,7 @@ redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet
 redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
 redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
-redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
+redmine_lightbox,307d21a5f0,https://github.com/zipme/redmine_lightbox.git
 redmine_commit_relation_editor,redmine_commit_relation_editor,https://bitbucket.org/haru_iida/redmine_commit_relation_editor/downloads/redmine_commit_relation_editor-0.0.4.zip
 redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
 open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
