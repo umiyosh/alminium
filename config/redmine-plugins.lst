@@ -15,8 +15,7 @@
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 redmine_backlogs,master,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
-#redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
-redmine_scm_plugin,master,https://github.com/okamototk/redmine_scm_plugin.git
+redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
 #redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
