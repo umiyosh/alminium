@@ -308,7 +308,7 @@ sub request_is_read_only {
     my $is_read_only = $uri !~ m{^$location/*[^/]+/+(info/refs\?service=)?git\-receive\-pack$}o;
     return $is_read_only;
   } else {
-    # Old behaviour: check the HTTP method
+    # Standard behaviour: check the HTTP method
     my $method = $r->method;
     return defined $read_only_methods{$method};
   }
@@ -475,12 +475,19 @@ sub is_member {
           );
           $sthldap->execute($auth_source_id);
           while (my @rowldap = $sthldap->fetchrow_array) {
+            my $bind_as = $rowldap[3] ? $rowldap[3] : "";
+            my $bind_pw = $rowldap[4] ? $rowldap[4] : "";
+            if ($bind_as =~ m/\$login/) {
+              # replace $login with $redmine_user and use $redmine_pass
+              $bind_as =~ s/\$login/$redmine_user/g;
+              $bind_pw = $redmine_pass
+            }
             my $ldap = Authen::Simple::LDAP->new(
                 host    =>      ($rowldap[2] eq "1" || $rowldap[2] eq "t") ? "ldaps://$rowldap[0]:$rowldap[1]" : $rowldap[0],
                 port    =>      $rowldap[1],
                 basedn  =>      $rowldap[5],
-                binddn  =>      $rowldap[3] ? $rowldap[3] : "",
-                bindpw  =>      $rowldap[4] ? $rowldap[4] : "",
+                binddn  =>      $bind_as,
+                bindpw  =>      $bind_pw,
                 filter  =>      "(".$rowldap[6]."=%s)"
             );
             my $method = $r->method;
@@ -516,18 +523,11 @@ sub is_member {
 sub get_project_identifier {
     my $r = shift;
 
+    my $cfg = Apache2::Module::get_config(__PACKAGE__, $r->server, $r->per_dir_config);
     my $location = $r->location;
-    my ($identifier) = $r->uri =~ m{$location/*([^/]+)};
-    my $dbh = connect_database($r);
-    my $sth = $dbh->prepare(
-        "SELECT name FROM projects WHERE id = (SELECT project_id FROM repositories WHERE url LIKE ? LIMIT 1);"
-    );
-    $identifier =~ s/_/\\_/g;
-    $sth->execute('%/'.$identifier);
-    my @row = $sth->fetchrow_array;
-    $sth->finish();
-    $dbh->disconnect();
-    $row[0];
+    $location =~ s/\.git$// if (defined $cfg->{RedmineGitSmartHttp} and $cfg->{RedmineGitSmartHttp});
+    my ($identifier) = $r->uri =~ m{$location/*([^/.]+)};
+    $identifier;
 }
 
 sub connect_database {
