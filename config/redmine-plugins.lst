@@ -9,6 +9,8 @@
 #redmine_wiki_extensions,redmine_wiki_extensions,https://bitbucket.org/haru_iida/redmine_wiki_extensions/downloads/redmine_wiki_extensions-0.3.4.zip
 #redmine_issue_extensions,redmine_issue_extensions,http://redmineissueext.googlecode.com/files/redmine_issue_extensions-0.0.7.1.zip
 ##redmine_xls_export,master,https://github.com/two-pack/redmine_xls_export.git
+redmine_xls_export,redmine_xls_export,http://www.redmine.org/attachments/download/7838/redmine_xls_export_v020.zip
+redmine_plugin_views_revisions,redmine_plugin_views_revisions,http://www.redmine.org/attachments/download/7705/redmine_plugin_views_revisions_v001.zip
 #redmine_importer,master,https://github.com/farend/redmine_importer.git
 #redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.5.0.zip
 ##redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
