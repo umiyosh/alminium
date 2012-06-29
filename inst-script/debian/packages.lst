@@ -21,6 +21,7 @@ libapache2-mod-auth-mysql
 libapache2-svn
 libapache2-mod-wsgi
 libcurl4-openssl-dev
+libxslt1-dev
 apache2-prefork-dev
 libapr1-dev
 libaprutil1-dev
