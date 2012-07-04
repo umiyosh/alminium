@@ -31,3 +31,7 @@ chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
 
+if [[ `which ruby` == "" || ! `ruby --version` =~ 1.9.3 ]]
+then
+    bash inst-script/rhel6/ruby1.9-install
+fi
