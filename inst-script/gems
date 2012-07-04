@@ -1,6 +1,13 @@
 #!/bin/bash
 # rubygems.lstからgemのリストを取得しインストール
 
+GEM=`which gem1.9.3`
+
+if [ "$GEM" = "" ]
+then
+  GEM=gem
+fi
+
 # インストールするディレクトリ名
 NAME=(`grep -v "^#" config/rubygems.lst | awk -F, '{print $1}'`)
 VER=(`grep -v "^#" config/rubygems.lst | awk -F, '{print $2}'`)
@@ -11,9 +18,9 @@ do
   VER=${VER[$i]}
   if [ "$VER" = "-" ]
   then
-    gem install $NAME --no-rdoc --no-ri
+    $GEM install $NAME --no-rdoc --no-ri
   else
-    gem install $NAME -v=$VER --no-rdoc --no-ri
+    $GEM install $NAME -v=$VER --no-rdoc --no-ri
   fi
 done
 
@@ -21,21 +28,30 @@ done
 ## install mod_passenger
 case $OS in
     rhel6)
-        if [ ! -f /usr/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        if [ ! -f /usr/lib64/ruby/gems/1.9.1/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
-            gem install passenger --no-rdoc --no-ri
+            $GEM install passenger --no-rdoc --no-ri
             passenger-install-apache2-module --auto
         fi
         ;;
     mac)
-        if [ ! -f /opt/local/lib/ruby/gems/1.8/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        if [ ! -f /opt/local/lib/ruby/gems/1.9.1/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
-            gem install passenger --no-rdoc --no-ri
+            $GEM install passenger --no-rdoc --no-ri
             export APXS2=/opt/local/apache2/bin/apxs
             export PATH=/opt/local/apache2/bin:$PATH
             passenger-install-apache2-module --auto
         fi
         ;;
+    debian)
+        if [ ! -f /var/lib/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so ]
+        then
+            $GEM install thin
+            $GEM install passenger --no-rdoc --no-ri
+            passenger-install-apache2-module --auto
+        fi
+        ;;
+
 esac
 
 pushd .
@@ -48,28 +64,28 @@ then
 
   case $OS in
     rhel6)
-      rake install
+      $RAKE install
       ;;
     mac)
-      gem install nokogiri --no-rdoc --no-ri \
+      $GEM install nokogiri --no-rdoc --no-ri \
           -- --with-xml2-include=/opt/local/include/libxml2 \
           --with-xml2-lib=/opt/local/lib --with-xslt-dir=/opt/local
-      gem install rake -v=0.8.7 --no-rdoc --no-ri
-      gem install rake-compiler --no-rdoc --no-ri
+      $GEM install rake -v=0.9.2.2 --no-rdoc --no-ri
+      $GEM install rake-compiler --no-rdoc --no-ri
       /opt/local/bin/rake install
       ;;
     debian)
     DEB_VER=`cat /etc/debian_version`
       if [[ "$DEB_VER" =~  ^6\. ]]
       then
-        gem install rake -v=0.9.2.2 --no-rdoc --no-ri
-        gem install rake-compiler --no-rdoc --no-ri
-        /var/lib/gems/1.8/gems/rake-0.9.2.2/bin/rake install
+        $GEM install rake -v=0.9.2.2 --no-rdoc --no-ri
+        $GEM install rake-compiler --no-rdoc --no-ri
+        $RAKE install
       else
-        gem install rake-compiler --no-rdoc --no-ri
-        rake install
+        $GEM install rake-compiler --no-rdoc --no-ri
+        $RAKE install
       fi
-      ;;    
+      ;;
     *)
       ;;
   esac
