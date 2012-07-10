@@ -11,7 +11,7 @@
 redmine_importer,master,https://github.com/farend/redmine_importer.git
 redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.4.8.zip
 redmine_hudson,redmine_hudson,https://bitbucket.org/nobiinu_and/redmine_hudson/downloads/redmine_hudson-1.0.8.zip
-##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
+redmine_ms_projects,master,https://github.com/akipii/redmine_ms_projects.git
 #redmine_backlogs,v0.9.4,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
