@@ -51,10 +51,14 @@ Git Branch Hook| Gitのブランチでの作業をチケットに連動させま
 
 ## 動作環境
 
- * RHEL6互換環境(OEL,SL,CentOSなど含む)
- * Debian GNU/Linux 6.0
- * Ubuntu 12.04以降
+ * RHEL6 x64互換環境(OEL,SL,CentOSなど含む)
+ * Ubuntu 12.04(x64)
  * Amazon AMI Linux 2011.09
+
+32ビット版OSはサポートしていません。64ビット版をお使いください。下記のOSはサポートしていませんが、対応コードらしきものはあるのでがんばれば動作するかもしれません。
+
+ * Debian GNU/Linux 6.0
+ * Mac OSX
 
 ## 使い方
 下記の通り実行すれば、ALMiniumのインストーラを実行できます。
