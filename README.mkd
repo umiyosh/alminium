@@ -153,3 +153,19 @@ Redmineを公開にした場合、リポジトリの認証に制限をかけた�
 
 Redmineの管理画面の「ロールと権限」から、「Non Member」と「Anonymous」のロールから「リポジトリの閲覧」を削除してください。
 するとあら不思議、リポジトリのアクセスも受付なくなります。このようにALMiniumのリポジトリアクセス制御はRedmineと高度に連携しています
+
+### Q: 最新のMercurialでリポジトリにアクセスできません
+
+ALMiniumは俗に言うオレオレ証明書を利用してHTTPSを実現しています。Mercurialの最近のバージョンでは、SSL証明書の検証を行うようになっており、HTTPSでの接続にエラーになります。
+
+```
+$ hg clone https://192.168.10.224/hg/hgtest
+abort: error: _ssl.c:504: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:
+certificate verify failed
+```
+
+そのような場合は、cloneやpushに--insecureオプションを付けることにより、証明書の検証を無効にし、正しくMercurialリポジトリへアクセスできるようになります。
+
+```
+$ hg clone --insecure　https://192.168.10.224/hg/hgtest
+```
