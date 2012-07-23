@@ -15,7 +15,7 @@ redmine_plugin_views_revisions,redmine_plugin_views_revisions,http://www.redmine
 #redmine_code_review,redmine_code_review,https://bitbucket.org/haru_iida/redmine_code_review/downloads/redmine_code_review-0.5.0.zip
 ##redmine_hudson,redmine_hudson,http://r-labs.googlecode.com/files/redmine_hudson-1.0.7.zip
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,v0.9.15,https://github.com/backlogs/redmine_backlogs.git
+redmine_backlogs,v0.9.26,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 #Redmine1.3.1のWikiのセクション編集ができなくなるのでredmine_restructuredtext_formatterを削除
@@ -29,7 +29,7 @@ redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 redmine_banner,for_redmine2.0,https://github.com/akiko-pusu/redmine_banner.git
 ##open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
 ##redmine_charts,master,https://github.com/cforce/redmine_charts.git
-redmine_local_avatar,redmine-2.0.x,https://github.com/alminium/redmine_local_avatars.git
+redmine_local_avatar,master,https://github.com/luckval/redmine_local_avatars.git
 redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
 #advanced_roadmap,advanced_roadmap,https://ociotec.com/redmine/attachments/download/154/advanced_roadmap.0.5.1.tar.gz
