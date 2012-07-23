@@ -1,5 +1,13 @@
 #!/bin/bash
 
+GEM=`which gem1.9.3`
+
+if [ "$GEM" = "" ]
+then
+  GEM=gem
+fi
+  
+
 echo "ALMiniumをアンインストールします。"
 echo ""
 echo -n "データベース(全てのRedmineの情報)とリポジトリを削除しますか?(y/N)"
@@ -24,6 +32,15 @@ then
     rm -fr /etc/apache2/sites-enabled/redmine
     rm -fr /etc/httpd/conf.d/redmine.conf
     rm -fr /etc/httpd/conf.d/vcs.conf
+fi
+
+echo ""
+echo -n "Passengerを削除しますか?(y/N)"
+read YN
+
+
+if [ "$YN" = "y" ]
+    echo "3" | $GEM uninstall passenger
 fi
 
 echo ""
