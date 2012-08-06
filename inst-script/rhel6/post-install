@@ -23,8 +23,8 @@ then
       CHK=`grep "^DocumentRoot /opt/alminium/public" /etc/httpd/conf.d/ssl.conf`
       if [ "$CHK" = "" ]
       then
-          sed 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot \/opt\/alminium\/public/' /etc/httpd/conf.d/ssl.conf > /tmp/ssl.conf
-          cp /tmp/ssl.conf /etc/httpd/conf.d/ssl.conf
+          sed -i 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot \/opt\/alminium\/public/' /etc/httpd/conf.d/ssl.conf
+          sed -i 's/#ServerName www.example.com:443/ServerName '$HOSTNAME':443/' /etc/httpd/conf.d/ssl.conf
       fi
   fi
 fi
@@ -37,8 +37,7 @@ then
   CHK=`grep SELINUX=enforcing /etc/selinux/config`
   if [ ! "$CHK" = '' ]                            
   then                
-    cat /etc/selinux/config |sed 's/SELINUX=enforcing/SELINUX=disabled/' > /tmp/selinux_config
-    mv /tmp/selinux_config /etc/selinux/config                                                
+    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config 
     echo "SELinuxが無効化されました"          
   fi
               
