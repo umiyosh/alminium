@@ -125,12 +125,12 @@ echo ""
 echo "などのコマンドで、SSLの証明書を無効にする必要があります。"
 echo ""
 echo -n "SSL(https)サポートを有効にしますか?(y/N) "
-
 read SSL
 echo ""
 echo ""
 fi
 
+source inst-script/config-email.sh
 
 #if [ $TYPE = "" ]
 #then
@@ -269,6 +269,8 @@ $CPCMD hooks $INSTALL_DIR/
 #chown $APACHE_USER.$APACHE_USER -R /var/opt/alminium
 chown -R $APACHE_USER:$APACHE_USER $INSTALL_DIR
 chown -R $APACHE_USER:$APACHE_USER /var/opt/alminium
+
+source inst-script/gen-email-config.sh
 
 source inst-script/$OS/post-install
 
