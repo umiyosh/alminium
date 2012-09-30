@@ -22,7 +22,7 @@ redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 #redmine_restructuredtext_formatter,japanese-localization,https://github.com/alminium/redmine_restructuredtext_formatter.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 #redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
-redmine_drafts,master,https://github.com/jbbarth/redmine_drafts.git
+redmine_drafts,ff35e9fd,https://github.com/jbbarth/redmine_drafts.git
 #redmine_attach_screenshot,master,https://github.com/alminium/redmine_attach_screenshot.git
 redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 redmine_banner,for_redmine2.0,https://github.com/akiko-pusu/redmine_banner.git
