@@ -57,3 +57,4 @@ mysql-devel
 # to run bundle
 #postgresql-devel
 #sqlite-devel
+libffi-devel
