@@ -1,17 +1,17 @@
 wget
 git-core +bash_completion +svn +python27
-subversion +mod_dav_svn +tools
-mercurial
+subversion +bash_completion +mod_dav_svn +tools
+mercurial +bash_completion
 unzip
-mysql5
-mysql5-server
+apache2
+mysql55
+mysql55-server
 tiff -macosx imagemagick +q8 +gs +wmf
-ruby
-rb-rubygems
+ruby19
 python27
 mod_wsgi +python27
 perl5.12 +threads +shared
-p5.12-dbd-mysql
+p5.12-dbd-mysql +mysql55
 p5.12-dbi
 p5.12-digest-sha1
 mod_perl2
