@@ -93,13 +93,6 @@ else
 fi
 
 
-if [ "$USER" != 'root' ]
-then
-    echo "rootでコマンドを実行してください。"
-fi
-
-
-
 if [ "$ALM_HOSTNAME" == "" ]
 then
 echo "*******************************************************"
