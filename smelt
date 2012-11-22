@@ -13,9 +13,16 @@ RM_ARC=http://rubyforge.org/frs/download.php/76495/redmine-2.1.2.tar.gz
 CPCMD='cp -fr'
 RMCMD='rm -fr'
 
+if [ "$USER" != 'root' ]
+then
+    echo "ALMiniumのインストールはルートユーザで行う必要があります。"
+    echo "rootユーザもしくはsudoで実行してください。"
+    exit 1  
+fi
+
 if [ ! -d cache ]
 then
-  mkdir cache
+    mkdir cache
 fi
 
 
