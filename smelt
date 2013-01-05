@@ -130,6 +130,8 @@ echo ""
 echo ""
 fi
 
+source inst-script/jenkins.sh
+
 source inst-script/config-email.sh
 
 #if [ $TYPE = "" ]
