@@ -13,6 +13,11 @@ yum install java-1.7.0-openjdk-devel
 #  iptables-save > /etc/sysconfig/iptables
 #fi
 
+if [ ! -d /var/lib/jenkins/persona ]
+then
+  git clone https://github.com/okamototk/jenkins-persona-hudmi /var/lib/jenkins/persona
+fi
+ 
 sed -i 's/JENKINS_ARGS=""/JENKINS_ARGS="--prefix=\/jenkins"/' /etc/sysconfig/jenkins
 
 service jenkins start
