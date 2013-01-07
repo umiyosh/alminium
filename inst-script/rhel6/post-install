@@ -27,6 +27,10 @@ then
           sed -i 's/#ServerName www.example.com:443/ServerName '$HOSTNAME':443/' /etc/httpd/conf.d/ssl.conf
       fi
   fi
+  if [ "$ENABLE_JENKINS" = "y" ]
+  then
+    cp inst-script/rhel6/httpd-jenkins.conf >  /etc/httpd/conf.d/jenkins.conf
+  fi    
 fi
           
 # セキュリティ無効化の設定        
