@@ -32,6 +32,7 @@ then
     rm -fr /etc/apache2/sites-enabled/redmine
     rm -fr /etc/httpd/conf.d/redmine.conf
     rm -fr /etc/httpd/conf.d/vcs.conf
+    rm -fr /etc/httpd/conf.d/jenkins.conf
 fi
 
 echo ""
