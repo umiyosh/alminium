@@ -2,8 +2,8 @@
 
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-yum install jenkins 
-yum install java-1.7.0-openjdk-devel
+yum install -y jenkins 
+yum install -y java-1.7.0-openjdk-devel
 
 #CHK=`grep "dport 8080" /etc/sysconfig/iptables`
 #if [ "$CHK" = '' ]
@@ -16,6 +16,11 @@ yum install java-1.7.0-openjdk-devel
 if [ ! -d /var/lib/jenkins/persona ]
 then
   git clone https://github.com/okamototk/jenkins-persona-hudmi /var/lib/jenkins/persona
+fi
+
+if [ ! -f /etc/httpd/conf.d/jenkins.conf ]
+then
+  cp inst-script/rhel6/httpd-jenkins.conf /etc/httpd/conf.d/jenkins.conf
 fi
  
 sed -i 's/JENKINS_ARGS=""/JENKINS_ARGS="--prefix=\/jenkins"/' /etc/sysconfig/jenkins
