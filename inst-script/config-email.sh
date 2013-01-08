@@ -175,5 +175,9 @@ case "$SMTPSET" in
 	SMTPLOGIN=Y
 	;;
 	
-	* ) echo "メール設定を行いません。" ;;
+	* )
+	echo "メール設定を行いません。"
+	echo ""
+	echo ""
+	;;
 esac

@@ -130,9 +130,13 @@ echo ""
 echo ""
 fi
 
-source inst-script/jenkins.sh
-
 source inst-script/config-email.sh
+
+if [ -e inst-script/$OS/jenkins-install -a "$ENABLE_JENKINS" = "" ]
+then
+  echo -n "Jenkinsをインストールしますか?[y/N]"
+  read ENABLE_JENKINS
+fi
 
 #if [ $TYPE = "" ]
 #then
@@ -273,6 +277,11 @@ chown -R $APACHE_USER:$APACHE_USER $INSTALL_DIR
 chown -R $APACHE_USER:$APACHE_USER /var/opt/alminium
 
 source inst-script/gen-email-config.sh
+
+if [ "$ENABLE_JENKINS" = "y" ]
+then
+  source inst-script/$OS/jenkins-install
+fi  
 
 source inst-script/$OS/post-install
 
