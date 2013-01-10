@@ -130,9 +130,7 @@ Redmineは、データベースで独自のアカウント管理機構を持っ�
 
 ### Jenkinsのセットアップ
 
-ALMinium 2.2移行では、継続的インテグレーションを行うJenkinsも一緒にインストールすることができます。Jenkinsには下記のURLからアクセスできます。
-
-* http[s]://&lt;ALMiniumをインストールしたホスト名&gt;/jenkins/
+ALMinium 2.2移行では、継続的インテグレーションを行うJenkinsも一緒にインストールすることができます。
 
 ### 便利なプラグインも一緒にセットアップ
 
@@ -164,5 +162,10 @@ ALMinium 2.2移行では、継続的インテグレーションを行うJenkins�
 
 
 管理者・開発者のロールのユーザを同名のRedmineプロジェクトに追加することにより、コミット権を与えることができます。例えば、testrepoという名前のリポジトリに対して、testrepoという名前のRedmineプロジェクトを作成します。アクセスさせたいユーザを「開発者」ロールでtestrepoプロジェクトに追加すれば、リポジトリへのコミット(プッシュ)権限を付与することができます。
+
+Jenkinsをインストールした場合は、下記のURLからアクセスできます。
+
+* http[s]://&lt;ALMiniumをインストールしたホスト名&gt;/jenkins/
+
 ',current_date);
 UPDATE users SET language='ja' WHERE login='admin';
