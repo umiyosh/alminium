@@ -267,7 +267,7 @@ mkdir -p /etc/opt/alminium
 $CPCMD etc/* /etc/opt/alminium/
 
 mkdir -p $INSTALL_DIR/bin
-mkdir -p /var/opt/alminium/git /var/opt/alminium/svn /var/opt/alminium/hg
+mkdir -p /var/opt/alminium/git /var/opt/alminium/svn /var/opt/alminium/hg /var/opt/alminium/maven
 $CPCMD bin/*  $INSTALL_DIR/bin/
 $CPCMD hooks $INSTALL_DIR/
 
