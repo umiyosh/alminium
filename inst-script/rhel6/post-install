@@ -27,6 +27,7 @@ then
           sed -i 's/#ServerName www.example.com:443/ServerName '$HOSTNAME':443/' /etc/httpd/conf.d/ssl.conf
       fi
   fi
+  cp -f inst-script/rhel6/httpd-maven.conf /etc/httpd/conf.d/maven.conf
 fi
           
 # セキュリティ無効化の設定        
