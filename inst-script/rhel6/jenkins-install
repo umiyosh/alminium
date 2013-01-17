@@ -30,6 +30,12 @@ then
   cp inst-script/rhel6/jenkins-config.xml /var/lib/jenkins/config.xml
 fi
 
+if [ ! -f /var/lib/jenkins/plugins ]
+then
+  mkdir -f /var/lib/jenkins/plugins
+  chown jenkins.jenkins /var/lib/jenkins/plugins
+fi
+
 service jenkins start
 
 RET=-1
