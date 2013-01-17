@@ -167,5 +167,7 @@ Jenkinsをインストールした場合は、下記のURLからアクセスで�
 
 * http[s]://&lt;ALMiniumをインストールしたホスト名&gt;/jenkins/
 
+ユーザ名、パスワードはRedmineに登録したユーザ名、アカウントを利用してログインしてください(初期状態ではユーザ名admin、パスワードadmin)。
+
 ',current_date);
 UPDATE users SET language='ja' WHERE login='admin';
