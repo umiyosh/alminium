@@ -27,12 +27,12 @@ sed -i 's/JENKINS_ARGS=""/JENKINS_ARGS="--prefix=\/jenkins"/' /etc/sysconfig/jen
 
 if [ ! -f /var/lib/jenkins/config.xml ]
 then
-  cp inst-script/rhel6/jenkins-config.xml /var/lib/jenkins/config.xml
+  cp config/jenkins-config.xml /var/lib/jenkins/config.xml
 fi
 
 if [ ! -f /var/lib/jenkins/plugins ]
 then
-  mkdir -f /var/lib/jenkins/plugins
+  mkdir /var/lib/jenkins/plugins
   chown jenkins.jenkins /var/lib/jenkins/plugins
 fi
 
