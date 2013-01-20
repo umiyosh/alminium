@@ -109,6 +109,8 @@ REPLACE INTO settings(name,value,updated_on) VALUES ('welcome_text','
 ALMinium
 ========
 
+※Jenkinsをインストールした場合は、[http[s]://&lt;ホスト&gt;/jenkins/からアクセス](/jenkins/)できます。
+
 　近年注目を集めるチケットシステムですが、環境構築をするとなるとそれなりに面倒です。チケットシステムの一つであるRedmineをインストールするためには、Rubyの知識が必要であったり、また、GitやSubversionなどのバージョン管理システムを利用するには、その知識が必要であったりととにかく面倒です。「ALMinium」は、めんどくさがり屋のための、プロジェクト管理構築ツールです。
 
 特徴
@@ -165,7 +167,7 @@ ALMinium 2.2移行では、継続的インテグレーションを行うJenkins�
 
 Jenkinsをインストールした場合は、下記のURLからアクセスできます。
 
-* http[s]://&lt;ALMiniumをインストールしたホスト名&gt;/jenkins/
+* [http[s]://&lt;ALMiniumをインストールしたホスト名&gt;/jenkins/](/jenkins/)
 
 ユーザ名、パスワードはRedmineに登録したユーザ名、アカウントを利用してログインしてください(初期状態ではユーザ名admin、パスワードadmin)。
 
