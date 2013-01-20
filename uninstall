@@ -46,6 +46,17 @@ then
 fi
 
 echo ""
+echo -n "Jenkisとその設定を削除しますか?(y/N)"
+read YN
+
+
+if [ "$YN" = "y" ]
+then
+    yum -y remove jenkins
+    rm -fr /var/lib/jenkins
+fi
+
+echo ""
 echo -n "キャッシュされたファイルを削除しますか?(y/N)"
 read YN
 
@@ -54,3 +65,5 @@ if [ "$YN" = "y" ]
 then
     rm -fr cache *.installed
 fi
+
+
