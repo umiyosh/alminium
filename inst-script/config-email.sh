@@ -139,7 +139,7 @@ case "$SMTPSET" in
 
 	SMTPSERVER=smtp.gmail.com
 	SMTPTLS=Y
-	SMTPPORT=465
+	SMTPPORT=587
 	SMTPLOGIN=Y
 	;;
 	
