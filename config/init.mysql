@@ -42,6 +42,13 @@ REPLACE INTO settings(name,value,updated_on) VALUES ('plugin_redmine_backlogs','
 :auto_assign_task: enabled\n',current_date);
 
 /*********************************************************************
+ * Backlogsプラグインの設定が重複する問題に対応
+ * https://github.com/alminium/alminium/issues/69
+ * TODO: バグがfixされたら削除
+ ********************************************************************/
+DELETE FROM settings WHERE name='plugin_redmine_backlogs' AND id='2';
+
+/*********************************************************************
  * コードレビューとコミットとチケットの関連のパーミッションの設定
  ********************************************************************/
 UPDATE roles SET roles.permissions=concat(roles.permissions,'- :view_code_review
