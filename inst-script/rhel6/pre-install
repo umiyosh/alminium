@@ -26,10 +26,10 @@ else
 fi
 yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
 
-lif [ -f /etc/system-release ]
+if [ -f /etc/system-release ]
 then
-  yum -y --nogpgcheck install mysqlclient16
-  yum -y --nogpgcheck install compat-mysql51
+  rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+  yum  --enablerepo=remi -y --nogpgcheck install mysqlclient16
 fi
 
 if [ "$SSL" = "y" ]
