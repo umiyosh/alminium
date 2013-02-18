@@ -46,7 +46,7 @@ do
           git checkout ${DIR_NAME[$i]}
           cd ../..
           $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
-          cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/
+          ${CPCMD}a cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/
         fi
         ;;
     *)
@@ -69,7 +69,7 @@ do
           fi
         fi
         $RMCMD $INSTALL_DIR/plugins/${DEST_NAME[$i]}
-        cp -ar cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/${DEST_NAME[$i]}
+        ${CPCMD}a cache/${DEST_NAME[$i]} $INSTALL_DIR/plugins/${DEST_NAME[$i]}
         ;;
     esac
 done
