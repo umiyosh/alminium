@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GEM=`which gem1.9.3`
+GEM=`which gem1.9`
 
 if [ "$GEM" = "" ]
 then

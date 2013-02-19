@@ -1,7 +1,7 @@
 #!/bin/bash
 # rubygems.lstからgemのリストを取得しインストール
 
-GEM=`which gem1.9.3`
+GEM=`which gem1.9`
 
 if [ "$GEM" = "" ]
 then
@@ -35,7 +35,7 @@ case $OS in
         fi
         ;;
     mac)
-        if [ ! -f /opt/local/lib/ruby/gems/1.9.1/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
+        if [ ! -f /opt/local/lib/ruby1.9/gems/1.9.1/gems/passenger-3.*/ext/apache2/mod_passenger.so ]
         then
             $GEM install passenger --no-rdoc --no-ri
             export APXS2=/opt/local/apache2/bin/apxs
