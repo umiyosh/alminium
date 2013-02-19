@@ -73,7 +73,7 @@ else
     then
       OS='mac'
       APACHE_USER=www
-      MYSQLD=/opt/local/share/mysql5/mysql/mysql.server
+      MYSQLD=/opt/local/share/mysql55/support-files/mysql.server
       MYSQLD=mysql
       CPCMD='cp -Rf'
       RMCMD='rm -Rf'
@@ -186,7 +186,7 @@ then
   touch gems.installed
 fi
 
-export RAKE=`which rake1.9.3`
+export RAKE=`which rake1.9`
 
 if [ "$RAKE" = "" ]
 then

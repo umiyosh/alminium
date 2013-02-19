@@ -11,7 +11,7 @@ fi
 if [ ! -f /opt/local/apache2/conf/redmine.conf ]
 then
   mkdir -p /opt/local/apache2/conf
-  PASSENGER_VERSION=`passenger-config  --version`
+  PASSENGER_VERSION=`passenger-config --version`
 
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/mac/httpd-redmine.conf | \
       sed 's/%PASSENGER_VERSION%/'$PASSENGER_VERSION'/' |
