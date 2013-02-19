@@ -3,8 +3,8 @@ echo "*******************************************************"
 echo "  セキュリティの設定"
 echo "*******************************************************"
 echo "ファイアフォールの設定はシステム環境設定から行ってください。"
-echo "共有で、Web共有がHTTPSとSSLに、リモートログインがSSHに対応しています。"
-echo \n
+echo "共有で、インターネット共有がHTTPSとSSLに、リモートログインがSSHに対応しています。"
+echo -n
 
 port install `grep -v "^#" inst-script/mac/packages.lst`
 
@@ -13,7 +13,8 @@ then
    port install openssl
 fi
 
-sudo -u mysql mysql_install_db5
+port load mysql55-server
+port select mysql mysql55
+sudo -u mysql /opt/local/lib/mysql55/bin/mysql_install_db
+cp /opt/local/share/mysql55/support-files/my-small.cnf /opt/local/etc/mysql55/my.cnf
 
-cp /opt/local/share/mysql5/mysql/my-small.cnf /opt/local/etc/mysql5/my.cnf
-launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist
