@@ -18,7 +18,7 @@ case "$SMTPSET" in
 
 	if [ "$SMTPTLS" == "Y" ]
 	then
-	echo "      tls: true" >> $INSTALL_DIR/config/configuration.yml
+	echo "      enable_starttls_auto: true" >> $INSTALL_DIR/config/configuration.yml
 	fi
 
 	if [ "$SMTPLOGIN" == "Y" ]
