@@ -49,6 +49,7 @@ libyaml-devel
 glibc-devel
 # to build RMagick gem
 ImageMagick-devel
+ipa-pgothic-fonts
 # to build nokogiri gem
 libxml2-devel
 libxslt-devel
