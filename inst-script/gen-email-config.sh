@@ -3,13 +3,13 @@
 case "$SMTPSET" in
 	"1" )
 	echo "default:
- email_delivery:
+  email_delivery:
     delivery_method: :sendmail" > $INSTALL_DIR/config/configuration.yml
 	;;
 	
 	"0" | "2" | "3" )
 	echo "default:
- email_delivery:
+  email_delivery:
     delivery_method: :smtp
     smtp_settings:
       address: $SMTPSERVER
@@ -31,4 +31,55 @@ case "$SMTPSET" in
 	
 	* ) ;;
 esac
+
+case $OS in
+    "rhel6" )
+        if [ -f /usr/share/fonts/ipa-pgothic/ipagp.ttf ]
+        then
+            fontpath=/usr/share/fonts/ipa-pgothic/ipagp.ttf
+        fi
+        ;;
+    "debian" )
+        if [ -f /usr/share/fonts/ipa-*.ttf ]
+        then
+            #fontpath=/usr/share/fonts/ipa-*.ttf
+        fi
+        ;;
+    "mac" )
+        if [ -f /Library/Fonts/Osaka.ttf ]
+            fontpath=/Library/Fonts/Osaka.ttf
+        fi
+        gitpath=/opt/local/bin/git
+        svnpath=/opt/local/bin/svn
+        hgpath=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/hg
+        ;;
+    * )
+        ;;
+esac
+
+cat << EOT >> $INSTALL_DIR/config/configuration.yml
+
+  rmagick_font_path: $fontpath
+
+  scm_subversion_command: $svnpath
+  scm_git_command: $gitpath
+  scm_mercurial_command: $hgpath
+
+  attachments_storage_path:
+
+  autologin_cookie_name:
+  autologin_cookie_path:
+  autologin_cookie_secure:
+
+  database_cipher_key:
+
+  #mirror_plugins_assets_on_startup: false
+
+  imagemagick_convert_command:
+
+production:
+
+development:
+
+EOT
 
