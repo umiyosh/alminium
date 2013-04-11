@@ -26,7 +26,8 @@ else
 fi
 yum -y --nogpgcheck install `grep -v "^#" inst-script/rhel6/packages.lst`
 
-if [ -f /etc/system-release ]
+CHK=`grep Amazon /etc/system-release`
+if [ "$CHK" != '' ]
 then
   rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
   yum  --enablerepo=remi -y --nogpgcheck install mysqlclient16
