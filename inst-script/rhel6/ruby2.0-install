@@ -13,23 +13,23 @@ then
   cd ~/rpmbuild/SPECS
   # wget's bug, certificate Server Common Name
   #wget https://raw.github.com/imeyer/ruby-1.9.3-rpm/master/ruby19.spec
-  curl -L -O https://raw.github.com/imeyer/ruby-1.9.3-rpm/master/ruby19.spec
+  curl -L -O https://raw.github.com/nmilford/specfiles/master/ruby-2.0/ruby-2.0.spec
   RET=$?
   if [ "$RET" -ne "0" ]
   then
-    echo "download error. 'ruby19.spec'"
+    echo "download error. 'ruby-2.0.spec'"
     exit 1
   fi
 
-  MINORVER=`grep "%define rubyminorver" ruby19.spec | awk '{print $3}'`
+  MINORVER=`grep "%define rubyminorver" ruby-2.0.spec | awk '{print $3}'`
 
   cd ~/rpmbuild/SOURCES
-  wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-${MINORVER}.tar.gz
+  wget http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-${MINORVER}.tar.gz
 
   cd ~/rpmbuild/SPECS
-  rpmbuild -bb ruby19.spec
+  rpmbuild -bb ruby-2.0.spec
   ARCH=`uname -m`
-  rpm -Uvh ~/rpmbuild/RPMS/${ARCH}/ruby-1.9.3*.rpm
+  rpm -Uvh ~/rpmbuild/RPMS/${ARCH}/ruby-2.0.0*.rpm
 
   popd
 fi

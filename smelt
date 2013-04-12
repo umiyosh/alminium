@@ -186,7 +186,7 @@ then
   touch gems.installed
 fi
 
-export RAKE=`which rake1.9`
+export RAKE=`which rake2.0`
 
 if [ "$RAKE" = "" ]
 then
