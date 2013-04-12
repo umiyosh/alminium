@@ -250,7 +250,7 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 # setup
 pushd .
 cd $INSTALL_DIR
-bundle install --without development test postgresql sqlite
+bundle install --path vendor/bundler --without development test postgresql sqlite
 $RAKE generate_secret_token
 $RAKE db:migrate
 echo "ja" |RAILS_ENV=production $RAKE redmine:load_default_data
