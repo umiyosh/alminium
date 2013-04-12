@@ -47,6 +47,7 @@ case $OS in
         ;;
     "mac" )
         if [ -f /Library/Fonts/Osaka.ttf ]
+        then
             fontpath=/Library/Fonts/Osaka.ttf
         fi
         gitpath=/opt/local/bin/git
