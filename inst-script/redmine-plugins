@@ -80,7 +80,7 @@ pushd .
 
 cd $INSTALL_DIR
 
-bundle install --without development test postgresql sqlite
+bundle install --path vendor/bundler --without development test postgresql sqlite
 
 $RAKE redmine:plugins:migrate
 $RAKE generate_secret_token

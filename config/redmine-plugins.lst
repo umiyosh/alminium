@@ -13,10 +13,11 @@ redmine_xls_export,redmine_xls_export,http://www.redmine.org/attachments/downloa
 redmine_plugin_views_revisions,redmine_plugin_views_revisions,http://www.redmine.org/attachments/download/7705/redmine_plugin_views_revisions_v001.zip
 redmine_importer,master,https://github.com/zh/redmine_importer.git
 redmine_code_review,default,https://bitbucket.org/haru_iida/redmine_code_review
-redmine_hudson,redmine2.x,https://bitbucket.org/nobiinu_and/redmine_hudson
+#redmine_hudson,redmine2.x,https://bitbucket.org/nobiinu_and/redmine_hudson
 #redmine_jenkins,redmine-2.1.x-alm,https://github.com/alminium/redmine_jenkins.git
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
 #redmine_backlogs,redmine2.1.x_alm,https://github.com/alminium/redmine_backlogs.git
+redmine_backlogs,v0.9.38,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 #redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 redmine_scm,redmine-2.1.x,https://github.com/alminium/redmine_scm.git
