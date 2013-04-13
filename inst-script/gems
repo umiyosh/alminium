@@ -30,14 +30,15 @@ case $OS in
     rhel6)
         if [ ! -f /usr/lib64/ruby/gems/2.0.0/gems/passenger-4.*/ext/apache2/mod_passenger.so ]
         then
-            $GEM install passenger --no-rdoc --no-ri
+            $GEM install daemon_controller --no-rdoc --no-ri
+            $GEM install passenger --no-rdoc --no-ri --pre
             passenger-install-apache2-module --auto
         fi
         ;;
     mac)
         if [ ! -f /opt/local/lib/ruby2.0/gems/2.0.0/gems/passenger-4.*/ext/apache2/mod_passenger.so ]
         then
-            $GEM install passenger --no-rdoc --no-ri
+            $GEM install passenger --no-rdoc --no-ri --pre
             export APXS2=/opt/local/apache2/bin/apxs
             export PATH=/opt/local/apache2/bin:$PATH
             passenger-install-apache2-module --auto
@@ -47,7 +48,7 @@ case $OS in
         if [ ! -f /var/lib/gems/2.0.0/gems/passenger-4.0.*/ext/apache2/mod_passenger.so ]
         then
             $GEM install thin
-            $GEM install passenger --no-rdoc --no-ri
+            $GEM install passenger --no-rdoc --no-ri --pre
             passenger-install-apache2-module --auto
         fi
         ;;
