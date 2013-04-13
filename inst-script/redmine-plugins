@@ -88,6 +88,6 @@ $RAKE db:migrate
 $RAKE tmp:cache:clear
 $RAKE tmp:sessions:clear
 touch backlogs.dev
-$RAKE redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
+#$RAKE redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
 
 popd
