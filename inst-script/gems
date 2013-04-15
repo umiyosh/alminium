@@ -31,7 +31,7 @@ case $OS in
         if [ ! -f /usr/lib64/ruby/gems/2.0.0/gems/passenger-4.*/ext/apache2/mod_passenger.so ]
         then
             $GEM install daemon_controller --no-rdoc --no-ri
-            $GEM install passenger --no-rdoc --no-ri --pre
+            $GEM install passenger --force --no-rdoc --no-ri --pre
             passenger-install-apache2-module --auto
         fi
         ;;
