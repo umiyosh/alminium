@@ -18,9 +18,9 @@ do
   VER=${VER[$i]}
   if [ "$VER" = "-" ]
   then
-    $GEM install $NAME --no-rdoc --no-ri
+    $GEM install $NAME --force --no-rdoc --no-ri
   else
-    $GEM install $NAME -v=$VER --no-rdoc --no-ri
+    $GEM install $NAME -v=$VER --force --no-rdoc --no-ri
   fi
 done
 
