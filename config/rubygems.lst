@@ -1,3 +1,4 @@
 # for redmine
 bundler,-
+rake,-
 rake-compiler,-
