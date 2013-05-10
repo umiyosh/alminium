@@ -7,8 +7,8 @@ export RAILS_ENV=production
 export INSTALL_DIR=/opt/alminium
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
-RM_VER=2.3.0
-RM_ARC=http://rubyforge.org/frs/download.php/76867/redmine-2.3.0.tar.gz
+RM_VER=2.3.1
+RM_ARC=http://rubyforge.org/frs/download.php/76933/redmine-2.3.1.tar.gz
 #RM_ARC=http://redmine.rubyforge.org/svn/tags
 CPCMD='cp -fr'
 RMCMD='rm -fr'
@@ -251,7 +251,7 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 pushd .
 cd $INSTALL_DIR
 bundle install --path vendor/bundler --without development test postgresql sqlite
-$RAKE generate_secret_token
+bundle exec $RAKE generate_secret_token
 $RAKE db:migrate
 echo "ja" |RAILS_ENV=production $RAKE redmine:load_default_data
 
