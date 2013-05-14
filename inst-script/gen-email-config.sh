@@ -40,9 +40,9 @@ case $OS in
         fi
         ;;
     "debian" )
-        if [ -f /usr/share/fonts/ipa-*.ttf ]
+        if [ -e /usr/share/fonts/truetype/fonts-japanese-gothic.ttf ]
         then
-            #fontpath=/usr/share/fonts/ipa-*.ttf
+            fontpath=/usr/share/fonts/truetype/fonts-japanese-gothic.ttf
         fi
         ;;
     "mac" )
