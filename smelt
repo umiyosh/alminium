@@ -5,6 +5,7 @@
 
 export RAILS_ENV=production
 export INSTALL_DIR=/opt/alminium
+export SCRIPT_DIR=`pwd`
 CP_VER=1.5.0
 CP_ARC=https://www.chiliproject.org/attachments/download/129/chiliproject-1.5.0.tar.gz
 RM_VER=2.3.1
@@ -250,7 +251,10 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 # setup
 pushd .
 cd $INSTALL_DIR
-bundle install --path vendor/bundler --without development test postgresql sqlite
+if [ ! -f $SCRIPT_DIR/gems.installed ]
+then
+  bundle install --path vendor/bundler --without development test postgresql sqlite
+fi
 bundle exec $RAKE generate_secret_token
 $RAKE db:migrate
 echo "ja" |RAILS_ENV=production $RAKE redmine:load_default_data
@@ -276,7 +280,10 @@ $CPCMD hooks $INSTALL_DIR/
 chown -R $APACHE_USER:$APACHE_USER $INSTALL_DIR
 chown -R $APACHE_USER:$APACHE_USER /var/opt/alminium
 
-source inst-script/gen-email-config.sh
+if [ "$SMTPSERVER" != "" ]
+then
+  source inst-script/gen-email-config.sh
+fi
 
 if [ "$ENABLE_JENKINS" = "y" ]
 then
