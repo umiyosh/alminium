@@ -171,6 +171,7 @@ esac
 ## install packages
 if [ ! -f packages.installed ]
 then
+  echo "*** run pre-install script ***"
   source inst-script/$OS/pre-install
   touch packages.installed
 fi
@@ -183,6 +184,7 @@ fi
 
 if [ ! -f gems.installed ]
 then
+  echo "*** run gems script ***"
   source inst-script/gems
   touch gems.installed
 fi
@@ -251,10 +253,10 @@ $CPCMD theme/* $INSTALL_DIR/public/themes/
 # setup
 pushd .
 cd $INSTALL_DIR
-if [ ! -f $SCRIPT_DIR/gems.installed ]
-then
-  bundle install --path vendor/bundler --without development test postgresql sqlite
-fi
+
+echo "*** execute bundle ***"
+bundle install --path vendor/bundler --without development test postgresql sqlite
+
 bundle exec $RAKE generate_secret_token
 $RAKE db:migrate
 echo "ja" |RAILS_ENV=production $RAKE redmine:load_default_data
@@ -265,6 +267,7 @@ popd
 source inst-script/redmine-plugins
 
 # Customize
+echo "*** run initialize SQL ***"
 $MYSQL alminium < config/init.mysql
 
 mkdir -p /etc/opt/alminium
