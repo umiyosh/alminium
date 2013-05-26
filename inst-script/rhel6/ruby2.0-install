@@ -12,8 +12,7 @@ then
 
   cd ~/rpmbuild/SPECS
   # wget's bug, certificate Server Common Name
-  #wget https://raw.github.com/imeyer/ruby-1.9.3-rpm/master/ruby19.spec
-  curl -L -O https://raw.github.com/nmilford/specfiles/master/ruby-2.0/ruby-2.0.spec
+  curl -L -O https://raw.github.com/hansode/ruby-2.0.0-rpm/master/ruby200.spec
   RET=$?
   if [ "$RET" -ne "0" ]
   then
