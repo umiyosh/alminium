@@ -8,7 +8,7 @@ ALMiniumとは、ALM(Application Lifecycle Management)とRedmineの合金(..nium
 
 Redmineを利用してALMを実現するためのツールです。アルミニウムの持つ軽量性と伝導性を備えています。軽量性は、簡単に使えること、熱伝導性は他のプロジェクトへ徐々に広げていける仕組みです。
 
-<img src="alminium/raw/master/docs/img/alminium.png" />
+<img src="docs/img/alminium.png" />
 
 ## 特徴
 
@@ -49,7 +49,7 @@ MSProjects   |MS Projectのファイルをインポート
 XLS export   |Excelでチケットを出力
 Git Branch Hook| Gitのブランチでの作業をチケットに連動させます
 
-その他のプラグインついては、<a href="alminium/tree/master/config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
+その他のプラグインついては、<a href="config/redmine-plugins.lst">プラグインリストファイル</a>をご覧ください。
 
 ## 動作環境
 
