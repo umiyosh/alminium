@@ -57,5 +57,5 @@ libxslt-devel
 mysql-devel
 # to run bundle
 #postgresql-devel
-#sqlite-devel
+sqlite-devel
 libffi-devel
