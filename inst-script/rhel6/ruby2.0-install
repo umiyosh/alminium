@@ -16,17 +16,17 @@ then
   RET=$?
   if [ "$RET" -ne "0" ]
   then
-    echo "download error. 'ruby-2.0.spec'"
+    echo "download error. 'ruby-200.spec'"
     exit 1
   fi
 
-  MINORVER=`grep "%define rubyminorver" ruby-2.0.spec | awk '{print $3}'`
+  MINORVER=`grep "%define rubyminorver" ruby-200.spec | awk '{print $3}'`
 
   cd ~/rpmbuild/SOURCES
   wget http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-${MINORVER}.tar.gz
 
   cd ~/rpmbuild/SPECS
-  rpmbuild -bb ruby-2.0.spec
+  rpmbuild -bb ruby-200.spec
   ARCH=`uname -m`
   rpm -Uvh ~/rpmbuild/RPMS/${ARCH}/ruby-2.0.0*.rpm
 
