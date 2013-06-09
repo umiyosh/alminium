@@ -24,7 +24,7 @@ redmine_scm,redmine-2.1.x,https://github.com/alminium/redmine_scm.git
 redmine_redcarpet_formatter,master,https://github.com/alminium/redmine_redcarpet_formatter.git
 #redmine_mypageparts_collection,master,https://github.com/alminium/redmine_mypageparts_collection.git
 redmine_drafts,alm,https://github.com/alminium/redmine_drafts.git
-redmine_inline_attach_screenshot,default,https://bitbucket.org/StrangeWill/redmine-inline-attach-screenshot
+clipboard_image_paste,master,https://github.com/peclik/clipboard_image_paste.git
 #redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
 open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
