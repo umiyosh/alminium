@@ -171,3 +171,10 @@ certificate verify failed
 ```
 $ hg clone --insecure　https://192.168.10.224/hg/hgtest
 ```
+
+### Q: 既にインストールしたALMiniumのバージョンアップはできますか?
+
+できます。詳細は、下記の記事をお読みください。
+
+ * ALMiniumのアップグレード
+  * http://www.sssg.org/blogs/hiro345/archives/13007.html
