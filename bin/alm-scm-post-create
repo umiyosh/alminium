@@ -15,6 +15,7 @@ case "$2" in
     git --git-dir=$1 config --bool hooks.allowunannotated true
     git --git-dir=$1 config --bool receive.denyNonFastforwards true    
     git --git-dir=$1 config --bool receive.denyDeletes true        
+    git --git-dir=$1 config --bool core.quotepath false        
   ;;
 
   svn)
