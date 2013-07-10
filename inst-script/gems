@@ -28,14 +28,14 @@ done
 ## install mod_passenger
 case $OS in
     rhel6)
-        if [ ! -f /usr/lib64/ruby/gems/2.0.0/gems/passenger-4.*/libout/apache2/mod_passenger.so ]
+        if [ ! -f /usr/lib64/ruby/gems/2.0.0/gems/passenger-4.*/buildout/apache2/mod_passenger.so ]
         then
             $GEM install passenger --no-rdoc --no-ri
             passenger-install-apache2-module --auto
         fi
         ;;
     mac)
-        if [ ! -f /opt/local/lib/ruby2.0/gems/2.0.0/gems/passenger-4.*/libout/apache2/mod_passenger.so ]
+        if [ ! -f /opt/local/lib/ruby2.0/gems/2.0.0/gems/passenger-4.*/buildout/apache2/mod_passenger.so ]
         then
             $GEM install passenger --no-rdoc --no-ri
             export APXS2=/opt/local/apache2/bin/apxs
@@ -44,7 +44,7 @@ case $OS in
         fi
         ;;
     debian)
-        if [ ! -f /var/lib/gems/2.0.0/gems/passenger-4.0.*/libout/apache2/mod_passenger.so ]
+        if [ ! -f /var/lib/gems/2.0.0/gems/passenger-4.0.*/buildout/apache2/mod_passenger.so ]
         then
             $GEM install thin
             $GEM install passenger --no-rdoc --no-ri
