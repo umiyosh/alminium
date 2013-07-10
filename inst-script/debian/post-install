@@ -21,6 +21,7 @@ a2enmod auth_mysql
 a2enmod authz_svn
 a2enmod proxy_http
 a2enmod headers
+a2enmod rewrite
 a2ensite redmine
 a2ensite vcs
 
