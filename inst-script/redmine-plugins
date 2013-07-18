@@ -90,4 +90,7 @@ $RAKE tmp:sessions:clear
 touch backlogs.dev
 $RAKE redmine:backlogs:install task_tracker=サポート story_trackers=機能 labels=false
 
+# FIXME: to avoid open_flash_chart assets aren't copied.
+cp -fr plugins/open_flash_chart/assets public/plugin_assets/open_flash_chart
+
 popd
