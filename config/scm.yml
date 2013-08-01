@@ -1,6 +1,7 @@
 production:
    auto_create: true
    deny_delete: true
+   allow_add_local: true
    post_create: /opt/alminium/bin/alm-scm-post-create
    svn:
      path: /var/opt/alminium/svn
