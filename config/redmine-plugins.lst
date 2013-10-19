@@ -14,7 +14,7 @@ redmine_importer,master,https://github.com/zh/redmine_importer.git
 redmine_code_review,default,https://bitbucket.org/haru_iida/redmine_code_review
 redmine_hudson,redmine2.x,https://bitbucket.org/okamototk/redmine_hudson
 ##redmine_ms_projects,master,https://github.com/suer/redmine_ms_projects.git
-redmine_backlogs,v1.0.1,https://github.com/backlogs/redmine_backlogs.git
+redmine_backlogs,v1.0.6,https://github.com/backlogs/redmine_backlogs.git
 redmine_spent_time_column,backlogs-support,https://github.com/mikoto20000/redmine_spent_time_column.git
 #redmine_scm,HEAD,http://svn.s-andy.com/scm-creator/
 redmine_scm,redmine-2.1.x,https://github.com/alminium/redmine_scm.git
@@ -27,7 +27,7 @@ clipboard_image_paste,master,https://github.com/peclik/clipboard_image_paste.git
 #redmine_lightbox,master,https://github.com/zipme/redmine_lightbox.git
 redmine_banner,master,https://github.com/akiko-pusu/redmine_banner.git
 open_flash_chart,master,https://github.com/pullmonkey/open_flash_chart.git
-redmine_charts,master,https://github.com/drakontia/redmine_charts.git
+redmine_charts,develop,https://github.com/drakontia/redmine_charts.git
 redmine_local_avatars,master,https://github.com/luckval/redmine_local_avatars.git
 redmine_git_branch_hook,master,https://github.com/mikoto20000/redmine_git_branch_hook.git
 # advanced_roadmapはbacklogsと競合するためどちらかを選択
