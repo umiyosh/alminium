@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CHKRUBY=`rpm -qa|grep ruby-2.0`
+CHKRUBY=`rpm -qa|grep ^ruby-2.0`
 
 RET=-1
 
