@@ -42,7 +42,7 @@ chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
 
-if [[ `which ruby` == "" || ! `ruby --version` =~ 2.0.0 ]]
+if [[ `which ruby` == "" || ! `ruby --version` =~ 2.1.0 ]]
 then
-    bash inst-script/rhel6/ruby2.0-install
+    bash inst-script/rhel6/ruby2.1-install
 fi
