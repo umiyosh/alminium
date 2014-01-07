@@ -28,7 +28,7 @@ done
 ## install mod_passenger
 case $OS in
     rhel6)
-        if [ ! -f /usr/lib64/ruby/gems/2.0.0/gems/passenger-4.*/buildout/apache2/mod_passenger.so ]
+        if [ ! -f /usr/lib64/ruby/gems/2.1.0/gems/passenger-4.*/buildout/apache2/mod_passenger.so ]
         then
             $GEM install passenger --no-rdoc --no-ri
             passenger-install-apache2-module --auto
